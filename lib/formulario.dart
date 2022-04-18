@@ -20,5 +20,13 @@ class Formulario {
     _user = user;
   }
 
+  ///Este método permite modificar un formulario ya creado
+  void modificarFormulario(int estadoAnimo, List<Accion> listaAcciones, String campoTexto, DateTime fecha){
+    _estadoAnimo = estadoAnimo;
+    _listaAcciones = listaAcciones;
+    _campoTexto = campoTexto;
+    _fecha = fecha; // Obtiene la fecha en el momento de creación
+  }
+
 
 }
