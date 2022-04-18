@@ -1,6 +1,6 @@
 import 'accion.dart';
 
-/// Esta clase sirve para la utilidad general de la aplicación
+/// Esta clase sirve para la utilidad general de la aplicación, clase inicializadora
 /// como, por ejemplo, implementar un secuenciador o establecer
 /// el paquete de acciones predeterminado
 
