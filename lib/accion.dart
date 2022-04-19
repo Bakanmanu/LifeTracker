@@ -1,19 +1,17 @@
 class Accion {
   String _nombre;
-  String _descripcion;
   bool _activo = false;
 
   //Constructor
-  Accion(this._nombre, this._descripcion, this._activo);
+  Accion(this._nombre, this._activo);
 
   //Método para crear una acción públicamente usando el constructor
-  Accion crearAccion(String nombre, String descripcion){
-    return Accion(nombre, descripcion, _activo);
+  Accion crearAccion(String nombre){
+    return Accion(nombre, _activo);
   }
 
-  Accion modificarAccion(String nombre, String descripcion){
+  Accion modificarAccion(String nombre){
     _nombre = nombre;
-    _descripcion = descripcion;
     return this;
   }
 
@@ -25,12 +23,6 @@ class Accion {
 
   set nombre(String value) {
     _nombre = value;
-  }
-
-  String get descripcion => _descripcion;
-
-  set descripcion(String value) {
-    _descripcion = value;
   }
 
   bool get activo => _activo;
