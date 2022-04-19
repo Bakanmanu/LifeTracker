@@ -74,7 +74,7 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
                   child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  Image.asset("assets/triste.png
+                  Image.asset("assets/triste.png:
                   }", width: 40,),
                   ],
                   ),
