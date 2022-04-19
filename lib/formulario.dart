@@ -5,11 +5,17 @@ import 'accion.dart';
 
 class Formulario {
 
-  int _estadoAnimo; // tiene que ser un valor entre 1 y 5
-  List<Accion> _listaAcciones;
-  String _campoTexto;
-  DateTime _fecha;
-  Usuario _user;
+  ///La Keyword 'late' sirve para indicar que los siguientes valores no se van a
+  ///inicializar en tiempo de compilación, sino una vez se esté usando la app
+  ///Es decir: si no se pone, las variables van a dar error porque van a ser
+  ///nulas de primeras y tienen que inicializarse sí o sí. Otra forma es usar el
+  ///operador '?', pero esto indicaría que las variables pueden ser nulas, y no
+  ///queremos esto.
+  late int _estadoAnimo; // tiene que ser un valor entre 1 y 5
+  late List<Accion> _listaAcciones;
+  late String _campoTexto;
+  late DateTime _fecha;
+  late Usuario _user;
 
   //todo Hay que hacer otro constructor para por si la fecha se quiere poner explícitamente
   Formulario(int estadoAnimo, List<Accion> listaAcciones, String campoTexto, Usuario user){
