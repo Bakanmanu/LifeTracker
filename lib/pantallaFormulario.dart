@@ -43,11 +43,6 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
             children: [
               //TODO poner las caritas del estado de ánimo
               Container(
-                child: GridView.builder(
-                itemCount: estadosAnimo.length,
-                gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                itemBuilder: (context,index){
-                  return Container(
                       margin: EdgeInsets.all(15),
                       padding: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
                       decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
