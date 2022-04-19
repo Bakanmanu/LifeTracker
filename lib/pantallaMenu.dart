@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:practica2_ds/pantallaFormulario.dart';
+import 'package:practica2_ds/pantallaMostrarFormularios.dart';
 import 'elementosMenu.dart';
 class PantallaMenu extends StatefulWidget{
 
@@ -22,7 +24,18 @@ class _PantallaMenuState extends State<PantallaMenu>{
                 decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
                 child: GestureDetector(
                   onTap: (){
-                    print("click en "+Menu[index].nombre); // todo aquí hay que llamar a las funciones para crear los forms
+                    print("click en "+Menu[index].nombre); // todo esto se puede quitar, es para debuguear
+
+                    // SWITCH PARA ACCEDER A LOS DISTINTOS MENÚS
+                    switch(Menu[index].id){
+                      case 1: //Caso de que sea para rellenar un nuevo formulario
+                        Navigator.push(context, MaterialPageRoute(builder: (_)=>PantallaFormulario()));
+                        break;
+
+                      case 2: //Caso de que sea para consultar los formularios
+                        Navigator.push(context, MaterialPageRoute(builder: (_)=>PantallaMostrarFormulario()));
+                        break;
+                    }
                   },
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
