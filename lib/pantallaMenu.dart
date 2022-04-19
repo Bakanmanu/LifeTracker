@@ -17,10 +17,10 @@ class _PantallaMenuState extends State<PantallaMenu>{
       body: Container(
         child: GridView.builder(
           itemCount: Menu.length,
-            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (context,index){
               return Container(
-                margin: EdgeInsets.all(30),
+                margin: EdgeInsets.all(10),
                 decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
                 child: GestureDetector(
                   onTap: (){
@@ -35,13 +35,14 @@ class _PantallaMenuState extends State<PantallaMenu>{
                       case 2: //Caso de que sea para consultar los formularios
                         Navigator.push(context, MaterialPageRoute(builder: (_)=>PantallaMostrarFormulario()));
                         break;
+                      case 3: //Caso para editar el perfil, implementación en un futuro
                     }
                   },
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset("assets/"+Menu[index].imagen, width: 100,),
-                        Text(Menu[index].nombre, style: TextStyle(color: Colors.white, fontSize: 30),),
+                        Image.asset("assets/"+Menu[index].imagen, width: 80,),
+                        Text(Menu[index].nombre, style: TextStyle(color: Colors.white, fontSize: 18),),
                       ],
                 )
                 ),
