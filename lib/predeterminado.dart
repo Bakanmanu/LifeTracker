@@ -5,6 +5,7 @@ import 'accion.dart';
 /// el paquete de acciones predeterminado
 
 abstract class Predeterminado { //todo revisar si tiene que ser clase abstracta o si hay que hacer un Singleton
+  //todo plantear esto como para que las acciones predeterminadas se hagan dentro del factory
   int secuenciador = 0;
   List<Accion>? listaAccionesDefault; //todo quitar el nullable ("?")
 

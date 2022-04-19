@@ -25,7 +25,7 @@ class _PantallaMenuState extends State<PantallaMenu>{
                 ),
                 child: GestureDetector(
                   onTap: (){
-                    print("click en "+Menu[index].nombre);
+                    print("click en "+Menu[index].nombre); // todo aquí hay que llamar a las funciones para crear los forms
                   },
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
