@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practica2_ds/pantallaFormulario.dart';
 import 'package:practica2_ds/pantallaMostrarFormularios.dart';
+import 'package:practica2_ds/pantallaPerfil.dart';
 import 'elementosMenu.dart';
 class PantallaMenu extends StatefulWidget{
 
@@ -35,7 +36,10 @@ class _PantallaMenuState extends State<PantallaMenu>{
                       case 2: //Caso de que sea para consultar los formularios
                         Navigator.push(context, MaterialPageRoute(builder: (_)=>PantallaMostrarFormulario()));
                         break;
+
                       case 3: //Caso para editar el perfil, implementación en un futuro
+                        Navigator.push(context, MaterialPageRoute(builder: (_)=>PantallaPerfilUsuario()));
+                        break;
                     }
                   },
                   child: Column(
