@@ -30,7 +30,7 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: Text("Pantalla Formulario"), backgroundColor: Colors.purple,),
+      appBar: AppBar(title: Text("Rellenar Formulario"), backgroundColor: Colors.purple,),
       backgroundColor: Colors.purple,
         //todo modificar y rellenar
       body: SafeArea(

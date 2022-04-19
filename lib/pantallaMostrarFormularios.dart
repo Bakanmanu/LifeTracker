@@ -13,7 +13,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        appBar: AppBar(title: Text("Pantalla Buscar Formulario"), backgroundColor: Colors.purple,),
+        appBar: AppBar(title: Text("Buscar Formulario"), backgroundColor: Colors.purple,),
         backgroundColor: Colors.purple,
           //todo modificar y rellenar
         body: const Center(

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: _login(),
+      home: _login(), //TODO BORRAR LA PANTALLA DE LOGIN Y PONER SIMPLEMENTE EL INICIO
     );
   }
 }
