@@ -15,7 +15,9 @@ class Accion {
     return this;
   }
 
-  //Eliminar accion se debe hacer desde la lista de acciones
+  void cambiarActivo(){
+    _activo = !_activo;
+  }
 
 
   //Getters & Setters

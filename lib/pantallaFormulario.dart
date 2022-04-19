@@ -13,7 +13,10 @@ class PantallaFormulario extends StatefulWidget{
 }
 
 class _PantallaFormularioState extends State<PantallaFormulario>{
-  @override
+
+  int _estadoAnimo = 3; //Valor por defecto: estado de ánimo neutral
+  //todo revisar si hay algún hint text o algo
+
   final List<Categoria> _categorias = [
     Categoria(enunciado: '¿Cuánto has dormido?',
         acciones: [Accion("1-3 horas", false), Accion("4-6 horas", false), Accion("6-8 horas", false), Accion("más de 8 horas", false)]),
@@ -21,6 +24,10 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
         acciones: [Accion("fruta", false), Accion("verdura", false), Accion("carne", false), Accion("pollo", false), Accion("pasta", false)]),
   ];
 
+  String _campoTexto = ''; //siempre va a haber un campo de texto, aunque esté vacío
+
+
+  @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(title: Text("Pantalla Formulario"), backgroundColor: Colors.purple,),
@@ -30,7 +37,9 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
         child:
           ListView(
             children: [
-              Container(
+              //TODO poner las caritas del estado de ánimo
+
+              Container( //AQUÍ EMPIEZA LA PARTE DE CATEGORÍAS Y ACCIONES
                 margin: EdgeInsets.all(15),
                 padding: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
                 decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
@@ -51,8 +60,14 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
                                   (indexAcciones){
                                 return Row(
                                   children: [
-                                    Checkbox(value: categoria.acciones[indexAcciones].activo, onChanged: (value){
-                                    }
+                                    Checkbox(
+                                        value: categoria.acciones[indexAcciones].activo,
+                                        onChanged: (value){
+                                          setState(() {
+                                            categoria.acciones[indexAcciones].cambiarActivo(); //Cambiamos el estado de la acción al hacer click
+                                          });
+                                    },
+                                        activeColor: Colors.deepPurple,
                                     ),
                                     Text(categoria.acciones[indexAcciones].nombre, style: TextStyle(color: Colors.black, fontSize: 16)),
                                   ],
@@ -66,6 +81,11 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
                   ),
                 ),
               )
+              // TODO PONER EL CAMPO DE SOLICITUD DE TEXTO
+
+              // TODO PONER EL BOTÓN QUE LLAMA AL MÉTODO DE CREAR FORMULARIO
+                //todo habría que mandar el parámetro de _categorías
+
             ],
           ),
       ),

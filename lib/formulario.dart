@@ -2,11 +2,11 @@ import 'accion.dart';
 
 ///Esta clase sirve para gestionar todos los procesos relacionados con los formularios
 ///y sirve como de "Clase mediadora" para tener una mayor abstracción y encapsulación
-///También, tiene la variable global que guarda todos los formularios que se
-///han ido creando
+///También, tiene la variable global que guarda todos los formularios que se han ido creando
 class GestorFormulario {
   List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
 
+  //todo cambiar la lista de acciones a lista de categorías
   ///Método para crear un nuevo formulario con los parámetros que se recojan de la interfaz
   Formulario crearFormulario(int estadoAnimo, List<Accion> listaAcciones, String campoTexto) {
 
