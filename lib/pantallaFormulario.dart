@@ -4,6 +4,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:practica2_ds/accion.dart';
+import 'package:practica2_ds/elementosEstadoAnimo.dart';
+import 'package:practica2_ds/formulario.dart';
 import "categoria.dart";
 
 class PantallaFormulario extends StatefulWidget{
@@ -24,6 +26,8 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
         acciones: [Accion("fruta", false), Accion("verdura", false), Accion("carne", false), Accion("pollo", false), Accion("pasta", false)]),
   ];
 
+  GestorFormulario gestor = GestorFormulario();
+
   String _campoTexto = ''; //siempre va a haber un campo de texto, aunque esté vacío
 
 
@@ -38,7 +42,38 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
           ListView(
             children: [
               //TODO poner las caritas del estado de ánimo
-
+              Container(
+                margin: EdgeInsets.all(15),
+                padding: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+                decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
+                child: GestureDetector(
+                  onTap: (){
+                    switch(estadosAnimo[index].id){
+                      case 1:
+                        _estadoAnimo = 1;
+                        break;
+                      case 2:
+                        _estadoAnimo = 2;
+                        break;
+                      case 3:
+                        _estadoAnimo = 3;
+                        break;
+                      case 4:
+                        _estadoAnimo = 4;
+                        break;
+                      case 5:
+                        _estadoAnimo = 5;
+                        break;
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                  Image.asset("assets/triste.png", width: 40,),
+                  ],
+                  ),
+                ),
+              ),
               Container( //AQUÍ EMPIEZA LA PARTE DE CATEGORÍAS Y ACCIONES
                 margin: EdgeInsets.all(15),
                 padding: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
