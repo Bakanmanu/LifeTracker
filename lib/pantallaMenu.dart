@@ -19,10 +19,7 @@ class _PantallaMenuState extends State<PantallaMenu>{
             itemBuilder: (context,index){
               return Container(
                 margin: EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                  color: Colors.purpleAccent,
-                  borderRadius: BorderRadius.circular(30),
-                ),
+                decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
                 child: GestureDetector(
                   onTap: (){
                     print("click en "+Menu[index].nombre); // todo aquí hay que llamar a las funciones para crear los forms

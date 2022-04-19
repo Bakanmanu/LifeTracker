@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Life Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
@@ -44,16 +44,12 @@ class __loginState extends State<_login>{
       backgroundColor: Colors.purple,
       body: Container(
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
+          boxShadow: [BoxShadow(
               color: Colors.black38,
               blurRadius: 20.0,
               spreadRadius: 5.0,
-              offset: Offset(
-                5.0, 5.0
-              )
-            )
-          ],
+              offset: Offset(5.0, 5.0)
+            )],
           color: Colors.purpleAccent,
           borderRadius: BorderRadius.circular(20)
         ),
