@@ -43,11 +43,16 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
             children: [
               //TODO poner las caritas del estado de ánimo
               Container(
-                margin: EdgeInsets.all(15),
-                padding: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
-                decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
-                child: GestureDetector(
-                  onTap: (){
+                child: GridView.builder(
+                itemCount: estadosAnimo.length,
+                gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                itemBuilder: (context,index){
+                  return Container(
+                      margin: EdgeInsets.all(15),
+                      padding: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+                      decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
+                      child: GestureDetector(
+                      onTap: (){
                     switch(estadosAnimo[index].id){
                       case 1:
                         _estadoAnimo = 1;
@@ -67,9 +72,10 @@ class _PantallaFormularioState extends State<PantallaFormulario>{
                     }
                   },
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                  Image.asset("assets/triste.png", width: 40,),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  Image.asset("assets/triste.png:
+                  }", width: 40,),
                   ],
                   ),
                 ),

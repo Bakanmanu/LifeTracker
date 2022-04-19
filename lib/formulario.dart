@@ -5,7 +5,7 @@ import 'accion.dart';
 ///Esta clase sirve para gestionar todos los procesos relacionados con los formularios
 ///y sirve como de "Clase mediadora" para tener una mayor abstracción y encapsulación
 ///También, tiene la variable global que guarda todos los formularios que se han ido creando
-class GestorFormulario { //todo VER DÓNDE HAY QUE INSTANCIAR EL GESTOR DE FORMULARIO
+class GestorFormulario {
   List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
 
   ///SINGLETON PARA NO CREAR +1 INSTANCIA DEL GESTOR
@@ -33,7 +33,6 @@ class GestorFormulario { //todo VER DÓNDE HAY QUE INSTANCIAR EL GESTOR DE FORMU
     listaFormularios.add(form);
   }
 
-  //todo método para mostrar los formularios
 }
 
 
