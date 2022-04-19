@@ -35,8 +35,8 @@ class _login extends StatefulWidget{
 }
 
 class __loginState extends State<_login>{
-  TextEditingController email = new TextEditingController();
-  TextEditingController pass = new TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController pass = TextEditingController();
 
   @override
   Widget build(BuildContext context){
@@ -44,7 +44,7 @@ class __loginState extends State<_login>{
       backgroundColor: Colors.purple,
       body: Container(
         decoration: BoxDecoration(
-          boxShadow: [BoxShadow(
+          boxShadow: const [BoxShadow(
               color: Colors.black38,
               blurRadius: 20.0,
               spreadRadius: 5.0,
@@ -53,8 +53,8 @@ class __loginState extends State<_login>{
           color: Colors.purpleAccent,
           borderRadius: BorderRadius.circular(20)
         ),
-        margin: EdgeInsets.only(top: 50, left: 20, right: 20 ,bottom: 40),
-        padding: EdgeInsets.only(left: 20, right: 20),
+        margin: const EdgeInsets.only(top: 50, left: 20, right: 20 ,bottom: 40),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +62,7 @@ class __loginState extends State<_login>{
               Image.asset("assets/logo_transparent.png", height: 230,),
               TextField(
                 controller: email,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "username@correo.com"
                 ),
               ),
@@ -70,7 +70,7 @@ class __loginState extends State<_login>{
               TextField(
                 controller: pass,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     hintText: "password"
                 ),
               ),
@@ -82,14 +82,14 @@ class __loginState extends State<_login>{
                   borderRadius: BorderRadius.circular(10)
                 ),
                 child: FlatButton(
-                  child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),),
+                  child: const Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),),
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (_)=>PantallaMenu()));
                   },
                 ),
               ),
-              SizedBox(height: 80,),
-              Text("¿Eres nuevo? Registrate aquí")
+              const SizedBox(height: 80,),
+              const Text("¿Eres nuevo? Registrate aquí")
             ],
           ),
         ),
