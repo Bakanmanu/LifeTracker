@@ -19,7 +19,7 @@ class PantallaFormulario extends StatefulWidget {
 
 class _PantallaFormularioState extends State<PantallaFormulario> {
 
-  GestorFormulario gestor = GestorFormulario();
+  static GestorFormulario gestor = GestorFormulario();
 
   int _estadoAnimo = 3; //Valor por defecto: estado de ánimo neutral
 
@@ -46,6 +46,9 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       Accion("hacer la colada", false)
     ]),
   ];
+
+  List<Categoria> get categorias => _categorias;
+
 
   String _campoTexto = ''; //siempre va a haber un campo de texto, aunque esté vacío
 

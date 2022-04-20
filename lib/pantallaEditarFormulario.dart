@@ -8,6 +8,7 @@ import 'package:practica2_ds/accion.dart';
 import 'package:practica2_ds/elementosEstadoAnimo.dart';
 import 'package:practica2_ds/formulario.dart';
 import 'package:practica2_ds/pantallaMenu.dart';
+import 'package:practica2_ds/pantallaFormulario.dart';
 import "categoria.dart";
 
 class PantallaEditarFormulario extends StatefulWidget {
@@ -19,35 +20,16 @@ class PantallaEditarFormulario extends StatefulWidget {
 
 class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
 
-  GestorFormulario gestor = GestorFormulario();
+  //Como tenemos hecho el Singleton, nos devolverá el mismo gestor de formulario
+  // que el que se creó en pantallaFormulario.dart
+  static GestorFormulario gestor = GestorFormulario(); //todo esto da problemas
 
-  int _estadoAnimo = 3; //Valor por defecto: estado de ánimo neutral
+  static Formulario form = gestor.getFormEditar(); //todo esto da problemas
 
-  final List<Categoria> _categorias = [
-    Categoria(enunciado: '¿Cuánto has dormido?', acciones: [
-      Accion("1-3 horas", false),
-      Accion("4-6 horas", false),
-      Accion("6-8 horas", false),
-      Accion("más de 8 horas", false)
-    ]),
-    Categoria(enunciado: '¿Qué has comido?', acciones: [
-      Accion("fruta", false),
-      Accion("verdura", false),
-      Accion("carne", false),
-      Accion("pollo", false),
-      Accion("pasta", false)
-    ]),
-    Categoria(enunciado: '¿Qué has hecho?', acciones: [
-      Accion("tocar la guitarra", false),
-      Accion("salir a correr", false),
-      Accion("ir al gimnasio", false),
-      Accion("echar la siesta", false),
-      Accion("comer con amigos", false),
-      Accion("hacer la colada", false)
-    ]),
-  ];
-
-  String _campoTexto = ''; //siempre va a haber un campo de texto, aunque esté vacío
+  //Recuperamos los campos del formulario
+  int _estadoAnimo = form.estadoAnimo;
+  final List<Categoria> _categorias = form.listaCategorias;
+  String _campoTexto = form.campoTexto;
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +40,6 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
       ),
       backgroundColor: Colors.purple,
 
-      //TODO Ver qué se puede hacer para no tener el expanded, que hace que
-      //  el formulario se divida en partes iguales, y ver cómo se podrían meter
-      //  todas las cosas una detrás de otra y que sea un scrollable general
-      //TODO no se puede meter un widget scrolleable dentro de otro widget scrolleable, y como lo del estado de animo y la lista de categoría lo son, daba el fallo
-      // la cosa es que las categorías al princpio estaban solas sin estar anidadas en nada, entonces iba bien
-      // la cosa es que lo mismo hay que cambiar los tipos de lo del estado de animo y lo de las categorias a filas y columnas o algo
       body: Column(
         //mainAxisAlignment:,
         children: <Widget>[
@@ -194,10 +170,10 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
         ],
       ),
 
-      /// BOTÓN PARA ENVIAR EL FORMULARIO
+      /// BOTÓN PARA GUARDAR EL FORMULARIO
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          gestor.crearFormulario(_estadoAnimo, _categorias, _campoTexto);
+          gestor.editarFormulario(_estadoAnimo, _categorias, _campoTexto);
           Navigator.pop(context, MaterialPageRoute(builder: (_)=>PantallaMenu()));
           _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
         },

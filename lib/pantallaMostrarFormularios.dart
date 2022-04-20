@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practica2_ds/elementosEstadoAnimo.dart';
 import 'package:practica2_ds/formulario.dart';
+import 'package:practica2_ds/pantallaEditarFormulario.dart';
 
 ///Este fichero sirve para crear la parte gráfica a la hora de visualizar
 ///los formularios.
@@ -30,11 +31,12 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
               //height: 80,
               color: Colors.purple,
               child: Card(
-                color: Colors.deepPurpleAccent,
+                color: Colors.purple[400],
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     ListTile(
+                      // todo mejorar la previsualización con un toString
                       leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
                       title: Text(gestor.listaFormularios[index].fecha.toString()),
                       subtitle: Text(gestor.listaFormularios[index].campoTexto),
@@ -60,8 +62,8 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           ),
                           child: const Text('MODIFICAR'),
                           onPressed: () {
-                            // TODO QUE TE LLEVE A LA PANTALLA
-                            //gestor.listaFormularios[index].modificarFormulario(estadoAnimo, listaCategorias, campoTexto)
+                            gestor.setIndex(index);
+                            Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaEditarFormulario()));
                           },
                         ),
                         const SizedBox(width: 8),
