@@ -31,6 +31,20 @@ class GestorFormulario {
     
     //Guardamos el formulario en la lista global de formularios
     listaFormularios.add(form);
+
+    // todo pensar si poner aquí el mensaje de formulario creado correctamente
+
+    print('Formulario creado correctamente'); //TODO BORRAR DEBUG
+    mostrarFormularioTerminal(); //TODO BORRAR DEBUG
+  }
+
+  ///Este método sirve para debuggear y ver que se crean bien los formularios
+  void mostrarFormularioTerminal(){
+    Formulario form = listaFormularios.last;
+
+    print(form._estadoAnimo);
+    print(form._campoTexto);
+    print(form._fecha);
   }
 
 }
