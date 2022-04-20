@@ -6,6 +6,7 @@ CAMBIOS A REALIZAR:
     -Mostrar los formularios en orden inverso y orden cronológico
     -Mejorar un poco la interfaz grafica --> buscar paleta de colores
     -Añadir apartado para crear las acciones (MUY OPCIONAL)
+    -Estudiar convergencia para unir las dos clases de editar y crear formulario -> tal vez con un if o buscar algún patrón
 
 CAMBIOS REALIZADOS:
 -Al enviar un formulario, ahora muestra primero la alerta emergente y luego cambia de pantalla

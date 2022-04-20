@@ -67,7 +67,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           SizedBox(
             height: 80,
             child:
-            GridView.builder(
+            GridView.builder( //todo hacer que esto sean botones
                 itemCount: estadosAnimo.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5), // 5 columnas
                 itemBuilder: (context,index){

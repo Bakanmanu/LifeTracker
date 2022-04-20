@@ -19,7 +19,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: const Text("Buscar Formulario"), backgroundColor: Colors.purple,),
+      appBar: AppBar(title: const Text("Todos los formularios"), backgroundColor: Colors.purple,),
       backgroundColor: Colors.purple,
 
       ///Listado de Formularios realizados
@@ -29,9 +29,9 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
           itemBuilder: (BuildContext context, int index) { // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
             return Container(
               //height: 80,
-              color: Colors.purple,
+              color: Colors.purpleAccent[400],
               child: Card(
-                color: Colors.purple[400],
+                color: Colors.purpleAccent,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -39,7 +39,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                       leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
                       isThreeLine: true,
                       title: Text(gestor.listaFormularios[index].fecha.toString() + '\n'),
-                      subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])),
+                      subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])), //todo hacer que se muestren las acciones actualizadas
                     ),
                     Container(
                       //Espacio para añadir formato
@@ -50,7 +50,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                       children: [
                         TextButton(
                           style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white70),
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                           ),
                           child: const Text('BORRAR'),
                           onPressed: (){
@@ -60,15 +60,14 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           },
                         ),
                         const SizedBox(width: 8),
-                        TextButton(               //Boton para editar un formulario ya creado (Se podría implementar en el boton anterior )
+                        TextButton(               //Boton para editar un formulario ya creado
                           style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white70),
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade200),
                           ),
                           child: const Text('MODIFICAR'),
                           onPressed: () async {
                             gestor.setIndex(index);
                             await Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaEditarFormulario()));
-                            setState(() {}); //Todo hacer que muestre el formulario actualizado
                           },
                         ),
                         const SizedBox(width: 8),
