@@ -98,4 +98,8 @@ class Formulario {
     _campoTexto = campoTexto;
     // no se permite modificar la fecha, para que se quede guardada la original
   }
+
+  String get campoTexto => _campoTexto;
+  int get estadoAnimo => _estadoAnimo;
+  DateTime get fecha => _fecha;
 }
