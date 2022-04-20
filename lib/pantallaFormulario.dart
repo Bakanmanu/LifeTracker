@@ -22,7 +22,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
   GestorFormulario gestor = GestorFormulario();
 
   int _estadoAnimo = 3; //Valor por defecto: estado de ánimo neutral
-  //todo revisar si hay algún hint text o algo
 
   final List<Categoria> _categorias = [
     Categoria(enunciado: '¿Cuánto has dormido?', acciones: [
@@ -37,6 +36,14 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       Accion("carne", false),
       Accion("pollo", false),
       Accion("pasta", false)
+    ]),
+    Categoria(enunciado: '¿Qué has hecho?', acciones: [
+      Accion("tocar la guitarra", false),
+      Accion("salir a correr", false),
+      Accion("ir al gimnasio", false),
+      Accion("echar la siesta", false),
+      Accion("comer con amigos", false),
+      Accion("hacer la colada", false)
     ]),
   ];
 
@@ -54,6 +61,9 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       //TODO Ver qué se puede hacer para no tener el expanded, que hace que
       //  el formulario se divida en partes iguales, y ver cómo se podrían meter
       //  todas las cosas una detrás de otra y que sea un scrollable general
+      //TODO no se puede meter un widget scrolleable dentro de otro widget scrolleable, y como lo del estado de animo y la lista de categoría lo son, daba el fallo
+      // la cosa es que las categorías al princpio estaban solas sin estar anidadas en nada, entonces iba bien
+      // la cosa es que lo mismo hay que cambiar los tipos de lo del estado de animo y lo de las categorias a filas y columnas o algo
       body: Column(
         //mainAxisAlignment:,
         children: <Widget>[
@@ -70,9 +80,11 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                     decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
                     child: GestureDetector(
                         onTap: (){
-                          print("click en "+estadosAnimo[index].nombre); // todo esto se puede quitar, es para debuguear
+                          print("click en "+estadosAnimo[index].nombre); // DEBUG
 
                           // SWITCH PARA CAMBIAR LOS DISTINTOS ESTADOS DE ÁNIMO
+
+                          // TODO HACER QUE SE MARQUE EL PULSADO
                           switch(estadosAnimo[index].id){
                             case 1:
                               _estadoAnimo = 1;
@@ -105,7 +117,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           ),
 
           ///AQUÍ EMPIEZA LA PARTE DE CATEGORÍAS Y ACCIONES
-          Expanded(
+          Flexible(
             child:
             SafeArea(
               child:
@@ -160,7 +172,8 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           ),
 
           /// AQUÍ EMPIEZA EL CAMPO DE TEXTO
-          Flexible(
+          Container(
+            padding: EdgeInsets.fromLTRB(5, 5, 5, 60),
             child:
                 Container(
                   margin: const EdgeInsets.all(15),
@@ -185,12 +198,40 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       floatingActionButton: ElevatedButton(
         onPressed: () {
           gestor.crearFormulario(_estadoAnimo, _categorias, _campoTexto);
-          // todo mostrar un mensaje de éxito al crear el formulario
-          // todo mandar a la pantalla de inicio
           Navigator.pop(context, MaterialPageRoute(builder: (_)=>PantallaMenu()));
+          _mostrarAlertaFormCorrecto();
         },
         child: const Text('Enviar formulario'),
       ),
     );
   }
+
+  Future <void> _mostrarAlertaFormCorrecto() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('El formulario se ha guardado correctamente'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('Para borrarlo o modificarlo, ve a "Buscar formulario"'
+                    'en el Menú'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Gracias :)'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
+

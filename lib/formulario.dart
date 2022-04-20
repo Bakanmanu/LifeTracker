@@ -34,8 +34,8 @@ class GestorFormulario {
 
     // todo pensar si poner aquí el mensaje de formulario creado correctamente
 
-    print('Formulario creado correctamente'); //TODO BORRAR DEBUG
-    mostrarFormularioTerminal(); //TODO BORRAR DEBUG
+    print('Formulario creado correctamente'); //DEBUG
+    mostrarFormularioTerminal(); //DEBUG
   }
 
   ///Este método sirve para debuggear y ver que se crean bien los formularios
