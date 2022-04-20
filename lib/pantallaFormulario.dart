@@ -61,12 +61,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       ),
       backgroundColor: Colors.purple,
 
-      //TODO Ver qué se puede hacer para no tener el expanded, que hace que
-      //  el formulario se divida en partes iguales, y ver cómo se podrían meter
-      //  todas las cosas una detrás de otra y que sea un scrollable general
-      //TODO no se puede meter un widget scrolleable dentro de otro widget scrolleable, y como lo del estado de animo y la lista de categoría lo son, daba el fallo
-      // la cosa es que las categorías al princpio estaban solas sin estar anidadas en nada, entonces iba bien
-      // la cosa es que lo mismo hay que cambiar los tipos de lo del estado de animo y lo de las categorias a filas y columnas o algo
       body: Column(
         //mainAxisAlignment:,
         children: <Widget>[
@@ -86,7 +80,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                           print("click en "+estadosAnimo[index].nombre); // DEBUG
 
                           // SWITCH PARA CAMBIAR LOS DISTINTOS ESTADOS DE ÁNIMO
-
                           // TODO HACER QUE SE MARQUE EL PULSADO
                           switch(estadosAnimo[index].id){
                             case 1:
@@ -237,7 +230,5 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       },
     );
   }
-
-
 }
 

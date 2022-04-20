@@ -185,7 +185,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
   }
 
   /// Esta función genera una alerta emergente para notificar de que el formulario se ha guardado
-  // todo comprobar
+  // todo comprobar si se puede reutilizar el método de pantallaFormulario.dart
   Future <void> _mostrarAlertaFormCorrecto() async {
     return showDialog<void>(
       context: context,
