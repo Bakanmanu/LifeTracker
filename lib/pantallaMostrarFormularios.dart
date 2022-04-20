@@ -48,11 +48,9 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           ),
                           child: const Text('BORRAR'),
                           onPressed: (){
-                            // TODO BUSCAR UNA FUNCIÓN QUE SEA RELOAD O ALGO
                             //Llamamos a la funcion que se asegura de borrar y,
-                            //si procede, la borra
+                            //si procede, la borra. Ade,
                             _alertaBorrar(gestor.listaFormularios[index]);
-
                           },
                         ),
                         const SizedBox(width: 8),
@@ -80,6 +78,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
 
 
   /// Esta función se llama cuando se va a borrar un formulario, para asegurarse
+  /// Además, actualiza la página para que desaparezca el form borrado
   Future <void> _alertaBorrar(Formulario form) async {
     return showDialog<void>(
       context: context,
