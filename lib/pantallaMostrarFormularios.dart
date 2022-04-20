@@ -38,9 +38,12 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                     ListTile(
                       leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
                       isThreeLine: true,
-                      title: Text(gestor.listaFormularios[index].fecha.toString()),
+                      title: Text(gestor.listaFormularios[index].fecha.toString() + '\n'),
                       subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])),
-                      //todo falta poner el texto guardado
+                    ),
+                    Container(
+                      //Espacio para añadir formato
+                      child: Text(gestor.listaFormularios[index].campoTexto),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,

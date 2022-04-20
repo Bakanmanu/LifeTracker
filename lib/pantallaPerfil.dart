@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 ///editar el perfil de usuario
 
 class PantallaPerfilUsuario extends StatefulWidget{
+  const PantallaPerfilUsuario({Key? key}) : super(key: key);
 
   @override
   _PantallaPerfilUsuarioState createState() => _PantallaPerfilUsuarioState();

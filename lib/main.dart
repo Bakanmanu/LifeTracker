@@ -16,11 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Inicio(),
+      home: const Inicio(),
     );
   }
 }
 class Inicio extends StatefulWidget{
+  const Inicio({Key? key}) : super(key: key);
+
   @override
   InicioState createState() => InicioState();
 }
@@ -51,7 +53,7 @@ class InicioState extends State<Inicio>{
               Image.asset("assets/logo_transparent.png", height: 230,),
 
               Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 60),
                 width: 200,
                 decoration: BoxDecoration(
                   color: Colors.deepPurple,

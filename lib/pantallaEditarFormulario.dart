@@ -1,15 +1,12 @@
-///Este fichero sirve para crear la parte gráfica a la hora de crear
-///un nuevo formulario. Por ello, se relacionará directamente con el fichero
-///formulario.dart
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:practica2_ds/accion.dart';
 import 'package:practica2_ds/elementosEstadoAnimo.dart';
 import 'package:practica2_ds/formulario.dart';
 import 'package:practica2_ds/pantallaMenu.dart';
-import 'package:practica2_ds/pantallaFormulario.dart';
 import "categoria.dart";
+
+///Este fichero sirve para crear la parte gráfica a la hora de crear
+///un nuevo formulario. Por ello, se relacionará directamente con el fichero
+///formulario.dart
 
 class PantallaEditarFormulario extends StatefulWidget {
   const PantallaEditarFormulario({Key? key}) : super(key: key);
@@ -141,7 +138,6 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
                       ),
                     ),
                   )
-
                 ],
               ),
             ),
@@ -150,14 +146,14 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
           /// AQUÍ EMPIEZA EL CAMPO DE TEXTO
           // todo falta hacer que se muestre el texto previamente guardado
           Container(
-            padding: EdgeInsets.fromLTRB(5, 5, 5, 60),
+            padding: const EdgeInsets.fromLTRB(5, 5, 5, 60),
             child:
                 Container(
                   margin: const EdgeInsets.all(15),
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
                   decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
                   child: TextFormField(
-                    initialValue: _campoTexto,
+                    initialValue: _campoTexto, //todo esto debería hacer que se muestre el texto pero no lo hace
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
                       border: OutlineInputBorder(),
@@ -176,7 +172,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
       floatingActionButton: ElevatedButton(
         onPressed: () {
           gestor.editarFormulario(_estadoAnimo, _categorias, _campoTexto);
-          Navigator.pop(context, MaterialPageRoute(builder: (_)=>PantallaMenu()));
+          Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
           _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
         },
         child: const Text('Enviar formulario'),

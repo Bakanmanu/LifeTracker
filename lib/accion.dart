@@ -19,7 +19,6 @@ class Accion {
     _activo = !_activo;
   }
 
-
   //Getters & Setters
   String get nombre => _nombre;
 
