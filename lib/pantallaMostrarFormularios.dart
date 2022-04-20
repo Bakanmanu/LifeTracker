@@ -14,7 +14,7 @@ class PantallaMostrarFormulario extends StatefulWidget{
 }
 
 class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
-  GestorFormulario gestor = GestorFormulario();
+  GestorFormulario gestor = GestorFormulario.instance;
 
   @override
   Widget build(BuildContext context){
@@ -65,9 +65,10 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                             foregroundColor: MaterialStateProperty.all<Color>(Colors.white70),
                           ),
                           child: const Text('MODIFICAR'),
-                          onPressed: () {
+                          onPressed: () async {
                             gestor.setIndex(index);
-                            Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaEditarFormulario()));
+                            await Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaEditarFormulario()));
+                            setState(() {}); //Todo revisar si funciona y actualiza la pantalla. Probar con async
                           },
                         ),
                         const SizedBox(width: 8),

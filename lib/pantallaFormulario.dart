@@ -18,7 +18,7 @@ class PantallaFormulario extends StatefulWidget {
 
 class _PantallaFormularioState extends State<PantallaFormulario> {
 
-  static GestorFormulario gestor = GestorFormulario();
+  GestorFormulario gestor = GestorFormulario.instance;
 
   int _estadoAnimo = 3; //Valor por defecto: estado de ánimo neutral
 
@@ -191,10 +191,10 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
 
       /// BOTÓN PARA ENVIAR EL FORMULARIO
       floatingActionButton: ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           gestor.crearFormulario(_estadoAnimo, _categorias, _campoTexto);
+          await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
           Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
-          _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
         },
         child: const Text('Enviar formulario'),
       ),

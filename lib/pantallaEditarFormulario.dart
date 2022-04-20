@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practica2_ds/elementosEstadoAnimo.dart';
 import 'package:practica2_ds/formulario.dart';
 import 'package:practica2_ds/pantallaMenu.dart';
+import 'package:practica2_ds/pantallaMostrarFormularios.dart';
 import "categoria.dart";
 
 ///Este fichero sirve para crear la parte gráfica a la hora de crear
@@ -17,16 +18,24 @@ class PantallaEditarFormulario extends StatefulWidget {
 
 class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
 
-  //Como tenemos hecho el Singleton, nos devolverá el mismo gestor de formulario
-  // que el que se creó en pantallaFormulario.dart
-  static GestorFormulario gestor = GestorFormulario(); //todo esto da problemas
+  late GestorFormulario gestor;
+  late Formulario form;
+  late int _estadoAnimo;
+  late List<Categoria> _categorias;
+  late String _campoTexto;
 
-  static Formulario form = gestor.getFormEditar(); //todo esto da problemas
+  _PantallaEditarFormularioState(){
 
-  //Recuperamos los campos del formulario
-  int _estadoAnimo = form.estadoAnimo;
-  final List<Categoria> _categorias = form.listaCategorias;
-  String _campoTexto = form.campoTexto;
+    //Como tenemos hecho el Singleton, nos devolverá el mismo gestor de formulario
+    // que el que se creó en pantallaFormulario.dart
+    gestor = GestorFormulario.instance;
+    form = gestor.getFormEditar();
+
+    //Recuperamos los campos del formulario
+    _estadoAnimo = form.estadoAnimo;
+    _categorias = form.listaCategorias;
+    _campoTexto = form.campoTexto;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +153,6 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
           ),
 
           /// AQUÍ EMPIEZA EL CAMPO DE TEXTO
-          // todo falta hacer que se muestre el texto previamente guardado
           Container(
             padding: const EdgeInsets.fromLTRB(5, 5, 5, 60),
             child:
@@ -157,7 +165,6 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
                       border: OutlineInputBorder(),
-                      labelText: 'Cuenta aquí qué tal te ha ido el día',
                     ),
                     onChanged: (String textoEscrito){
                       _campoTexto = textoEscrito;
@@ -170,10 +177,11 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
 
       /// BOTÓN PARA GUARDAR EL FORMULARIO
       floatingActionButton: ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           gestor.editarFormulario(_estadoAnimo, _categorias, _campoTexto);
-          Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
-          _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
+          await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
+          //todo hacer que esto te lleve a la pantalla de mostrar formulario
+          Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
         },
         child: const Text('Enviar formulario'),
       ),
@@ -188,7 +196,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('El formulario se ha guardado correctamente'),
+          title: const Text('El formulario se ha modificado correctamente'),
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[
@@ -201,7 +209,8 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
             TextButton(
               child: const Text('Gracias :)'),
               onPressed: () {
-                Navigator.of(context).pop();
+                setState(() {}); //Actualizamos la pantalla para que no se quede el formulario estático
+                Navigator.of(context).pop(); //Quitamos la alerta
               },
             ),
           ],

@@ -10,12 +10,11 @@ class GestorFormulario {
   //Esta variable es late porque sólo se va a usar si se edita un formulario
   late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
 
-  ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
-  static final GestorFormulario _singleton = GestorFormulario._internal();
-  factory GestorFormulario() {
-    return _singleton;
-  }
-  GestorFormulario._internal();
+  ///SINGLETON v2 PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
+  GestorFormulario._privateConstructor();
+  static final GestorFormulario _instance = GestorFormulario._privateConstructor();
+  static GestorFormulario get instance => _instance;
+
 
   /// Método para crear un nuevo formulario con los parámetros que se recojan de la interfaz
   void crearFormulario(int estadoAnimo, List<Categoria> listaCategorias, String campoTexto) {
