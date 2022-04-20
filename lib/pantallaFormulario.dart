@@ -199,13 +199,14 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         onPressed: () {
           gestor.crearFormulario(_estadoAnimo, _categorias, _campoTexto);
           Navigator.pop(context, MaterialPageRoute(builder: (_)=>PantallaMenu()));
-          _mostrarAlertaFormCorrecto();
+          _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
         },
         child: const Text('Enviar formulario'),
       ),
     );
   }
 
+  /// Esta función genera una alerta emergente para notificar de que el formulario se ha guardado
   Future <void> _mostrarAlertaFormCorrecto() async {
     return showDialog<void>(
       context: context,
@@ -216,7 +217,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[
-                Text('Para borrarlo o modificarlo, ve a "Buscar formulario"'
+                Text('Para borrarlo o modificarlo, ve a "Buscar formulario" '
                     'en el Menú'),
               ],
             ),
