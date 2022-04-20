@@ -25,7 +25,6 @@ class _PantallaMenuState extends State<PantallaMenu>{
                 decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
                 child: GestureDetector(
                   onTap: (){
-                    print("click en "+Menu[index].nombre); //esto se puede quitar, es para debuguear
 
                     // SWITCH PARA ACCEDER A LOS DISTINTOS MENÚS
                     switch(Menu[index].id){

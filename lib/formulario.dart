@@ -26,13 +26,20 @@ class GestorFormulario {
     //Comprobamos que el estado de ánimo es un int entre 1 y 5
     assert(estadoAnimo >= 1 && estadoAnimo <= 5);
 
+    //Guardamos las acciones seleccionadas en la lista "respuestas" de categoría
+    for(Categoria cat in listaCategorias){
+      for (Accion acc in cat.acciones){
+        if (acc.activo) { // si la acción está seleccionada
+          cat.anadirRespuesta(acc); //añadimos la acción activa a la lista de respuestas
+        }
+      }
+    }
+
     //Creamos una nueva instancia de formulario
     Formulario form = Formulario(estadoAnimo, listaCategorias, campoTexto, fecha);
     
     //Guardamos el formulario en la lista global de formularios
     listaFormularios.add(form);
-
-    // todo pensar si poner aquí el mensaje de formulario creado correctamente
 
     print('Formulario creado correctamente'); //DEBUG
     mostrarFormularioTerminal(); //DEBUG
@@ -44,6 +51,21 @@ class GestorFormulario {
 
     print(form._estadoAnimo);
     print(form._campoTexto);
+
+    print('ACCIÓN + BOOL:');
+    for (Categoria cat in form._listaCategorias){
+      print('CATEGORÍA: ' + cat.enunciado);
+      for (Accion acc in cat.acciones){
+        acc.activo ? print(acc.nombre + ": TRUE") : print(acc.nombre + ": FALSE");
+      }
+    }
+    print('ACCIONES ACTIVAS:');
+    for (Categoria cat in form._listaCategorias){
+      print('CATEGORÍA: ' + cat.enunciado);
+      for (Accion acc in cat.respuestas){
+        print(acc.nombre);
+      }
+    }
     print(form._fecha);
   }
 
