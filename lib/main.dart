@@ -25,18 +25,16 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: _login(), //TODO BORRAR LA PANTALLA DE LOGIN Y PONER SIMPLEMENTE EL INICIO
+      home: Inicio(),
     );
   }
 }
-class _login extends StatefulWidget{
+class Inicio extends StatefulWidget{
   @override
-  __loginState createState() => __loginState();
+  InicioState createState() => InicioState();
 }
 
-class __loginState extends State<_login>{
-  TextEditingController email = TextEditingController();
-  TextEditingController pass = TextEditingController();
+class InicioState extends State<Inicio>{
 
   @override
   Widget build(BuildContext context){
@@ -60,20 +58,7 @@ class __loginState extends State<_login>{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("assets/logo_transparent.png", height: 230,),
-              TextField(
-                controller: email,
-                decoration: const InputDecoration(
-                  hintText: "username@correo.com"
-                ),
-              ),
-              SizedBox(height: 40,),
-              TextField(
-                controller: pass,
-                obscureText: true,
-                decoration: const InputDecoration(
-                    hintText: "password"
-                ),
-              ),
+
               Container(
                 margin: EdgeInsets.only(top: 60),
                 width: 200,
@@ -81,15 +66,14 @@ class __loginState extends State<_login>{
                   color: Colors.deepPurple,
                   borderRadius: BorderRadius.circular(10)
                 ),
-                child: FlatButton(
-                  child: const Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),),
+                child: TextButton(
+                  child: const Text("Comenzar", style: TextStyle(color: Colors.white, fontSize: 20),),
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (_)=>PantallaMenu()));
                   },
                 ),
               ),
               const SizedBox(height: 80,),
-              const Text("¿Eres nuevo? Registrate aquí")
             ],
           ),
         ),
