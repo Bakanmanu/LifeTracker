@@ -6,6 +6,7 @@ CAMBIOS A REALIZAR:
     -Mostrar los formularios en orden inverso y orden cronológico
     -Hacer que cuando editas un formulario te lleve al menu de mostrar formularios en vez de al menu principal
     -Mejorar un poco la interfaz grafica --> buscar paleta de colores
+    -Añadir apartado para crear las acciones (MUY OPCIONAL)
 
 CAMBIOS REALIZADOS:
 -Al enviar un formulario, ahora muestra primero la alerta emergente y luego cambia de pantalla
