@@ -98,7 +98,6 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
           ),
 
           ///AQUÍ EMPIEZA LA PARTE DE CATEGORÍAS Y ACCIONES
-          // todo falta hacer que se marquen las que ya estaban guardadas
           Flexible(
             child:
             SafeArea(
@@ -161,7 +160,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
                   decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
                   child: TextFormField(
-                    initialValue: _campoTexto, //todo esto debería hacer que se muestre el texto pero no lo hace
+                    initialValue: _campoTexto,
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
                       border: OutlineInputBorder(),
@@ -180,7 +179,6 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
         onPressed: () async {
           gestor.editarFormulario(_estadoAnimo, _categorias, _campoTexto);
           await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
-          //todo hacer que esto te lleve a la pantalla de mostrar formulario
           Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
         },
         child: const Text('Enviar formulario'),

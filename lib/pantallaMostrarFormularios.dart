@@ -68,7 +68,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           onPressed: () async {
                             gestor.setIndex(index);
                             await Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaEditarFormulario()));
-                            setState(() {}); //Todo revisar si funciona y actualiza la pantalla. Probar con async
+                            setState(() {}); //Todo hacer que muestre el formulario actualizado
                           },
                         ),
                         const SizedBox(width: 8),

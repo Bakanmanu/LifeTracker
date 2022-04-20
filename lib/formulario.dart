@@ -77,8 +77,7 @@ class GestorFormulario {
     for(Categoria cat in form.listaCategorias){
 
       //IMPRIMIMOS TÍTULO DE CATEGORÍA
-      respuestas += cat.enunciado;
-      respuestas += '\n';
+      respuestas += "→" + cat.enunciado + '\n';
 
       if (cat.respuestas.isEmpty){ // si no hay respuestas, ponemos una raya
         respuestas += '-\n';
