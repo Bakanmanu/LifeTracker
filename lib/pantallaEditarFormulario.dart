@@ -59,7 +59,6 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
                           print("click en "+estadosAnimo[index].nombre); // DEBUG
 
                           // SWITCH PARA CAMBIAR LOS DISTINTOS ESTADOS DE ÁNIMO
-
                           // TODO HACER QUE SE MARQUE EL PULSADO
                           switch(estadosAnimo[index].id){
                             case 1:
@@ -93,6 +92,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
           ),
 
           ///AQUÍ EMPIEZA LA PARTE DE CATEGORÍAS Y ACCIONES
+          // todo falta hacer que se marquen las que ya estaban guardadas
           Flexible(
             child:
             SafeArea(
@@ -148,6 +148,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
           ),
 
           /// AQUÍ EMPIEZA EL CAMPO DE TEXTO
+          // todo falta hacer que se muestre el texto previamente guardado
           Container(
             padding: EdgeInsets.fromLTRB(5, 5, 5, 60),
             child:
@@ -155,7 +156,8 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
                   margin: const EdgeInsets.all(15),
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
                   decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
-                  child: TextField(
+                  child: TextFormField(
+                    initialValue: _campoTexto,
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
                       border: OutlineInputBorder(),
@@ -183,6 +185,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
   }
 
   /// Esta función genera una alerta emergente para notificar de que el formulario se ha guardado
+  // todo comprobar
   Future <void> _mostrarAlertaFormCorrecto() async {
     return showDialog<void>(
       context: context,

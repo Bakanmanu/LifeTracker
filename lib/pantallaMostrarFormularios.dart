@@ -36,10 +36,12 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     ListTile(
-                      // todo mejorar la previsualización con un toString
+                      // todo mejorar la previsualización
                       leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
+                      isThreeLine: true,
                       title: Text(gestor.listaFormularios[index].fecha.toString()),
-                      subtitle: Text(gestor.listaFormularios[index].campoTexto),
+                      subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])),
+                      //todo falta poner el texto guardado
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,

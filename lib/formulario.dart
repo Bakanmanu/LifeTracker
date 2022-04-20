@@ -72,6 +72,28 @@ class GestorFormulario {
       return listaFormularios[indexFormEditar];
   }
 
+  /// Devuelve un string con lista de acciones == true del formulario dado
+  String getRespuestasAcciones(Formulario form){
+    String respuestas = '';
+    for(Categoria cat in form.listaCategorias){
+
+      //IMPRIMIMOS TÍTULO DE CATEGORÍA
+      respuestas += cat.enunciado;
+      respuestas += '\n';
+
+      if (cat.respuestas.isEmpty){ // si no hay respuestas, ponemos una raya
+        respuestas += '-\n';
+      } else { //si hay respuestas, las ponemos
+        for(Accion acc in cat.respuestas){
+          respuestas += acc.nombre; //PONEMOS TÍTULO DE RESPUESTA
+          if(acc == cat.respuestas.last){/*nada*/} //si es el último elemento no añadimos nada
+          else {respuestas += " / ";} //ponemos una barra para separar si no es el último
+        }
+        respuestas += '\n━━━━━━━━\n'; //ponemos barra separadora en caso de haber respuestas
+      }
+    }
+    return respuestas;
+  }
 
   ///Este método sirve para debuggear y ver que se crean bien los formularios
   void mostrarFormularioTerminal(){
@@ -127,6 +149,7 @@ class Formulario {
     // no se permite modificar la fecha, para que se quede guardada la original
   }
 
+  /// GETTERS
   String get campoTexto => _campoTexto;
   int get estadoAnimo => _estadoAnimo;
   List<Categoria> get listaCategorias => _listaCategorias;
