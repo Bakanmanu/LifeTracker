@@ -6,7 +6,7 @@ import 'package:practica2_ds/formulario.dart';
 ///los formularios.
 
 class PantallaMostrarFormulario extends StatefulWidget{
-
+  const PantallaMostrarFormulario({Key? key}) : super(key: key);
 
   @override
   _PantallaMostrarFormularioState createState() => _PantallaMostrarFormularioState();
@@ -24,8 +24,8 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
       ///Listado de Formularios realizados
       body: ListView.builder(
           padding: const EdgeInsets.all(8),
-          itemCount: gestor.listaFormularios.length,                // Obtiene la cantidad de Formularios que contiene la lista  para así iterar como un bucle for
-          itemBuilder: (BuildContext context, int index) {          // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
+          itemCount: gestor.listaFormularios.length,       // Obtiene la cantidad de Formularios que contiene la lista  para así iterar como un bucle for
+          itemBuilder: (BuildContext context, int index) { // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
             return Container(
               //height: 80,
               color: Colors.purple,
@@ -49,10 +49,10 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           child: const Text('BORRAR'),
                           onPressed: (){
                             // TODO BUSCAR UNA FUNCIÓN QUE SEA RELOAD O ALGO
-
                             //Llamamos a la funcion que se asegura de borrar y,
                             //si procede, la borra
                             _alertaBorrar(gestor.listaFormularios[index]);
+
                           },
                         ),
                         const SizedBox(width: 8),
@@ -99,7 +99,8 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                 child: const Text("Sí, borrar"),
                 onPressed: () {
                   gestor.borrarFormulario(form);
-                  Navigator.of(context).pop();
+                  setState(() {}); //Actualizamos la pantalla para que no se quede el formulario estático
+                  Navigator.of(context).pop(); //Quitamos la alerta
                 }),
 
             TextButton(
