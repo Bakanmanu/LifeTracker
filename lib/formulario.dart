@@ -15,7 +15,6 @@ class GestorFormulario {
   }
   GestorFormulario._internal();
 
-
   /// Método para crear un nuevo formulario con los parámetros que se recojan de la interfaz
   void crearFormulario(int estadoAnimo, List<Categoria> listaCategorias, String campoTexto) {
 
@@ -43,6 +42,10 @@ class GestorFormulario {
 
     print('Formulario creado correctamente'); //DEBUG
     mostrarFormularioTerminal(); //DEBUG
+  }
+
+  void borrarFormulario(Formulario form){
+    listaFormularios.remove(form);
   }
 
   ///Este método sirve para debuggear y ver que se crean bien los formularios

@@ -10,14 +10,14 @@ import 'package:practica2_ds/formulario.dart';
 import 'package:practica2_ds/pantallaMenu.dart';
 import "categoria.dart";
 
-class PantallaFormulario extends StatefulWidget {
-  const PantallaFormulario({Key? key}) : super(key: key);
+class PantallaEditarFormulario extends StatefulWidget {
+  const PantallaEditarFormulario({Key? key}) : super(key: key);
 
   @override
-  _PantallaFormularioState createState() => _PantallaFormularioState();
+  _PantallaEditarFormularioState createState() => _PantallaEditarFormularioState();
 }
 
-class _PantallaFormularioState extends State<PantallaFormulario> {
+class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
 
   GestorFormulario gestor = GestorFormulario();
 
@@ -234,7 +234,5 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       },
     );
   }
-
-
 }
 

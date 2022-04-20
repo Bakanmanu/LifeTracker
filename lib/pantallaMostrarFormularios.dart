@@ -20,7 +20,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
     return Scaffold(
       appBar: AppBar(title: const Text("Buscar Formulario"), backgroundColor: Colors.purple,),
       backgroundColor: Colors.purple,
-      //todo modificar y rellenar
+
       ///Listado de Formularios realizados
       body: ListView.builder(
           padding: const EdgeInsets.all(8),
@@ -46,8 +46,14 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all<Color>(Colors.white70),
                           ),
-                          child: const Text('ABRIR'),
-                          onPressed: (){},                //todo Mostrar el formulario al clicar el boton
+                          child: const Text('BORRAR'),
+                          onPressed: (){
+                            // TODO BUSCAR UNA FUNCIÓN QUE SEA RELOAD O ALGO
+
+                            //Llamamos a la funcion que se asegura de borrar y,
+                            //si procede, la borra
+                            _alertaBorrar(gestor.listaFormularios[index]);
+                          },
                         ),
                         const SizedBox(width: 8),
                         TextButton(               //Boton para editar un formulario ya creado (Se podría implementar en el boton anterior )
@@ -55,12 +61,14 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                             foregroundColor: MaterialStateProperty.all<Color>(Colors.white70),
                           ),
                           child: const Text('MODIFICAR'),
-                          onPressed: () {},
+                          onPressed: () {
+                            // TODO QUE TE LLEVE A LA PANTALLA
+                            //gestor.listaFormularios[index].modificarFormulario(estadoAnimo, listaCategorias, campoTexto)
+                          },
                         ),
                         const SizedBox(width: 8),
                       ],
                     ),
-
                   ],
                 )
               ),
@@ -71,4 +79,37 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
   }
 
 
+  /// Esta función se llama cuando se va a borrar un formulario, para asegurarse
+  Future <void> _alertaBorrar(Formulario form) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('¿Estás segurx?'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text("Vas a borrar un formulario. ¿de verdad quieres hacerlo?"),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+                child: const Text("Sí, borrar"),
+                onPressed: () {
+                  gestor.borrarFormulario(form);
+                  Navigator.of(context).pop();
+                }),
+
+            TextButton(
+                child: const Text("Cancelar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                }),
+          ],
+        );
+      },
+    );
+  }
 }
