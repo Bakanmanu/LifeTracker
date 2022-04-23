@@ -28,11 +28,7 @@ class GestorFormulario {
 
     //Guardamos las acciones seleccionadas en la lista "respuestas" de categoría
     for(Categoria cat in listaCategorias){
-      for (Accion acc in cat.acciones){
-        if (acc.activo) { // si la acción está seleccionada
-          cat.anadirRespuesta(acc); //añadimos la acción activa a la lista de respuestas
-        }
-      }
+      cat.actualizarRespuestas();
     }
 
     //Creamos una nueva instancia de formulario
@@ -145,6 +141,12 @@ class Formulario {
     _listaCategorias = listaCategorias;
     _campoTexto = campoTexto;
     // no se permite modificar la fecha, para que se quede guardada la original
+
+    //Actualizamos las acciones que se hayan podido
+    for (Categoria cat in listaCategorias){
+      cat.actualizarRespuestas();
+    }
+
   }
 
   /// GETTERS

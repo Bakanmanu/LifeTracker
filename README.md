@@ -1,6 +1,5 @@
 
 CAMBIOS A REALIZAR:
-    -Arreglar la pantalla de modificar formulario para que actualice la preview del formulario
     -Hacer que los botones se marquen (Opcional pero interesante)
     -Arreglar el formato de la hora
     -Mostrar los formularios en orden inverso y orden cronológico
@@ -21,6 +20,12 @@ guardados en el formulario y se actualizan si este es modificado
     (debido a que se estaba usando static por un fallo de sintaxis → el fallo era que estábamos escribiendo el 
     código fuera del constructor, donde debería de ser). Sin embargo, internamente sí que se guardaban bien 
     los formularios.
+
+-Se ha arreglado que se muestre las acciones de las categorías actualizadas en la preview.
+    El problema era que no se estaban actualizando bien las acciones = true en la lista "respuestas"
+    Anteriormente: Cuando modificabas un formulario y volvía a la pantalla de mostrar todos los formularios, 
+    mostraba toda la información actualizada salvo las categorías, que se quedaban como se hubiera puesto
+    originalmente
 
 
 

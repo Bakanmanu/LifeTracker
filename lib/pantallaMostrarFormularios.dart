@@ -68,6 +68,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           onPressed: () async {
                             gestor.setIndex(index);
                             await Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaEditarFormulario()));
+                            setState(() {});
                           },
                         ),
                         const SizedBox(width: 8),
