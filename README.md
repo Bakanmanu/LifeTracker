@@ -6,6 +6,7 @@ CAMBIOS A REALIZAR:
     -Mejorar un poco la interfaz grafica --> buscar paleta de colores
     -Añadir apartado para crear las acciones (MUY OPCIONAL)
     -Estudiar convergencia para unir las dos clases de editar y crear formulario -> tal vez con un if o buscar algún patrón
+    -Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
 
 CAMBIOS REALIZADOS:
 -Al enviar un formulario, ahora muestra primero la alerta emergente y luego cambia de pantalla
@@ -27,6 +28,8 @@ guardados en el formulario y se actualizan si este es modificado
     mostraba toda la información actualizada salvo las categorías, que se quedaban como se hubiera puesto
     originalmente
 
+-Se ha limpiado el código en general y mejorado la eficiencia de los algoritmos
+
 
 
 PRÁCTICA 3 => LOS FICHEROS ESTÁN EN LA CARPETA test (uno para cada tipo de pruebas)
@@ -35,6 +38,20 @@ PRÁCTICA 3 => LOS FICHEROS ESTÁN EN LA CARPETA test (uno para cada tipo de pru
     -Comprobar que se guardan las respuestas de los formularios correctamente
     -Comprobar que el número de formularios guardados es correcto
     -Comprobar que el estado de ánimo se guarda correctamente
+
+    CLASE:
+        GestorFormulario:
+            crearFormulario() -> comprobar que los campos se han guardado bien y que la lista de formularios tiene el numero de formularios
+            borrarFormulario()-> comprobar que la lista de formularios reduce su .length en 1
+            getFormEditar()   -> ver que se recibe correctamente el formulario que se pide
+
+        Categoria:
+            anadirRespuesta()       -> ver que la respuesta se añade
+            actualizarRespuesta()   -> ver que las respuestas se actualizan
+
+        Accion:
+            cambiarActivo()     -> comprobar que se cambia correctamente cada vez que se llama
+            modificarAccion()   -> ver que el nombre se cambia
 
     PRUEBAS DE WIDGETS: Codificar y probar un grupo con 3 pruebas (test-widgets). De 2 páginas distintas
 

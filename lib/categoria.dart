@@ -10,6 +10,8 @@ class Categoria{
     required this.acciones,
   });
 
+  void anadirAccion(Accion a) => acciones.add(a);
+
   void anadirRespuesta(Accion a) => respuestas.add(a);
 
   void actualizarRespuestas(){ //para actualizar la lista según seleccione o deseleccione el usuario una acción

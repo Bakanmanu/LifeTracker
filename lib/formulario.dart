@@ -89,6 +89,34 @@ class GestorFormulario {
     return respuestas;
   }
 
+
+  ///Este método sirve para inicializar una tanda de categorías y acciones predeterminadas
+  List<Categoria> crearCategoriasDefault(){
+    return [
+      Categoria(enunciado: '¿Cuánto has dormido?', acciones: [
+        Accion("1-3 horas", false),
+        Accion("4-6 horas", false),
+        Accion("6-8 horas", false),
+        Accion("más de 8 horas", false)
+      ]),
+      Categoria(enunciado: '¿Qué has comido?', acciones: [
+        Accion("fruta", false),
+        Accion("verdura", false),
+        Accion("carne", false),
+        Accion("pollo", false),
+        Accion("pasta", false)
+      ]),
+      Categoria(enunciado: '¿Qué has hecho?', acciones: [
+        Accion("tocar la guitarra", false),
+        Accion("salir a correr", false),
+        Accion("ir al gimnasio", false),
+        Accion("echar la siesta", false),
+        Accion("comer con amigos", false),
+        Accion("hacer la colada", false)
+      ]),
+    ];
+  }
+
   ///Este método sirve para debuggear y ver que se crean bien los formularios
   void mostrarFormularioTerminal(){
     Formulario form = listaFormularios.last;

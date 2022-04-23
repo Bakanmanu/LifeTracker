@@ -21,14 +21,7 @@ class Accion {
 
   //Getters & Setters
   String get nombre => _nombre;
-
-  set nombre(String value) {
-    _nombre = value;
-  }
-
+  set nombre(String value) {_nombre = value;}
   bool get activo => _activo;
-
-  set activo(bool value){
-    _activo = value;
-  }
+  set activo(bool value){_activo = value;}
 }

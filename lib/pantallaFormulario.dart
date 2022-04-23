@@ -18,38 +18,22 @@ class PantallaFormulario extends StatefulWidget {
 
 class _PantallaFormularioState extends State<PantallaFormulario> {
 
-  GestorFormulario gestor = GestorFormulario.instance;
+  late GestorFormulario gestor;
 
-  int _estadoAnimo = 3; //Valor por defecto: estado de ánimo neutral
+  ///Estos atributos sirven para guardar y enviar el estado del formulario definitivamente
+  late int _estadoAnimo; //Valor por defecto: estado de ánimo neutral
+  late List<Categoria> _categorias;
+  late String _campoTexto = ''; //siempre va a haber un campo de texto, aunque esté vacío
 
-  final List<Categoria> _categorias = [
-    Categoria(enunciado: '¿Cuánto has dormido?', acciones: [
-      Accion("1-3 horas", false),
-      Accion("4-6 horas", false),
-      Accion("6-8 horas", false),
-      Accion("más de 8 horas", false)
-    ]),
-    Categoria(enunciado: '¿Qué has comido?', acciones: [
-      Accion("fruta", false),
-      Accion("verdura", false),
-      Accion("carne", false),
-      Accion("pollo", false),
-      Accion("pasta", false)
-    ]),
-    Categoria(enunciado: '¿Qué has hecho?', acciones: [
-      Accion("tocar la guitarra", false),
-      Accion("salir a correr", false),
-      Accion("ir al gimnasio", false),
-      Accion("echar la siesta", false),
-      Accion("comer con amigos", false),
-      Accion("hacer la colada", false)
-    ]),
-  ];
+  _PantallaFormularioState(){
+    gestor = GestorFormulario.instance;
+    _estadoAnimo = 3;
+    _categorias = gestor.crearCategoriasDefault();
+    _campoTexto = '';
+  }
+
 
   List<Categoria> get categorias => _categorias;
-
-
-  String _campoTexto = ''; //siempre va a haber un campo de texto, aunque esté vacío
 
   @override
   Widget build(BuildContext context) {
@@ -229,5 +213,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       },
     );
   }
+
 }
 
