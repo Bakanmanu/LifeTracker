@@ -11,6 +11,7 @@ void main() {
     test('los campos se han guardado bien y que la lista de formularios tiene el numero de formularios', (){
       final gestor = GestorFormulario.instance;
 
+      //Creamos una lista de categorías para poder llamar al método
       List<Categoria> lCategorias = [Categoria(enunciado: '¿Qué has comido?', acciones: [
         Accion("fruta", false),
         Accion("verdura", false),
@@ -32,8 +33,27 @@ void main() {
       expect(gestor.listaFormularios.length, 1); //comprobamos que solo hay un formulario
     });
 
-    test('asdfasdfasdf', (){
 
+    test('el numero de formularios debe reducirse en 1 si se llama al metodo borrarFormulario()', (){
+      final gestor = GestorFormulario.instance;
+
+      //Creamos una lista de categorías para poder llamar al método
+      List<Categoria> lCategorias = [Categoria(enunciado: '¿Qué has comido?', acciones: [
+        Accion("fruta", false),
+        Accion("verdura", false),
+        Accion("carne", false),
+        Accion("pollo", false),
+        Accion("pasta", false)
+      ])];
+
+      // Añadimos un par de formularios
+      gestor.crearFormulario(3, lCategorias, "1");
+      gestor.crearFormulario(5, lCategorias, "2");
+
+      //llamamos al método:
+      gestor.borrarFormulario(gestor.listaFormularios.first);
+
+      expect(gestor.listaFormularios.length, 1); //comprobamos que solo hay un formulario
     });
   });
 }

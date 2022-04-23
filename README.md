@@ -43,7 +43,6 @@ PRÁCTICA 3 => LOS FICHEROS ESTÁN EN LA CARPETA test (uno para cada tipo de pru
         GestorFormulario:
             crearFormulario() -> comprobar que los campos se han guardado bien y que la lista de formularios tiene el numero de formularios
             borrarFormulario()-> comprobar que la lista de formularios reduce su .length en 1
-            getFormEditar()   -> ver que se recibe correctamente el formulario que se pide
 
         Categoria:
             anadirRespuesta()       -> ver que la respuesta se añade
