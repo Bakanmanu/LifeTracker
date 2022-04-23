@@ -116,6 +116,8 @@ class GestorFormulario {
 }
 
 
+
+/// *************CLASE FORMULARIO*******************************************
 ///Esta clase se encarga de definir los formularios que el usuario tiene que
 ///rellenar para completar su diario
 class Formulario {
@@ -137,15 +139,14 @@ class Formulario {
 
   ///Este método permite modificar un formulario ya creado
   void modificarFormulario(int estadoAnimo, List<Categoria> listaCategorias, String campoTexto){
-    _estadoAnimo = estadoAnimo;
-    _listaCategorias = listaCategorias;
-    _campoTexto = campoTexto;
-    // no se permite modificar la fecha, para que se quede guardada la original
-
     //Actualizamos las acciones que se hayan podido
     for (Categoria cat in listaCategorias){
       cat.actualizarRespuestas();
     }
+    _estadoAnimo = estadoAnimo;
+    _listaCategorias = listaCategorias;
+    _campoTexto = campoTexto;
+    // no se permite modificar la fecha, para que se quede guardada la original
 
   }
 
