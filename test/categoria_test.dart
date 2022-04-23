@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:practica2_ds/accion.dart';
 import 'package:practica2_ds/categoria.dart';
-import 'package:practica2_ds/formulario.dart';
 
-/// En este fichero se incluirán las pruebas unitarias de GestorFormulario
+/// En este fichero se incluirán las pruebas unitarias de Categoria
 
 void main() {
   group('Categoria', () {
