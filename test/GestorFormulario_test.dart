@@ -52,7 +52,7 @@ void main() {
       //llamamos al método:
       gestor.borrarFormulario(gestor.listaFormularios.first);
 
-      expect(gestor.listaFormularios.length, 1); //comprobamos que solo hay un formulario
+      expect(gestor.listaFormularios.length, 2); //comprobamos que solo hay dos formularios, el creado en el test anterior y uno de los creados en este test
     });
   });
 }
