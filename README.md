@@ -51,8 +51,8 @@ PRÁCTICA 3 => LOS FICHEROS ESTÁN EN LA CARPETA test (uno para cada tipo de pru
 
         Accion:
             cambiarActivo()     -> comprobar que se cambia correctamente cada vez que se llama
-            modificarAccion()   -> ver que el nombre se cambia
+            crearAccion()       -> ver que se crea
 
     PRUEBAS DE WIDGETS: Codificar y probar un grupo con 3 pruebas (test-widgets). De 2 páginas distintas
 
-    PRUEBAS DE INTEGRACIÓN:
+    PRUEBAS DE INTEGRACIÓN: ver que el metodo crear formulario llama y usa bien el de crear categorias default

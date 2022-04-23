@@ -37,8 +37,8 @@ class GestorFormulario {
     //Guardamos el formulario en la lista global de formularios
     listaFormularios.add(form);
 
-    print('Formulario creado correctamente'); //DEBUG
-    mostrarFormularioTerminal(); //DEBUG
+    //print('Formulario creado correctamente'); //DEBUG
+    //mostrarFormularioTerminal(); //DEBUG
   }
 
   ///Método que edita el formulario

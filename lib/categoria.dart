@@ -15,7 +15,7 @@ class Categoria{
   void anadirRespuesta(Accion a) => respuestas.add(a);
 
   void actualizarRespuestas(){ //para actualizar la lista según seleccione o deseleccione el usuario una acción
-    respuestas.clear(); //Borramos todas las respuestas
+    respuestas.clear(); //Borramos todas las respuestas para volver a poner las que estén
     for (Accion acc in acciones) {
       if (acc.activo) { // si la acción está seleccionada
         respuestas.add(acc); //añadimos la acción activa a la lista de respuestas
