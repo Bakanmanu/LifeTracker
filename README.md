@@ -34,23 +34,6 @@ guardados en el formulario y se actualizan si este es modificado
 
 PRÁCTICA 3 => LOS FICHEROS ESTÁN EN LA CARPETA test (uno para cada tipo de pruebas)
 
-    PRUEBAS UNITARIAS: 2 métodos de 3 clases distintas
-    -Comprobar que se guardan las respuestas de los formularios correctamente
-    -Comprobar que el número de formularios guardados es correcto
-    -Comprobar que el estado de ánimo se guarda correctamente
-
-    CLASE:
-        GestorFormulario:
-            crearFormulario() -> comprobar que los campos se han guardado bien y que la lista de formularios tiene el numero de formularios
-            borrarFormulario()-> comprobar que la lista de formularios reduce su .length en 1
-
-        Categoria:
-            anadirRespuesta()       -> ver que la respuesta se añade
-            actualizarRespuesta()   -> ver que las respuestas se actualizan
-
-        Accion:
-            cambiarActivo()     -> comprobar que se cambia correctamente cada vez que se llama
-            crearAccion()       -> ver que se crea
 
     PRUEBAS DE WIDGETS: Codificar y probar un grupo con 3 pruebas (test-widgets). De 2 páginas distintas
 
