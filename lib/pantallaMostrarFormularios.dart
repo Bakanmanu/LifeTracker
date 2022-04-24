@@ -39,7 +39,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                       leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
                       isThreeLine: true,
                       title: Text(gestor.listaFormularios[index].fecha.toString() + '\n'),
-                      subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])), //todo hacer que se muestren las acciones actualizadas
+                      subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])),
                     ),
                     Container(
                       //Espacio para añadir formato

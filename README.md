@@ -3,7 +3,7 @@ CAMBIOS A REALIZAR:
     -Hacer que los botones se marquen (Opcional pero interesante)
     -Arreglar el formato de la hora
     -Mostrar los formularios en orden inverso y orden cronológico
-    -Mejorar un poco la interfaz grafica --> buscar paleta de colores
+    -Mejorar un poco la interfaz grafica --> buscar paleta de colores --> Que el color cambie según el ánimo
     -Añadir apartado para crear las acciones (MUY OPCIONAL)
     -Estudiar convergencia para unir las dos clases de editar y crear formulario -> tal vez con un if o buscar algún patrón
     -Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
