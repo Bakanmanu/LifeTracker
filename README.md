@@ -2,7 +2,6 @@
 CAMBIOS A REALIZAR:
     -Hacer que los botones se marquen (Opcional pero interesante)
     -Arreglar el formato de la hora
-    -Mostrar los formularios en orden inverso y orden cronológico
     -Mejorar un poco la interfaz grafica --> buscar paleta de colores --> Que el color cambie según el ánimo
     -Añadir apartado para crear las acciones (MUY OPCIONAL)
     -Estudiar convergencia para unir las dos clases de editar y crear formulario -> tal vez con un if o buscar algún patrón
@@ -29,6 +28,12 @@ guardados en el formulario y se actualizan si este es modificado
     originalmente
 
 -Se ha limpiado el código en general y mejorado la eficiencia de los algoritmos
+
+-Ahora la pantalla de mostrar formularios muestra los formularios en orden cronológico desdecente. Es decir,
+muestra los más recientes primero.
+    El problema era que, al crear un formulario, se llamaba al método List.add(...) que añade el elemento al final,
+    por lo que se guardaban cronológicamente. Se ha resuelto usando el método List.insert(0, ...), que inserta
+    el elemento en el índice 0 (es decir, añadimos el formulario al principio de la lista).
 
 
 
