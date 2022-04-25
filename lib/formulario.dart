@@ -34,8 +34,8 @@ class GestorFormulario {
     //Creamos una nueva instancia de formulario
     Formulario form = Formulario(estadoAnimo, listaCategorias, campoTexto, fecha);
     
-    //Guardamos el formulario en la lista global de formularios
-    listaFormularios.add(form);
+    //Guardamos el formulario AL PRINCIPIO lista global de formularios
+    listaFormularios.insert(0, form);
 
     //print('Formulario creado correctamente'); //DEBUG
     //mostrarFormularioTerminal(); //DEBUG
