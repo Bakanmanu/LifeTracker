@@ -1,7 +1,6 @@
 
 CAMBIOS A REALIZAR:
     -Hacer que los botones se marquen (Opcional pero interesante)
-    -Arreglar el formato de la hora
     -Mejorar un poco la interfaz grafica --> buscar paleta de colores --> Que el color cambie según el ánimo
     -Añadir apartado para crear las acciones (MUY OPCIONAL)
     -Estudiar convergencia para unir las dos clases de editar y crear formulario -> tal vez con un if o buscar algún patrón
@@ -34,6 +33,10 @@ muestra los más recientes primero.
     El problema era que, al crear un formulario, se llamaba al método List.add(...) que añade el elemento al final,
     por lo que se guardaban cronológicamente. Se ha resuelto usando el método List.insert(0, ...), que inserta
     el elemento en el índice 0 (es decir, añadimos el formulario al principio de la lista).
+
+-Se ha arreglado el formato de la hora. Se ha dejado una clase formatoFecha que deja abierta una ventana a una
+futura ampliación de mostrar fechas.
+    Anteriormente se mostraba año, mes, día, hora, minuto, segundo y unos 8 dígitos de fracciones de segundo
 
 
 

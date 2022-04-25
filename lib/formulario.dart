@@ -1,5 +1,5 @@
 import 'package:practica2_ds/categoria.dart';
-
+import 'package:practica2_ds/formatoFecha.dart';
 import 'accion.dart';
 
 ///Esta clase sirve para gestionar todos los procesos relacionados con los formularios
@@ -87,6 +87,11 @@ class GestorFormulario {
       }
     }
     return respuestas;
+  }
+
+  /// Devuelve la fecha en formato legible del formulario pasado por parámetro
+  String getFechaFormat(Formulario form){
+    return FormatoFecha.getFecha_ES_DDMMYYYY_hhmm(form.fecha);
   }
 
 
