@@ -4,6 +4,7 @@ class ElementoEstadoAnimo{
   String imagen;
 
   ElementoEstadoAnimo(this.id, this.nombre, this.imagen);
+
 }
 final estadosAnimo = [
   ElementoEstadoAnimo(1, "Enfadado", "enfadado.png"),
