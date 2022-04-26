@@ -8,15 +8,29 @@ import 'package:practica2_ds/pantallaFormulario.dart';
 /// En este fichero se incluirán las pruebas de pantallaMenu
 ///
 void main() {
-  testWidgets('Pruebas de Widgets de LifeTracker', (WidgetTester tester) async {
-    testWidgets('Prueba del botón Formulario nuevo', (WidgetTester tester) async {
-      // todo pruebas de widgets
+    testWidgets(
+        'Prueba de que pulsar una cara registre dicho estado de ánimo en el formulario', (WidgetTester tester) async {
+        // todo pruebas de widgets
+        await tester . pumpWidget ( PantallaFormulario () ) ;
+
+        expect ( find . textContaining ( '3 ') , findsOneWidget ) ;
+        expect ( find . textContaining ( '4 ') , findsNothing ) ;
+
+        await tester . tap ( find.text('Feliz')) ;
+        await tester . pump () ;
+
+
+        expect(find.textContaining('5'), findsOneWidget);
+        expect ( find . textContaining ( '3 ') , findsNothing ) ;
+
     });
-    testWidgets('Prueba del botón Buscar formulario', (WidgetTester tester) async {
-      // todo pruebas de widgets
-      //
+    testWidgets(
+        'Prueba de que pulsar una accion cambie su booleano asociado en el formulario', (WidgetTester tester) async {
+        // todo pruebas de widgets
+        //
     });
-    testWidgets('Prueba del botón Editar Perfil', (WidgetTester tester) async {
-      // todo pruebas de widgets
-      //
+    testWidgets('Prueba de que cuando le des al botón de guardar formulario te salga la alerta correspondiente', (WidgetTester tester) async {
+        // todo pruebas de widgets
+        //
     });
+}
