@@ -24,6 +24,7 @@ class _PantallaMenuState extends State<PantallaMenu>{
               margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
               child: GestureDetector(
+                key: Key("BotonesMenu"),
                 onTap: (){
 
                   // SWITCH PARA ACCEDER A LOS DISTINTOS MENÚS
