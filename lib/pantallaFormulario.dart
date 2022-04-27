@@ -160,6 +160,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
                   decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
                   child: TextField(
+                    key: Key("addTexto"),
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
                       border: OutlineInputBorder(),

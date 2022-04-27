@@ -22,20 +22,32 @@ void main() {
     });
     testWidgets('Prueba de que pulsar una cara se almacene en la variable estadoAnimo', (WidgetTester tester) async {
         // todo pruebas de widgets
-        await tester.pumpWidget(const PantallaFormulario());
 
-        // expect(find.byWidget(Scaffold()), findsOneWidget);
+        //Encontramos los botones de estados de animo
+        final botonesEstadoAnimo = find.byKey(ValueKey("Botones estadoAnimo"));
 
+        //Ejecutamos el test
+        await tester.pumpWidget(MaterialApp(home: PantallaFormulario()));
+        await tester.tap(botonesEstadoAnimo);
+        await tester.pump();
 
-        // await tester.tap(find.text('Feliz'));
-        // await tester.pump();
-        //
-        // expect(find.textContaining('5'), findsOneWidget);
-        // expect(find.textContaining('3'), findsNothing);
+        //Lo esperado
+        expect(find.text("Neutro"), findsOneWidget);
 
     });
-    testWidgets('Prueba de que cuando le das al botón de borrar formulario te sale alerta', (WidgetTester tester) async {
+    testWidgets('Prueba de que se escribe en el campo de texto', (WidgetTester tester) async {
         // todo pruebas de widgets
-        //
+        //Encontramos el campo de texto
+        final addtexto = find.byKey(ValueKey("addTexto"));
+
+        //Ejecutamos el test
+        await tester.pumpWidget(MaterialApp(home: PantallaFormulario()));
+        await tester.enterText(addtexto,"Prueba del texto");
+        await tester.pump();
+
+        //Lo esperado
+        expect(find.text("Prueba del texto"), findsOneWidget);
+
+
     });
 }
