@@ -1,11 +1,32 @@
 
 CAMBIOS A REALIZAR:
     -Hacer que los botones se marquen (Opcional pero interesante)
-    -Mejorar un poco la interfaz grafica --> buscar paleta de colores --> Que el color cambie según el ánimo
-    -Añadir apartado para crear las acciones (MUY OPCIONAL)
-    -Estudiar convergencia para unir las dos clases de editar y crear formulario -> tal vez con un if o buscar algún patrón
+    -Añadir apartado para crear/importar categorías/acciones
+    -Estudiar convergencia para unir las dos clases de editar y crear formulario -> STATE
+        ->Patrón state que según donde se llame guarde un estado u otro (atributo de pantallaFormulario)
+            y que en el botón tenga un if/else y llame a un método u otro
     -Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
     -Meter easter eggs
+
+MEJORAS DE INTERFAZ GRÁFICA:
+    -Hacer una paleta de color y aplicarla
+    -Que cada formulario cambie según el ánimo correspondiente -> que la app entera vaya cambiando según la media
+    -Hacer la paleta de color de la web respecto a la de la app -> hacerla 
+    -Reestructurar el menú principal: tal vez:
+            --Botón grande/vistoso de formulario nuevo
+            --Configuración en appBar arriba y pequeñito
+            --Ver formularios más en pequeñito pero visible
+
+
+IDEAS APLICACIÓN WEB:
+    -Hacer una página de estadísticas que te compara con la media
+    -Hacer que los usuarios puedan subir/descargar sus packs de categorías
+
+FUNCIONALIDAD DE LA API:
+    -Inicio de sesión + tokens
+    -Mandar datos de formularios -> control por fechas
+    -
+
 
 CAMBIOS REALIZADOS:
 -Al enviar un formulario, ahora muestra primero la alerta emergente y luego cambia de pantalla
@@ -38,12 +59,3 @@ muestra los más recientes primero.
 -Se ha arreglado el formato de la hora. Se ha dejado una clase formatoFecha que deja abierta una ventana a una
 futura ampliación de mostrar fechas.
     Anteriormente se mostraba año, mes, día, hora, minuto, segundo y unos 8 dígitos de fracciones de segundo
-
-
-
-PRÁCTICA 3 => LOS FICHEROS ESTÁN EN LA CARPETA test (uno para cada tipo de pruebas)
-
-
-    PRUEBAS DE WIDGETS: Codificar y probar un grupo con 3 pruebas (test-widgets). De 2 páginas distintas
-
-    PRUEBAS DE INTEGRACIÓN: ver que el metodo crear formulario llama y usa bien el de crear categorias default
