@@ -5,6 +5,7 @@ CAMBIOS A REALIZAR:
     -Añadir apartado para crear las acciones (MUY OPCIONAL)
     -Estudiar convergencia para unir las dos clases de editar y crear formulario -> tal vez con un if o buscar algún patrón
     -Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
+    -Meter easter eggs
 
 CAMBIOS REALIZADOS:
 -Al enviar un formulario, ahora muestra primero la alerta emergente y luego cambia de pantalla
