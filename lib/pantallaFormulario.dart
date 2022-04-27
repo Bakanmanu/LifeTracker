@@ -59,6 +59,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                     margin: const EdgeInsets.all(10),
                     decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
                     child: GestureDetector(
+                      key: const Key('Botones estadoAnimo'), // todo revisar
                         onTap: (){
                           print("click en "+estadosAnimo[index].nombre); // DEBUG
 

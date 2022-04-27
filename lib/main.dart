@@ -62,7 +62,7 @@ class InicioState extends State<Inicio>{
                 child: TextButton(
                   child: const Text("Comenzar", style: TextStyle(color: Colors.white, fontSize: 20),),
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>PantallaMenu()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
                   },
                 ),
               ),
