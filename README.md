@@ -18,7 +18,8 @@ MEJORAS DE INTERFAZ GRÁFICA:
             --Ver formularios más en pequeñito pero visible
     -Poner colores análogos para la interfaz porque genera tranquilidad en vez de contraste
     -Posibles colores:
-        -Cyan / Colores pastel
+        -Cyan / Colores pastel / Relojes decathlon https://twitter.com/tobarrax2/status/1519200070742294529
+
 
 
 IDEAS APLICACIÓN WEB:
