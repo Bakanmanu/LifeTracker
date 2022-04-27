@@ -29,14 +29,17 @@ class _PantallaMenuState extends State<PantallaMenu>{
                   // SWITCH PARA ACCEDER A LOS DISTINTOS MENÚS
                   switch(Menu[index].id){
                     case 1: //Caso de que sea para rellenar un nuevo formulario
+                      key: Key("Navegar a PantallaFormulario");
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaFormulario()));
                       break;
 
                     case 2: //Caso de que sea para consultar los formularios
+                      key: Key("Navegar a PantallaMostrarFormulario");
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
                       break;
 
                     case 3: //Caso para editar el perfil, implementación en un futuro
+                      key: Key("Navegar a PantallaPerfilUsuario");
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaPerfilUsuario()));
                       break;
                   }

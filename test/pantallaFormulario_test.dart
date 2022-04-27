@@ -20,7 +20,7 @@ void main() {
         // expect(find.textContaining('MENÚ'), findsOneWidget); //ha cambiado de pantalla
 
     });
-    testWidgets('Prueba de que pulsar una cara se almacene en la variable estadoAnimo', (WidgetTester tester) async {
+    testWidgets('Prueba de pulsar un estado de Animo, el estado Neutro en este caso', (WidgetTester tester) async {
         // todo pruebas de widgets
 
         //Encontramos los botones de estados de animo
@@ -28,7 +28,7 @@ void main() {
 
         //Ejecutamos el test
         await tester.pumpWidget(MaterialApp(home: PantallaFormulario()));
-        await tester.tap(botonesEstadoAnimo);
+        await tester.tap(botonesEstadoAnimo.at(3));
         await tester.pump();
 
         //Lo esperado
