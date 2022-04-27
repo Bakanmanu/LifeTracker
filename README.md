@@ -16,6 +16,9 @@ MEJORAS DE INTERFAZ GRÁFICA:
             --Botón grande/vistoso de formulario nuevo
             --Configuración en appBar arriba y pequeñito
             --Ver formularios más en pequeñito pero visible
+    -Poner colores análogos para la interfaz porque genera tranquilidad en vez de contraste
+    -Posibles colores:
+        -Cyan / Colores pastel
 
 
 IDEAS APLICACIÓN WEB:
