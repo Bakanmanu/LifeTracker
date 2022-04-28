@@ -57,7 +57,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       body:
         Column(children: <Widget>[
             // Generamos los distintos campos del formulario
-            generarTablaEstadoAnimo(),
+            generarTablaEstadoAnimoNUEVO(),
             generarCategorias(),
             generarCampoTexto(),
           ],
@@ -68,6 +68,46 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     );
   }
 
+  /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO
+  Widget generarTablaEstadoAnimoNUEVO() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        _icon(0, text: "Enfadado", icon: Icons.sentiment_very_dissatisfied_rounded),
+        _icon(1, text: "Triste", icon: Icons.sentiment_dissatisfied_rounded),
+        _icon(2, text: "Neutral", icon: Icons.sentiment_neutral_rounded),
+        _icon(3, text: "Contento", icon: Icons.sentiment_satisfied_alt_rounded),
+        _icon(4, text: "Feliz", icon: Icons.sentiment_very_satisfied_rounded),
+      ],
+    );
+  }
+
+  Widget _icon(int index, {required String text, required IconData icon}) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, queryData.size.height/50, 0, 0), // padding para que no se muestre pegado a la appBar
+      child: InkResponse(
+        child: Column (
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: _estadoAnimo == index+1 ? Colors.red : null, // esto es lo que hace que sean botones exclusivos
+            ),
+            Text(text, style: TextStyle(color: _estadoAnimo == index+1 ? Colors.red : null)), // todo hacer que el color se quede según el animo
+          ],
+        ),
+        onTap: () => setState(
+              () {
+                print("click en "+estadosAnimo[index].nombre); // DEBUG
+                _estadoAnimo = index+1;
+          },
+        ),
+      ),
+    );
+  }
 
   /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO
   Widget generarTablaEstadoAnimo() {

@@ -3,21 +3,17 @@ CAMBIOS A REALIZAR:
 *
     -Hacer que los botones se marquen (Opcional pero interesante) -> investigar con setState()
 
+    -Cambiar las categorías por iconos que cambien de color al ser marcados
+
     -Añadir apartado para crear/importar categorías/acciones --> investigar que se puedan quitar modularmente
         -> Por ejemplo: hacer método que quite y ponga categoría según nombre/id y que se acceda cuando se pulsa un botón
             de un menú que tendrá que mostrar previamente todas las categorias disponibles (se pueden activar y desactivar)
-
-    -Estudiar convergencia para unir las dos clases de editar y crear formulario -> STATE
-        ->Patrón state que según donde se llame guarde un estado u otro (atributo de pantallaFormulario)
-            y que en el botón tenga un if/else y llame a un método u otro
+  
+    -Hacer apartado para crear categorías desde la app
 
     -Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
 
     -Meter easter eggs
-
-    -IMPORTANTE: Debatir si hace falta el patrón Strategy, ya que, realmente, no va a haber más de dos
-    estrategias y va a ser muy dificil que escale, entonces, al poner clausulas condicionales manteniendo
-    el atributo isModificar de GestorFormularios. Esto reduciría la cohesión entre las clases de Strategy
 
 MEJORAS DE INTERFAZ GRÁFICA:
     -Hacer una paleta de color y aplicarla

@@ -10,6 +10,8 @@ class GestorFormulario {
   List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
   late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
   bool isModificar = false; // variable que nos va a servir para elegir la estrategia al rellenar un formulario: crear o modificar
+  List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando
+  // todo revisar si es util hacer un atributo de las categorías y ver cómo puede chocar con las categorías del propio formulario
 
   ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
   GestorFormulario._privateConstructor();
@@ -105,6 +107,7 @@ class GestorFormulario {
   List<Categoria> generateCategorias(){
     List<Categoria> lista = crearCategoriasDefault();
     lista += crearCategoriasDLC();
+    lista += categoriasDLC;
     return lista;
   }
 
@@ -135,7 +138,14 @@ class GestorFormulario {
     ];
   }
 
-  /// Este método sirve para devolver las categorías descargadas de la BD
+  /// Método para añadir packs de categorías descargados
+  void anadirCategoriasDLC(List <Categoria> lista){
+    for (Categoria cat in lista){
+      categoriasDLC.add(cat);
+    }
+  }
+
+  /// Método de prueba para cargar las categorías DLC
   List<Categoria> crearCategoriasDLC(){
     //TODO ESTE MÉTODO AÚN NO SE PUEDE IMPLEMENTAR. Esperar a aplicación web
     return [
