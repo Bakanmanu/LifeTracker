@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:practica2_ds/deprecated/formStratCrear.dart';
 
 import 'package:practica2_ds/main.dart';
 import 'package:practica2_ds/pantallaFormulario.dart';
@@ -27,7 +28,7 @@ void main() {
         final botonesEstadoAnimo = find.byKey(ValueKey("Botones estadoAnimo"));
 
         //Ejecutamos el test
-        await tester.pumpWidget(MaterialApp(home: PantallaFormulario()));
+        await tester.pumpWidget(const MaterialApp(home: PantallaFormulario()));
         await tester.tap(botonesEstadoAnimo.at(3));
         await tester.pump();
 
@@ -41,7 +42,7 @@ void main() {
         final addtexto = find.byKey(ValueKey("addTexto"));
 
         //Ejecutamos el test
-        await tester.pumpWidget(MaterialApp(home: PantallaFormulario()));
+        await tester.pumpWidget(const MaterialApp(home: PantallaFormulario()));
         await tester.enterText(addtexto,"Prueba del texto");
         await tester.pump();
 

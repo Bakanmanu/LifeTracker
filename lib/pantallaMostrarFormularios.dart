@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:practica2_ds/elementosEstadoAnimo.dart';
+import 'package:practica2_ds/deprecated/formStratModificar.dart';
 import 'package:practica2_ds/formulario.dart';
 import 'package:practica2_ds/pantallaEditarFormulario.dart';
+import 'package:practica2_ds/pantallaFormulario.dart';
 
 ///Este fichero sirve para crear la parte gráfica a la hora de visualizar
 ///los formularios.
@@ -67,7 +69,12 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           child: const Text('MODIFICAR'),
                           onPressed: () async {
                             gestor.setIndex(index);
-                            await Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaEditarFormulario()));
+                            await Navigator.push(context,
+                                MaterialPageRoute(builder: (_){
+                                  GestorFormulario.instance.setStratmodificar(); // Ponemos la estrategia Modificar
+                                  return const PantallaFormulario();
+                                }
+                            ));
                             setState(() {});
                           },
                         ),

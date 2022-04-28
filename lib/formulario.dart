@@ -6,11 +6,12 @@ import 'accion.dart';
 ///y sirve como de "Clase mediadora" para tener una mayor abstracción y encapsulación
 ///También, tiene la variable global que guarda todos los formularios que se han ido creando
 class GestorFormulario {
-  List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
-  //Esta variable es late porque sólo se va a usar si se edita un formulario
-  late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
 
-  ///SINGLETON v2 PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
+  List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
+  late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
+  bool isModificar = false; // variable que nos va a servir para elegir la estrategia al rellenar un formulario: crear o modificar
+
+  ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
   GestorFormulario._privateConstructor();
   static final GestorFormulario _instance = GestorFormulario._privateConstructor();
   static GestorFormulario get instance => _instance;
@@ -62,6 +63,12 @@ class GestorFormulario {
     return listaFormularios[index];
   }
 
+  /// Método que ha de ser llamado para crear un formulario nuevo
+  void setStratCrear() => isModificar = false;
+
+  /// Método que ha de ser llamado para modificar un formulario existente
+  void setStratmodificar() => isModificar = true;
+
   /// Devuelve el formulario que se va a editar
   Formulario getFormEditar(){
       return listaFormularios[indexFormEditar];
@@ -94,8 +101,14 @@ class GestorFormulario {
     return FormatoFecha.getFecha_ES_DDMMYYYY_hhmm(form.fecha);
   }
 
+  /// Este método devuelve todas las categorías que haya (DEFAULT + DLC)
+  List<Categoria> generateCategorias(){
+    List<Categoria> lista = crearCategoriasDefault();
+    lista += crearCategoriasDLC();
+    return lista;
+  }
 
-  ///Este método sirve para inicializar una tanda de categorías y acciones predeterminadas
+  /// Este método sirve para inicializar una tanda de categorías y acciones predeterminadas
   List<Categoria> crearCategoriasDefault(){
     return [
       Categoria(enunciado: '¿Cuánto has dormido?', acciones: [
@@ -120,6 +133,18 @@ class GestorFormulario {
         Accion("hacer la colada", false)
       ]),
     ];
+  }
+
+  /// Este método sirve para devolver las categorías descargadas de la BD
+  List<Categoria> crearCategoriasDLC(){
+    //TODO ESTE MÉTODO AÚN NO SE PUEDE IMPLEMENTAR. Esperar a aplicación web
+    return [
+      Categoria(enunciado: '¡DLC Nuevo! ¿Cuánto deporte has hecho?', acciones: [
+        Accion("1h", false),
+        Accion("2h", false),
+        Accion("3h", false),
+        Accion("4h", false),],
+    )];
   }
 
   ///Este método sirve para debuggear y ver que se crean bien los formularios

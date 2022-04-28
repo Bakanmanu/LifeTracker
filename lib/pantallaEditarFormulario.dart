@@ -160,7 +160,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
                   decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
                   child: TextFormField(
-                    initialValue: _campoTexto,
+                    initialValue: _campoTexto, // todo difiere editar de crear
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
                       border: OutlineInputBorder(),
@@ -179,7 +179,7 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
         onPressed: () async {
           gestor.editarFormulario(_estadoAnimo, _categorias, _campoTexto);
           await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
-          Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
+          Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario())); //todo difiere
         },
         child: const Text('Enviar formulario'),
       ),
@@ -187,14 +187,13 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
   }
 
   /// Esta función genera una alerta emergente para notificar de que el formulario se ha guardado
-  // todo comprobar si se puede reutilizar el método de pantallaFormulario.dart
   Future <void> _mostrarAlertaFormCorrecto() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('El formulario se ha modificado correctamente'),
+          title: const Text('El formulario se ha guardado correctamente'),
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[
@@ -217,4 +216,3 @@ class _PantallaEditarFormularioState extends State<PantallaEditarFormulario> {
     );
   }
 }
-

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:practica2_ds/deprecated/formStratCrear.dart';
+import 'package:practica2_ds/formulario.dart';
 import 'package:practica2_ds/pantallaFormulario.dart';
 import 'package:practica2_ds/pantallaMostrarFormularios.dart';
 import 'package:practica2_ds/pantallaPerfil.dart';
@@ -30,7 +32,11 @@ class _PantallaMenuState extends State<PantallaMenu>{
                   // SWITCH PARA ACCEDER A LOS DISTINTOS MENÚS
                   switch(Menu[index].id){
                     case 1: //Caso de que sea para rellenar un nuevo formulario
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaFormulario()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) {
+                            GestorFormulario.instance.setStratCrear(); // Ponemos la estrategia Crear
+                            return const PantallaFormulario();
+                          }));
                       break;
 
                     case 2: //Caso de que sea para consultar los formularios
