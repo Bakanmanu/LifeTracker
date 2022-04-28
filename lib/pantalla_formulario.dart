@@ -69,12 +69,12 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
   }
 
   /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO
-  Widget generarTablaEstadoAnimoNUEVO() {
+  Widget generarTablaEstadoAnimoNUEVO() { // todo poner mas bonito y hacer iconos un poco más grandes
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        _icon(0, text: "Enfadado", icon: Icons.sentiment_very_dissatisfied_rounded),
+        _icon(0, text: "Enfadado", icon: Icons.sentiment_very_dissatisfied_rounded), // todo intentar poner las imagenes en vez de iconos
         _icon(1, text: "Triste", icon: Icons.sentiment_dissatisfied_rounded),
         _icon(2, text: "Neutral", icon: Icons.sentiment_neutral_rounded),
         _icon(3, text: "Contento", icon: Icons.sentiment_satisfied_alt_rounded),
@@ -87,7 +87,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, queryData.size.height/50, 0, 0), // padding para que no se muestre pegado a la appBar
+      padding: EdgeInsets.fromLTRB(0, queryData.size.height/50, 0, 0), // padding para que no se muestre pegado a la appBar todo ajustar
       child: InkResponse(
         child: Column (
           mainAxisSize: MainAxisSize.min,
