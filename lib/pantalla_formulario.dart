@@ -1,11 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/accion.dart';
-import 'package:practica2_ds/elementosEstadoAnimo.dart';
+import 'package:practica2_ds/elementos_estado_animo.dart';
 import 'package:practica2_ds/formulario.dart';
-import 'package:practica2_ds/pantallaMenu.dart';
-import 'package:practica2_ds/pantallaMostrarFormularios.dart';
+import 'package:practica2_ds/pantalla_menu.dart';
+import 'package:practica2_ds/pantalla_mostrar_formularios.dart';
 import "categoria.dart";
 
 /// Este fichero sirve para crear la parte gráfica a la hora de crear
@@ -57,17 +54,16 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         backgroundColor: Colors.purple,
       ),
       backgroundColor: Colors.purple,
-      body: Column(
-        //mainAxisAlignment:,
-        children: <Widget>[
-          // Generamos los distintos campos del formulario
-          generarTablaEstadoAnimo(),
-          generarCategorias(),
-          generarCampoTexto(),
-        ],
-      ),
+      body:
+        Column(children: <Widget>[
+            // Generamos los distintos campos del formulario
+            generarTablaEstadoAnimo(),
+            generarCategorias(),
+            generarCampoTexto(),
+          ],
+        ),
 
-      /// BOTÓN PARA ENVIAR EL FORMULARIO (CREAR O MODIFICAR según isModificar)
+      /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
       floatingActionButton: generarBotonEnvio(),
     );
   }
@@ -86,7 +82,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
               margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
               child: GestureDetector(
-                  key: const Key('Botones estadoAnimo'), // todo revisar
+                  key: const Key('Botones estadoAnimo'),
                   onTap: (){
                     print("click en "+estadosAnimo[index].nombre); // DEBUG
 
@@ -124,7 +120,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     );
   }
 
-  /// MÉTODO PARA GENERAR LAS CATEGORÍAS Y ACCIONES TODO REVISAR
+  /// MÉTODO PARA GENERAR LAS CATEGORÍAS Y ACCIONES
   Widget generarCategorias() {
     return Flexible(
       child:
@@ -165,7 +161,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                                     Text(categoria.acciones[indexAcciones].nombre, style: const TextStyle(color: Colors.black, fontSize: 16)),
                                   ],
                                 );
-
                               }),
                         )
                       ],
@@ -174,14 +169,13 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                 ),
               ),
             )
-
           ],
         ),
       ),
     );
   }
 
-  /// MÉTODO PARA GENERAR EL CAMPO DE TEXTO TODO REVISAR
+  /// MÉTODO PARA GENERAR EL CAMPO DE TEXTO
   Widget generarCampoTexto() {
 
     return Container(
@@ -221,9 +215,9 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
           Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
         }
-
       },
-      child: const Text('Enviar formulario'),
+      /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
+      child: gestor.isModificar ? const Text('Guardar formulario') : const Text('Crear formulario'),
     );
   }
 

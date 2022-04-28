@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:practica2_ds/deprecated/formStratCrear.dart';
-
 import 'package:practica2_ds/main.dart';
-import 'package:practica2_ds/pantallaFormulario.dart';
-import 'package:practica2_ds/pantallaMenu.dart';
+import 'package:practica2_ds/pantalla_formulario.dart';
 
 /// En este fichero se incluirán las pruebas de Widgets
 /// En este fichero se incluirán las pruebas de pantallaMenu
@@ -22,10 +19,8 @@ void main() {
 
     });
     testWidgets('Prueba de pulsar un estado de Animo, el estado Neutro en este caso', (WidgetTester tester) async {
-        // todo pruebas de widgets
-
         //Encontramos los botones de estados de animo
-        final botonesEstadoAnimo = find.byKey(ValueKey("Botones estadoAnimo"));
+        final botonesEstadoAnimo = find.byKey(const ValueKey("Botones estadoAnimo"));
 
         //Ejecutamos el test
         await tester.pumpWidget(const MaterialApp(home: PantallaFormulario()));
@@ -37,9 +32,8 @@ void main() {
 
     });
     testWidgets('Prueba de que se escribe en el campo de texto', (WidgetTester tester) async {
-        // todo pruebas de widgets
         //Encontramos el campo de texto
-        final addtexto = find.byKey(ValueKey("addTexto"));
+        final addtexto = find.byKey(const ValueKey("addTexto"));
 
         //Ejecutamos el test
         await tester.pumpWidget(const MaterialApp(home: PantallaFormulario()));

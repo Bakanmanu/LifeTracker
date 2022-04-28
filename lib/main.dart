@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/pantallaMenu.dart';
+import 'package:practica2_ds/pantalla_menu.dart';
 
 void main() {
   runApp(const MyApp());

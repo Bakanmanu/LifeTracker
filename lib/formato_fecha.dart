@@ -12,10 +12,10 @@
 
 class FormatoFecha {
 
-  static const String SEPARADOR_DIAG = '/';
-  static const String SEPARADOR_BARR = '-';
+  static const String separadorDiag = '/';
+  static const String separadorHoriz = '-';
 
-  static String separador = SEPARADOR_DIAG;
+  static String separador = separadorDiag;
 
   static String getFecha_ES_DDMMYYYY_hhmm(DateTime fecha){
 
@@ -76,11 +76,11 @@ class FormatoFecha {
 
 
   static void setSeparadorBarra(){
-    separador = SEPARADOR_BARR;
+    separador = separadorHoriz;
   }
 
   static void setSeparadorDiagonal(){
-    separador = SEPARADOR_DIAG;
+    separador = separadorDiag;
   }
 
 }

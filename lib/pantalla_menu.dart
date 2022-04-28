@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/deprecated/formStratCrear.dart';
 import 'package:practica2_ds/formulario.dart';
-import 'package:practica2_ds/pantallaFormulario.dart';
-import 'package:practica2_ds/pantallaMostrarFormularios.dart';
-import 'package:practica2_ds/pantallaPerfil.dart';
-import 'elementosMenu.dart';
+import 'package:practica2_ds/pantalla_formulario.dart';
+import 'package:practica2_ds/pantalla_mostrar_formularios.dart';
+import 'package:practica2_ds/pantalla_perfil.dart';
+import 'elementos_menu.dart';
 class PantallaMenu extends StatefulWidget{
   const PantallaMenu({Key? key}) : super(key: key);
 
@@ -19,18 +18,18 @@ class _PantallaMenuState extends State<PantallaMenu>{
       appBar: AppBar(title: const Text("MENÚ"), backgroundColor: Colors.purple,),
       backgroundColor: Colors.purple,
       body: GridView.builder(
-        itemCount: Menu.length,
+        itemCount: menu.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (context,index){
             return Container(
               margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
               child: GestureDetector(
-                key: Key("BotonesMenu"),
+                key: const Key("BotonesMenu"),
                 onTap: (){
 
                   // SWITCH PARA ACCEDER A LOS DISTINTOS MENÚS
-                  switch(Menu[index].id){
+                  switch(menu[index].id){
                     case 1: //Caso de que sea para rellenar un nuevo formulario
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) {
@@ -51,8 +50,8 @@ class _PantallaMenuState extends State<PantallaMenu>{
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/"+Menu[index].imagen, width: 80,),
-                      Text(Menu[index].nombre, style: const TextStyle(color: Colors.white, fontSize: 18),),
+                      Image.asset("assets/"+menu[index].imagen, width: 80,),
+                      Text(menu[index].nombre, style: const TextStyle(color: Colors.white, fontSize: 18),),
                     ],
               )
               ),

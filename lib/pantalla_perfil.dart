@@ -14,7 +14,7 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        appBar: AppBar(title: Text("Configuración"), backgroundColor: Colors.purple,),
+        appBar: AppBar(title: const Text("Configuración"), backgroundColor: Colors.purple,),
         backgroundColor: Colors.purple,
         body: const Center(
           child: Text("ESTA CARACTERÍSTICA AÚN NO ESTÁ IMPLEMENTADA :("),

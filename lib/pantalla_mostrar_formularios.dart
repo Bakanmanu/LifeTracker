@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/elementosEstadoAnimo.dart';
-import 'package:practica2_ds/deprecated/formStratModificar.dart';
+import 'package:practica2_ds/elementos_estado_animo.dart';
 import 'package:practica2_ds/formulario.dart';
-import 'package:practica2_ds/pantallaEditarFormulario.dart';
-import 'package:practica2_ds/pantallaFormulario.dart';
+import 'package:practica2_ds/pantalla_formulario.dart';
 
 ///Este fichero sirve para crear la parte gráfica a la hora de visualizar
 ///los formularios.
@@ -25,7 +23,11 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
       backgroundColor: Colors.purple,
 
       ///Listado de Formularios realizados
-      body: ListView.builder(
+      body: gestor.listaFormularios.isEmpty ? // ESTO ES UNA CONDICIONAL ENTRE CENTER Ó COLUMN SEGUN HAYA FORMULARIOS O NO
+      // todo formatear un poco este texto y ponerlo bonito
+      const Center(child: Text("Aún no tienes formularios :(. \nPrueba a crear uno desde 'Nuevo Formulario' en menú principal"),)
+      : // operador ternario condicional, esto hace que si gestor.listaFormularios.isEmpty es false, sea esto lo que se ejecute
+      ListView.builder(
           padding: const EdgeInsets.all(8),
           itemCount: gestor.listaFormularios.length,       // Obtiene la cantidad de Formularios que contiene la lista  para así iterar como un bucle for
           itemBuilder: (BuildContext context, int index) { // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
@@ -43,10 +45,10 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                       title: Text(gestor.getFechaFormat(gestor.listaFormularios[index]) + '\n'),
                       subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])),
                     ),
-                    Container(
-                      //Espacio para añadir formato
-                      child: Text(gestor.listaFormularios[index].campoTexto),
-                    ),
+
+                    /// Aquí se podría hacer un container si se quisiera poner más bonito todo revisar
+                    Text(gestor.listaFormularios[index].campoTexto),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

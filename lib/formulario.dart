@@ -1,5 +1,5 @@
 import 'package:practica2_ds/categoria.dart';
-import 'package:practica2_ds/formatoFecha.dart';
+import 'package:practica2_ds/formato_fecha.dart';
 import 'accion.dart';
 
 ///Esta clase sirve para gestionar todos los procesos relacionados con los formularios
@@ -148,28 +148,28 @@ class GestorFormulario {
   }
 
   ///Este método sirve para debuggear y ver que se crean bien los formularios
-  void mostrarFormularioTerminal(){
-    Formulario form = listaFormularios.last;
-
-    print(form._estadoAnimo);
-    print(form._campoTexto);
-
-    print('ACCIÓN + BOOL:');
-    for (Categoria cat in form._listaCategorias){
-      print('CATEGORÍA: ' + cat.enunciado);
-      for (Accion acc in cat.acciones){
-        acc.activo ? print(acc.nombre + ": TRUE") : print(acc.nombre + ": FALSE");
-      }
-    }
-    print('ACCIONES ACTIVAS:');
-    for (Categoria cat in form._listaCategorias){
-      print('CATEGORÍA: ' + cat.enunciado);
-      for (Accion acc in cat.respuestas){
-        print(acc.nombre);
-      }
-    }
-    print(form._fecha);
-  }
+  // void mostrarFormularioTerminal(){
+  //   Formulario form = listaFormularios.last;
+  //
+  //   print(form._estadoAnimo);
+  //   print(form._campoTexto);
+  //
+  //   print('ACCIÓN + BOOL:');
+  //   for (Categoria cat in form._listaCategorias){
+  //     print('CATEGORÍA: ' + cat.enunciado);
+  //     for (Accion acc in cat.acciones){
+  //       acc.activo ? print(acc.nombre + ": TRUE") : print(acc.nombre + ": FALSE");
+  //     }
+  //   }
+  //   print('ACCIONES ACTIVAS:');
+  //   for (Categoria cat in form._listaCategorias){
+  //     print('CATEGORÍA: ' + cat.enunciado);
+  //     for (Accion acc in cat.respuestas){
+  //       print(acc.nombre);
+  //     }
+  //   }
+  //   print(form._fecha);
+  // }
 
 }
 
