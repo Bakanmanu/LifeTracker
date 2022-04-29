@@ -41,7 +41,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     }
   }
 
-
   /// Getter
   List<Categoria> get categorias => _categorias;
 
@@ -57,7 +56,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       body:
         Column(children: <Widget>[
             // Generamos los distintos campos del formulario
-            generarTablaEstadoAnimoNUEVO(),
+            generarTablaEstadoAnimo(),
             generarCategorias(),
             generarCampoTexto(),
           ],
@@ -69,18 +68,18 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
   }
 
   /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO
-  Widget generarTablaEstadoAnimoNUEVO() { // todo poner mas bonito y hacer iconos un poco más grandes
+  Widget generarTablaEstadoAnimo() { // todo poner mas bonito y hacer iconos un poco más grandes
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        _icon(0, text: "Enfadado", icon: Icons.sentiment_very_dissatisfied_rounded), // todo intentar poner las imagenes en vez de iconos
-        _icon(1, text: "Triste", icon: Icons.sentiment_dissatisfied_rounded),
-        _icon(2, text: "Neutral", icon: Icons.sentiment_neutral_rounded),
-        _icon(3, text: "Contento", icon: Icons.sentiment_satisfied_alt_rounded),
-        _icon(4, text: "Feliz", icon: Icons.sentiment_very_satisfied_rounded),
-      ],
-    );
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _icon(0, text: "Enfadado", icon: Icons.sentiment_very_dissatisfied_rounded), // todo intentar poner las imagenes en vez de iconos
+            _icon(1, text: "Triste", icon: Icons.sentiment_dissatisfied_rounded),
+            _icon(2, text: "Neutral", icon: Icons.sentiment_neutral_rounded),
+            _icon(3, text: "Contento", icon: Icons.sentiment_satisfied_alt_rounded),
+            _icon(4, text: "Feliz", icon: Icons.sentiment_very_satisfied_rounded),
+          ],
+        );
   }
 
   Widget _icon(int index, {required String text, required IconData icon}) {
@@ -109,56 +108,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     );
   }
 
-  /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO
-  Widget generarTablaEstadoAnimo() {
-    return SizedBox(
-      height: 80,
-      child:
-      GridView.builder( //todo hacer que esto sean botones
-          itemCount: estadosAnimo.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5), // 5 columnas
-          itemBuilder: (context,index){
-            return Container(
-              margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
-              child: GestureDetector(
-                  key: const Key('Botones estadoAnimo'),
-                  onTap: (){
-                    print("click en "+estadosAnimo[index].nombre); // DEBUG
-
-                    // SWITCH PARA CAMBIAR LOS DISTINTOS ESTADOS DE ÁNIMO
-                    // TODO HACER QUE SE MARQUE EL PULSADO
-                    switch(estadosAnimo[index].id){
-                      case 1:
-                        _estadoAnimo = 1;
-                        break;
-                      case 2:
-                        _estadoAnimo = 2;
-                        break;
-                      case 3:
-                        _estadoAnimo = 3;
-                        break;
-                      case 4:
-                        _estadoAnimo = 4;
-                        break;
-                      case 5:
-                        _estadoAnimo = 5;
-                        break;
-                    }
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/"+estadosAnimo[index].imagen, width: 20,),
-                      Text(estadosAnimo[index].nombre, style: const TextStyle(color: Colors.white, fontSize: 9),),
-                    ],
-                  )
-              ),
-            );
-          }
-      ),
-    );
-  }
 
   /// MÉTODO PARA GENERAR LAS CATEGORÍAS Y ACCIONES
   Widget generarCategorias() {
