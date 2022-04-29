@@ -1,8 +1,6 @@
 
 CAMBIOS A REALIZAR:
 *
-    -Hacer que los botones se marquen (Opcional pero interesante) -> investigar con setState()
-
     -Cambiar las categorías por iconos que cambien de color al ser marcados
 
     -Añadir apartado para crear/importar categorías/acciones --> investigar que se puedan quitar modularmente
@@ -14,6 +12,9 @@ CAMBIOS A REALIZAR:
     -Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
 
     -Meter easter eggs
+
+    -Intentar que, al MostrarFormularios se clasifiquen según el día. Es decir, que todos los
+    formularios del mismo día se muestren en el mismo apartado y se diferencien de los de otros días
 
 MEJORAS DE INTERFAZ GRÁFICA:
     -Hacer una paleta de color y aplicarla
@@ -105,4 +106,7 @@ motivos expuestos a continuación:
     (ya tiene demasiadas) a cambio de un menor acoplamiento, ya que habría que importar el Gestor
     en el Strategy para recoger los datos de los formularios a la hora de mostrarlos"
 
+-Ahora los botones de estado de ánimo son botones de verdad que reaccionan al tacto y se mantiene
+el color del estado actual. Si se cambia, se desactiva el anterior
+    Anteriormente: Eran imágenes en un GridView sensibles al tacto que no mostraban respuesta
 
