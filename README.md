@@ -1,7 +1,9 @@
 
 CAMBIOS A REALIZAR:
 *
-    -Cambiar las categorías por iconos que cambien de color al ser marcados
+    -Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) al ser marcados
+    en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
+    del CheckBox o del ListView)
 
     -Añadir apartado para crear/importar categorías/acciones --> investigar que se puedan quitar modularmente
         -> Por ejemplo: hacer método que quite y ponga categoría según nombre/id y que se acceda cuando se pulsa un botón
