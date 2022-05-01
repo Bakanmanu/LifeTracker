@@ -67,7 +67,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     );
   }
 
-
   /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO
   Widget generarTablaEstadoAnimo() { // todo poner mas bonito y hacer iconos un poco más grandes
     return Row(
