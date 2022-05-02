@@ -30,16 +30,6 @@ MEJORAS DE INTERFAZ GRÁFICA:
     -Posibles colores:
         -Cyan / Colores pastel / Relojes decathlon https://twitter.com/tobarrax2/status/1519200070742294529
 
-Strategy:
-    -Método de cargar los datos previos (default o los guardados)
-    -Método de crear/guardar cambios
-    -Método de alerta
-
-Posibles formas: 
-que se llame a una función que devuelva el widget más pequeño que varíe
-poner una condicional según la estrategia
-
-
 
 IDEAS APLICACIÓN WEB:
     -Hacer una página de estadísticas que te compara con la media
