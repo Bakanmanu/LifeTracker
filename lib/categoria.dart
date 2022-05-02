@@ -5,6 +5,8 @@ class Categoria{
   final List<Accion> acciones; //lista de todas las acciones
   List<Accion> respuestas = []; //una lista de las acciones activadas por el usuario (todas han de ser true)
 
+  // todo revisar la opción de un bool 'activo' para indicar si esta categoría se quiere mostrar o no
+
   Categoria({ //Constructor
     required this.enunciado,
     required this.acciones,

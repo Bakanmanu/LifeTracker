@@ -1,6 +1,10 @@
 
 CAMBIOS A REALIZAR:
 *
+    -IMPORTANTE: Plantearse si sería buena idea refactorizar la clase GestorFormulario y repartirla
+    con una nueva clase "Usuario" o similar que contenga toda la información de una persona, como, 
+    por ejemplo, la lista de formularios, las categorías que ha creado
+
     -Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) al ser marcados
     en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
     del CheckBox o del ListView)
@@ -9,7 +13,11 @@ CAMBIOS A REALIZAR:
         -> Por ejemplo: hacer método que quite y ponga categoría según nombre/id y que se acceda cuando se pulsa un botón
             de un menú que tendrá que mostrar previamente todas las categorias disponibles (se pueden activar y desactivar)
   
+    -Hacer una clase que se comunique con el gestor de formularios que sea la que permita subir la información de los formularios
+     a la API (controlando que no se suba información repetida). Esta clase también puede que tenga que ser Singleton
+  
     -Hacer apartado para crear categorías desde la app
+        -> Clase gestor_categorías, que tiene que ser Singleton y hay que pensarse bien los métodos y atributos que ponerle
 
     -Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
 

@@ -11,7 +11,7 @@ class GestorFormulario {
   late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
   bool isModificar = false; // variable que nos va a servir para elegir la estrategia al rellenar un formulario: crear o modificar
   List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando
-  // todo revisar si es util hacer un atributo de las categorías y ver cómo puede chocar con las categorías del propio formulario
+  // todo revisar si es util hacer un atributo de todas las categorías que se tengan y ver cómo puede chocar con las categorías del propio formulario
 
   ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
   GestorFormulario._privateConstructor();
@@ -107,7 +107,7 @@ class GestorFormulario {
   List<Categoria> generateCategorias(){
     List<Categoria> lista = crearCategoriasDefault();
     lista += crearCategoriasDLC();
-    lista += categoriasDLC;
+    lista += categoriasDLC; // metemos las que ya estaban
     return lista;
   }
 
@@ -148,6 +148,7 @@ class GestorFormulario {
   /// Método de prueba para cargar las categorías DLC
   List<Categoria> crearCategoriasDLC(){
     //TODO ESTE MÉTODO AÚN NO SE PUEDE IMPLEMENTAR. Esperar a aplicación web
+    // La idea es que este método obtenga de alguna manera una categoría descargada
     return [
       Categoria(enunciado: '¡DLC Nuevo! ¿Cuánto deporte has hecho?', acciones: [
         Accion("1h", false),
