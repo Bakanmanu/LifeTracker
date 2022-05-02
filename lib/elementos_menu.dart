@@ -9,4 +9,5 @@ final menu = [
   Elemento(1, "Formulario nuevo", "formulario.png"),
   Elemento(2, "Buscar formulario", "buscador.png"),
   Elemento(3, "Editar perfil", "perfil.png"),
+  Elemento(4, "Gestionar categorias", "plus.png"),
 ];

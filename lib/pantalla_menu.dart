@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practica2_ds/formulario.dart';
 import 'package:practica2_ds/pantalla_formulario.dart';
+import 'package:practica2_ds/pantalla_gestionar_categorias.dart';
 import 'package:practica2_ds/pantalla_mostrar_formularios.dart';
 import 'package:practica2_ds/pantalla_perfil.dart';
 import 'elementos_menu.dart';
@@ -44,6 +45,10 @@ class _PantallaMenuState extends State<PantallaMenu>{
 
                     case 3: //Caso para editar el perfil, implementación en un futuro
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaPerfilUsuario()));
+                      break;
+
+                    case 4: //Caso para gestionar categorías
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaGestionarCategoria()));
                       break;
                   }
                 },
