@@ -87,7 +87,6 @@ muestra los más recientes primero.
 futura ampliación de mostrar fechas.
     > Anteriormente se mostraba año, mes, día, hora, minuto, segundo y unos 8 dígitos de fracciones de segundo
 
------------------------------------------------
 
 ## Entre la Práctica 3 y la Práctica 4
 
