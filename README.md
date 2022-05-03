@@ -29,14 +29,14 @@ formularios del mismo día se muestren en el mismo apartado y se diferencien de 
 -----------------------------------------------
 
 # MEJORAS DE INTERFAZ GRÁFICA:
-- Hacer una paleta de color y aplicarla
-- Que cada formulario cambie según el ánimo correspondiente -> que la app entera vaya cambiando según la media
-- Hacer la paleta de color de la web respecto a la de la app -> hacerla 
-- Reestructurar el menú principal: tal vez:
-        --Botón grande/vistoso de formulario nuevo
-        --Configuración en appBar arriba y pequeñito
-        --Ver formularios más en pequeñito pero visible
-- Poner colores análogos para la interfaz porque genera tranquilidad en vez de contraste
+- [ ] Hacer una paleta de color y aplicarla. Posible: https://coolors.co/65246d-7b2462-a43fa7-cd5d9d-fdcd87
+- [ ] Que cada formulario cambie según el ánimo correspondiente -> que la app entera vaya cambiando según la media
+- [ ] Hacer la paleta de color de la web respecto a la de la app -> hacerla 
+- [ ] Reestructurar el menú principal: tal vez:
+      - Botón grande/vistoso de formulario nuevo
+      - Configuración en appBar arriba y pequeñito
+      - Ver formularios más en pequeñito pero visible
+- [ ] Poner colores análogos para la interfaz porque genera tranquilidad en vez de contraste
 - Posibles colores:
     -Cyan / Colores pastel / Relojes decathlon https://twitter.com/tobarrax2/status/1519200070742294529
 
@@ -51,7 +51,6 @@ formularios del mismo día se muestren en el mismo apartado y se diferencien de 
 # FUNCIONALIDAD DE LA API:
 - Inicio de sesión + tokens
 - Mandar datos de formularios -> control por fechas para no duplicar formularios
--
 
 -----------------------------------------------
 
