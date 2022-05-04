@@ -3,6 +3,7 @@
 - ***IMPORTANTE:*** Plantearse si sería buena idea refactorizar la clase *GestorFormulario* y repartirla
 con una nueva clase "Usuario" o similar que contenga toda la información de una persona, como, 
 por ejemplo, la lista de formularios, las categorías que ha creado...
+  El usuario puede que tenga que tener un gestor de formulario para tener los métodos para gestionarlos
 
 - Añadir apartado para crear/importar/modificar/borrar/subir categorías/acciones --> *investigar que se puedan quitar modularmente*
   > Por ejemplo: hacer método que quite y ponga categoría según nombre/id y que se acceda cuando se pulsa un botón
