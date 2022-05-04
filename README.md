@@ -25,6 +25,10 @@ del CheckBox o del ListView)
 
 - Intentar que, al MostrarFormularios se clasifiquen según el día. Es decir, que todos los
 formularios del mismo día se muestren en el mismo apartado y se diferencien de los de otros días
+  
+### Bugs:
+- En "Nuevo Formulario", el apartado de Categorías se pega demasiado al apartado de Estado de Ánimo cuando
+se hace scroll hacia abajo
 
 -----------------------------------------------
 
