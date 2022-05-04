@@ -33,6 +33,7 @@ formularios del mismo día se muestren en el mismo apartado y se diferencien de 
 se hace scroll hacia abajo
   
 - Las caras del formulario no coinciden con la *imagen* que se muestra en Mostrar Formularios
+Tal vez pensar en convertir las imágenes en iconos y usar esos
 
 - Cuando no hay formularios, el mensaje se muestra de manera muy pobre y fea
 
@@ -49,6 +50,10 @@ se hace scroll hacia abajo
 - Poner colores análogos para la interfaz porque genera tranquilidad en vez de contraste
 - Posibles colores:
     -Cyan / Colores pastel / Relojes decathlon https://twitter.com/tobarrax2/status/1519200070742294529
+  
+- PARA HACER LA PALETA DE COLOR: TENER EN CUENTA UN RANGO DE 5 COLORES DE MOOD
+
+- Plantear hacer un fondo así blanco y sólo tener colores de detalle
 
 -----------------------------------------------
 
