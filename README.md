@@ -26,9 +26,15 @@ del CheckBox o del ListView)
 - Intentar que, al MostrarFormularios se clasifiquen según el día. Es decir, que todos los
 formularios del mismo día se muestren en el mismo apartado y se diferencien de los de otros días
   
+- Poner el icono a la app
+  
 ### Bugs:
 - En "Nuevo Formulario", el apartado de Categorías se pega demasiado al apartado de Estado de Ánimo cuando
 se hace scroll hacia abajo
+  
+- Las caras del formulario no coinciden con la *imagen* que se muestra en Mostrar Formularios
+
+- Cuando no hay formularios, el mensaje se muestra de manera muy pobre y fea
 
 -----------------------------------------------
 
