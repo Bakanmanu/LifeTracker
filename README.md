@@ -56,6 +56,23 @@ Tal vez pensar en convertir las imágenes en iconos y usar esos
 
 - Plantear hacer un fondo así blanco y sólo tener colores de detalle
 
+## Cómo se va a llevar a cabo:
+Se van a hacer variables globales a las que se le asignarán previamente los colores para que sea
+más facil modificar la paleta. Cada variable representará un posible "tipo de elemento". Por ejemplo:
+'color de fondo', 'color de un formulario', 'color de la fuente principal'...
+
+### Elementos:
+- Color de fondo principal
+- Color de fondo secundario
+- Color de barras 
+- Color de fuente principal
+- Color de fuente secundario
+- Color de botones
+- Color de botones secundario  
+- Colores de cada estado de ánimo
+- Tal vez una variable dinámica para cambiar el color de los formularios según E.Animo
+  
+
 -----------------------------------------------
 
 # IDEAS APLICACIÓN WEB:

@@ -1,6 +1,6 @@
-import 'package:practica2_ds/categoria.dart';
-import 'package:practica2_ds/formato_fecha.dart';
-import 'accion.dart';
+import 'package:practica2_ds/funcionalidad/categoria.dart';
+import 'package:practica2_ds/funcionalidad/formato_fecha.dart';
+import './accion.dart';
 
 ///Esta clase sirve para gestionar todos los procesos relacionados con los formularios
 ///y sirve como de "Clase mediadora" para tener una mayor abstracción y encapsulación

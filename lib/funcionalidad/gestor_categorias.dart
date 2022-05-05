@@ -1,5 +1,4 @@
 
-
 /// Esta clase se encarga gestionar las categorías (crear, editar, borrar, importar o exportar)
 /// concretamente, va muy de la mano con la aplicación web.
 /// Es una clase Singleton

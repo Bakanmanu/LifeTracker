@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/elementos_estado_animo.dart';
-import 'package:practica2_ds/formulario.dart';
-import 'package:practica2_ds/pantalla_formulario.dart';
+import 'package:practica2_ds/funcionalidad/elementos_estado_animo.dart';
+import 'package:practica2_ds/funcionalidad/formulario.dart';
+import 'package:practica2_ds/interfaz_grafica/pantalla_formulario.dart';
 
 ///Este fichero sirve para crear la parte gráfica a la hora de visualizar
 ///los formularios.

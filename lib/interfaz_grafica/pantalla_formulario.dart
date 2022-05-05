@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/elementos_estado_animo.dart';
-import 'package:practica2_ds/formulario.dart';
-import 'package:practica2_ds/pantalla_menu.dart';
-import 'package:practica2_ds/pantalla_mostrar_formularios.dart';
-import "categoria.dart";
+import 'package:practica2_ds/funcionalidad/elementos_estado_animo.dart';
+import 'package:practica2_ds/funcionalidad/formulario.dart';
+import 'package:practica2_ds/interfaz_grafica/pantalla_menu.dart';
+import 'package:practica2_ds/interfaz_grafica/pantalla_mostrar_formularios.dart';
+import "../funcionalidad/categoria.dart";
 
 /// Este fichero sirve para crear la parte gráfica a la hora de crear
 /// un nuevo formulario. Por ello, se relacionará directamente con el fichero

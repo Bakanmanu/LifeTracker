@@ -1,4 +1,4 @@
-import "accion.dart";
+import './accion.dart';
 
 class Categoria{
   final String enunciado; //nombre de la categoria
