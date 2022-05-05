@@ -50,9 +50,9 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       appBar: AppBar(
         /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
         title: gestor.isModificar ? const Text('Modificar formulario') : const Text('Nuevo formulario'),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.purple, //todo cambiar color
       ),
-      backgroundColor: Colors.purple,
+      backgroundColor: Colors.purple, //todo cambiar color
       body:
         Column(children: <Widget>[
             // Generamos los distintos campos del formulario
@@ -93,7 +93,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           children: [
             Icon(
               icon,
-              color: _estadoAnimo == index+1 ? Colors.red : null, // esto es lo que hace que sean botones exclusivos
+              color: _estadoAnimo == index+1 ? Colors.red : null, // esto es lo que hace que sean botones exclusivos //todo cambiar color
             ),
             Text(text, style: TextStyle(color: _estadoAnimo == index+1 ? Colors.red : null)), // todo hacer que el color se quede según el animo
           ],
@@ -120,7 +120,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
             Container(
               margin: const EdgeInsets.all(15),
               padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
-              decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
+              decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),), //todo cambiar color
               child:
               Column(
                 children: List.generate(
@@ -130,7 +130,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(categoria.enunciado, style: const TextStyle(color: Colors.white, fontSize: 20),),
+                        Text(categoria.enunciado, style: const TextStyle(color: Colors.white, fontSize: 20),),//todo cambiar color
                         const SizedBox(height: 15,),
                         Wrap(
                           children: List.generate(
@@ -145,9 +145,9 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                                           categoria.acciones[indexAcciones].cambiarActivo(); //Cambiamos el estado de la acción al hacer click
                                         });
                                       },
-                                      activeColor: Colors.deepPurple,
+                                      activeColor: Colors.deepPurple, //todo cambiar color
                                     ),
-                                    Text(categoria.acciones[indexAcciones].nombre, style: const TextStyle(color: Colors.black, fontSize: 16)),
+                                    Text(categoria.acciones[indexAcciones].nombre, style: const TextStyle(color: Colors.black, fontSize: 16)), //todo cambiar color
                                   ],
                                 );
                               }),
@@ -173,12 +173,12 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       Container(
         margin: const EdgeInsets.all(15),
         padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
-        decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),),
+        decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(15),), //todo cambiar color
         child: TextFormField(
           key: const Key("addTexto"),
           initialValue: _campoTexto, // Si _campoTexto == '', entonces no pondrá valor incial, si no, pondrá lo que esté guardado
           decoration: const InputDecoration(
-            fillColor: Colors.white,
+            fillColor: Colors.white, //todo cambiar color
             border: OutlineInputBorder(),
             labelText: 'Cuenta aquí qué tal te ha ido el día',
           ),

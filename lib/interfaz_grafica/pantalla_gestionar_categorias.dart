@@ -14,8 +14,8 @@ class _PantallaGestionarCategoriaState extends State<PantallaGestionarCategoria>
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        appBar: AppBar(title: const Text("Categorías"), backgroundColor: Colors.purple,),
-        backgroundColor: Colors.purple,
+        appBar: AppBar(title: const Text("Categorías"), backgroundColor: Colors.purple,), //todo cambiar color
+        backgroundColor: Colors.purple, //todo cambiar color
 
         /// todo LAS COSAS QUE HAY QUE GESTIONAR EN ESTA PANTALLA SON, RESPECTO A LAS CATEGORÍAS:
         /// CREAR

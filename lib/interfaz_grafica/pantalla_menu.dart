@@ -16,15 +16,15 @@ class _PantallaMenuState extends State<PantallaMenu>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: const Text("MENÚ"), backgroundColor: Colors.purple,),
-      backgroundColor: Colors.purple,
+      appBar: AppBar(title: const Text("MENÚ"), backgroundColor: Colors.purple,), //todo cambiar color
+      backgroundColor: Colors.purple, //todo cambiar color
       body: GridView.builder(
         itemCount: menu.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (context,index){
             return Container(
               margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),),
+              decoration: BoxDecoration(color: Colors.purpleAccent,borderRadius: BorderRadius.circular(30),), //todo cambiar color
               child: GestureDetector(
                 key: const Key("BotonesMenu"),
                 onTap: (){
@@ -56,7 +56,7 @@ class _PantallaMenuState extends State<PantallaMenu>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset("assets/"+menu[index].imagen, width: 80,),
-                      Text(menu[index].nombre, style: const TextStyle(color: Colors.white, fontSize: 18),),
+                      Text(menu[index].nombre, style: const TextStyle(color: Colors.white, fontSize: 18),), //todo cambiar color
                     ],
               )
               ),
