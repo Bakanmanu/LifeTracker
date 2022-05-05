@@ -4,21 +4,30 @@
 con una nueva clase "Usuario" o similar que contenga toda la información de una persona, como, 
 por ejemplo, la lista de formularios, las categorías que ha creado...
   El usuario puede que tenga que tener un gestor de formulario para tener los métodos para gestionarlos
-
-- Añadir apartado para crear/importar/modificar/borrar/subir categorías/acciones --> *investigar que se puedan quitar modularmente*
-  > Por ejemplo: hacer método que quite y ponga categoría según nombre/id y que se acceda cuando se pulsa un botón
-  de un menú que tendrá que mostrar previamente todas las categorias disponibles (se pueden activar y desactivar)
+  Habría que quitar el Singleton
 
 - Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) al ser marcados
 en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
 del CheckBox o del ListView)
   
+- Hacer apartado para crear usuarios
+  - POSIBLES OPCIONES:
+  > Hacer un login y un register que pregunte al inicio (o que se guarde con un token). Habría que
+añadir un apartado de modificar, cerrar sesión, etc
+  > Que se pregunte una única vez al principio y que sea estático: una cuenta por móvil
+
+***HAY QUE ESPERAR A APPWEB***
 - Hacer una clase _(para las estadísticas)_ que se comunique con el gestor de formularios que sea la que permita subir la 
   información de los formularios a la API (controlando que no se suba información repetida). 
   > Esta clase, muy probablemente, también puede que tenga que ser Singleton (pensar alguna alternativa)
-  
+
+***HAY QUE ESPERAR A APPWEB***
 - Hacer apartado para crear categorías desde la app
-    > Clase gestor_categorías, que tiene que ser Singleton y hay que pensarse bien los métodos y atributos que ponerle
+    > Clase gestor_categorías, probablemente vinculada al usuario
+
+Añadir apartado para crear/importar/modificar/borrar/subir categorías/acciones --> *investigar que se puedan quitar modularmente*
+    > Por ejemplo: hacer método que quite y ponga categoría según nombre/id y que se acceda cuando se pulsa un botón
+    de un menú que tendrá que mostrar previamente todas las categorias disponibles (se pueden activar y desactivar)
 
 - Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
 
@@ -84,6 +93,7 @@ más facil modificar la paleta. Cada variable representará un posible "tipo de 
 # FUNCIONALIDAD DE LA API:
 - Inicio de sesión + tokens
 - Mandar datos de formularios -> control por fechas para no duplicar formularios
+- Hay que comprobar si el nombre de usuario existe en la BD --> pensar si también devuelve una ID
 
 -----------------------------------------------
 
