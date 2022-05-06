@@ -51,11 +51,12 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       appBar: AppBar(
         /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
         title: gestor.isModificar ? const Text('Modificar formulario') : const Text('Nuevo formulario'),
-        backgroundColor: widgetBackground, //todo cambiar color
+        backgroundColor: appBarColor, //todo cambiar color en theme
       ),
       backgroundColor: background, //todo cambiar color
       body:
-        Column(children: <Widget>[
+        Column(
+          children: <Widget>[
             // Generamos los distintos campos del formulario
             generarTablaEstadoAnimo(),
             generarCategorias(),
