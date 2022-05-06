@@ -50,41 +50,35 @@ Tal vez pensar en convertir las imágenes en iconos y usar esos
 -----------------------------------------------
 
 # MEJORAS DE INTERFAZ GRÁFICA:
-- Hacer una paleta de color y aplicarla. Posible: https://coolors.co/65246d-7b2462-a43fa7-cd5d9d-fdcd87
+
 - Que cada formulario cambie según el ánimo correspondiente -> que la app entera vaya cambiando según la media
 - Hacer la paleta de color de la web respecto a la de la app -> hacerla 
 - Reestructurar el menú principal: tal vez:
   - Botón grande/vistoso de formulario nuevo
   - Configuración en appBar arriba y pequeñito
   - Ver formularios más en pequeñito pero visible
-- Poner colores análogos para la interfaz porque genera tranquilidad en vez de contraste
-- Posibles colores:
-    -Cyan / Colores pastel / Relojes decathlon https://twitter.com/tobarrax2/status/1519200070742294529
-  
-- PARA HACER LA PALETA DE COLOR: TENER EN CUENTA UN RANGO DE 5 COLORES DE MOOD
+- Poner colores análogos para la interfaz porque genera tranquilidad en vez de contrastes
+
 
 - Plantear hacer un fondo así blanco y sólo tener colores de detalle
 
-## OPCIÓN 1:
+## Procedimiento:
 Se van a hacer variables globales a las que se le asignarán previamente los colores para que sea
 más facil modificar la paleta. Cada variable representará un posible "tipo de elemento". Por ejemplo:
 'color de fondo', 'color de un formulario', 'color de la fuente principal'...
 
+Todo esto hay que usarlo en la parte de *theme de MaterialApp en main.dart*
+
 ### Elementos:
 - Color de fondo principal
 - Color de fondo secundario
-- Color de barras 
+- Color de barras
 - Color de fuente principal
 - Color de fuente secundario
 - Color de botones
 - Color de botones secundario  
 - Colores de cada estado de ánimo
-- Tal vez una variable dinámica para cambiar el color de los formularios según E.Animo
-
-# OPCIÓN 2 /MÁS FACTIBLE:
-Hacer un ThemeApp
-https://docs.flutter.dev/cookbook/design/themes
-  
+- Tal vez una variable dinámica para cambiar el color de los formularios según E.Animo  
 
 -----------------------------------------------
 
