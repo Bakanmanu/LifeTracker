@@ -17,7 +17,7 @@ class FormatoFecha {
 
   static String separador = separadorDiag;
 
-  static String getFecha_ES_DDMMYYYY_hhmm(DateTime fecha){
+  static String getFecha_es_ddmmyyyy_hhmm(DateTime fecha){
 
     String fechaFormat = getDiaSemana(fecha);
 

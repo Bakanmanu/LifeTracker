@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practica2_ds/interfaz_grafica/pantalla_menu.dart';
+import 'package:practica2_ds/theme/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
       title: 'Life Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blue, //todo aqui hay que hacer el theme
+        backgroundColor: background,
       ),
       home: const Inicio(),
     );

@@ -100,7 +100,7 @@ class GestorFormulario {
 
   /// Devuelve la fecha en formato legible del formulario pasado por parámetro
   String getFechaFormat(Formulario form){
-    return FormatoFecha.getFecha_ES_DDMMYYYY_hhmm(form.fecha);
+    return FormatoFecha.getFecha_es_ddmmyyyy_hhmm(form.fecha);
   }
 
   /// Este método devuelve todas las categorías que haya (DEFAULT + DLC)

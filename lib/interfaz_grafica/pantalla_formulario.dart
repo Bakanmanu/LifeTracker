@@ -4,6 +4,7 @@ import 'package:practica2_ds/funcionalidad/formulario.dart';
 import 'package:practica2_ds/interfaz_grafica/pantalla_menu.dart';
 import 'package:practica2_ds/interfaz_grafica/pantalla_mostrar_formularios.dart';
 import "../funcionalidad/categoria.dart";
+import '../theme/colors.dart';
 
 /// Este fichero sirve para crear la parte gráfica a la hora de crear
 /// un nuevo formulario. Por ello, se relacionará directamente con el fichero
@@ -50,9 +51,9 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       appBar: AppBar(
         /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
         title: gestor.isModificar ? const Text('Modificar formulario') : const Text('Nuevo formulario'),
-        backgroundColor: Colors.purple, //todo cambiar color
+        backgroundColor: widgetBackground, //todo cambiar color
       ),
-      backgroundColor: Colors.purple, //todo cambiar color
+      backgroundColor: background, //todo cambiar color
       body:
         Column(children: <Widget>[
             // Generamos los distintos campos del formulario
