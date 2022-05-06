@@ -23,10 +23,13 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
       backgroundColor: Colors.purple, //todo cambiar color
 
       ///Listado de Formularios realizados
-      body: gestor.listaFormularios.isEmpty ? // ESTO ES UNA CONDICIONAL ENTRE CENTER Ó COLUMN SEGUN HAYA FORMULARIOS O NO
+      body: gestor.listaFormularios.isEmpty ? //CONDICIONAL ENTRE CENTER Ó COLUMN SEGUN HAYA FORMULARIOS O NO
+
       // todo formatear un poco este texto y ponerlo bonito
       const Center(child: Text("Aún no tienes formularios :(. \nPrueba a crear uno desde 'Nuevo Formulario' en menú principal"),)
+
       : // operador ternario condicional, esto hace que si gestor.listaFormularios.isEmpty es false, sea esto lo que se ejecute
+
       ListView.builder(
           padding: const EdgeInsets.all(8),
           itemCount: gestor.listaFormularios.length,       // Obtiene la cantidad de Formularios que contiene la lista  para así iterar como un bucle for
