@@ -7,13 +7,13 @@ import 'formato_fecha.dart';
 ///También, tiene la variable global que guarda todos los formularios que se han ido creando
 class GestorFormulario {
 
-  List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
+  List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando todo borrar
   late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
   bool isModificar = false; // variable que nos va a servir para elegir la estrategia al rellenar un formulario: crear o modificar
-  List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando
+  List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando todo borrar
   // todo revisar si es util hacer un atributo de todas las categorías que se tengan y ver cómo puede chocar con las categorías del propio formulario
 
-  ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
+  ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR todo borrar
   GestorFormulario._privateConstructor();
   static final GestorFormulario _instance = GestorFormulario._privateConstructor();
   static GestorFormulario get instance => _instance;
@@ -31,14 +31,14 @@ class GestorFormulario {
 
     //Guardamos las acciones seleccionadas en la lista "respuestas" de categoría
     for(Categoria cat in listaCategorias){
-      cat.actualizarRespuestas();
+      cat.actualizarRespuestas(); //todo revisar dónde se actualizan las respuestas
     }
 
     //Creamos una nueva instancia de formulario
     Formulario form = Formulario(estadoAnimo, listaCategorias, campoTexto, fecha);
     
     //Guardamos el formulario AL PRINCIPIO lista global de formularios
-    listaFormularios.insert(0, form);
+    listaFormularios.insert(0, form); //todo esto hay que guardarlo en la lista del usuario
 
     //print('Formulario creado correctamente'); //DEBUG
     //mostrarFormularioTerminal(); //DEBUG
@@ -46,12 +46,12 @@ class GestorFormulario {
 
   ///Método que edita el formulario
   void editarFormulario(int estadoAnimo, List<Categoria> listaCategorias, String campoTexto){
-    listaFormularios[indexFormEditar].modificarFormulario(estadoAnimo, listaCategorias, campoTexto);
+    listaFormularios[indexFormEditar].modificarFormulario(estadoAnimo, listaCategorias, campoTexto); //todo esto hay que guardarlo en usuario
   }
 
   ///Borra el formulario que se le pasa por parámetro
   void borrarFormulario(Formulario form){
-    listaFormularios.remove(form);
+    listaFormularios.remove(form); //todo esto hay que borrarlo en usuario
   }
 
   ///Pone el valor de índice en pantallaMostrarFormulario cuando se pulsa
@@ -62,7 +62,7 @@ class GestorFormulario {
 
   ///Devuelve el formulario correspondiente al índice en la lista de formularios
   Formulario getFormByIndex(int index){
-    return listaFormularios[index];
+    return listaFormularios[index]; // todo ver si esto hay que hacerlo en la lista del Usuario
   }
 
   /// Método que ha de ser llamado para crear un formulario nuevo
@@ -77,7 +77,7 @@ class GestorFormulario {
   }
 
   /// Devuelve un string con lista de acciones == true del formulario dado
-  String getRespuestasAcciones(Formulario form){
+  String getRespuestasAcciones(Formulario form){ //todo ver la relación que tiene con usuario
     String respuestas = '';
     for(Categoria cat in form.listaCategorias){
 
