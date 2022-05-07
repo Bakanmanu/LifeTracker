@@ -1,5 +1,5 @@
-name: practica2_ds
-description: A new Flutter project.
+name: life_tracker
+description: Proyecto de Desarrollo de Software UGR
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -30,16 +30,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  smiley_ui:
+    git:
+      url: https://github.com/TesteurManiak/bastiui_smileys.git
+      ref: main # Optional, use it if you want a specific branch or tag.
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-
-
-smiley_ui:
-  git:
-    url: https://github.com/TesteurManiak/bastiui_smileys.git
-    ref: main # Optional, use it if you want a specific branch or tag.
 
 
 dev_dependencies:

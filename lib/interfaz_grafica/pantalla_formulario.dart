@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/funcionalidad/elementos_estado_animo.dart';
-import 'package:practica2_ds/funcionalidad/formulario.dart';
-import 'package:practica2_ds/interfaz_grafica/pantalla_menu.dart';
-import 'package:practica2_ds/interfaz_grafica/pantalla_mostrar_formularios.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
+import 'package:smiley_ui/smiley_ui.dart';
 import "../funcionalidad/categoria.dart";
+import '../funcionalidad/elementos_estado_animo.dart';
+import '../funcionalidad/formulario.dart';
 import '../theme/colors.dart';
 
 /// Este fichero sirve para crear la parte gráfica a la hora de crear
@@ -74,8 +75,8 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
 
   /// PRUEBAS
   Widget generarTablaEstadoAnimo2() { // todo poner mas bonito y hacer iconos un poco más grandes
-    return Row( // todo cambiar a un SmileyWidget
-
+    return const SmileyWidget(
+      expression: SmileyExpression.veryHappy,
     );
   }
 

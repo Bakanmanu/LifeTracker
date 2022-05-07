@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/funcionalidad/formulario.dart';
-import 'package:practica2_ds/interfaz_grafica/pantalla_formulario.dart';
-import 'package:practica2_ds/interfaz_grafica/pantalla_gestionar_categorias.dart';
-import 'package:practica2_ds/interfaz_grafica/pantalla_mostrar_formularios.dart';
-import 'package:practica2_ds/interfaz_grafica/pantalla_perfil.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_gestionar_categorias.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_perfil.dart';
+import '../funcionalidad/formulario.dart';
 import './elementos_menu.dart';
 class PantallaMenu extends StatefulWidget{
   const PantallaMenu({Key? key}) : super(key: key);

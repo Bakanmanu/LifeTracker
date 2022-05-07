@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:practica2_ds/interfaz_grafica/pantalla_menu.dart';
-import 'package:practica2_ds/theme/colors.dart';
+import 'package:life_tracker/theme/colors.dart';
+import 'interfaz_grafica/pantalla_menu.dart';
 
 void main() {
   runApp(const MyApp());

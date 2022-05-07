@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:practica2_ds/funcionalidad/accion.dart';
-import 'package:practica2_ds/funcionalidad/categoria.dart';
-import 'package:practica2_ds/funcionalidad/formulario.dart';
+import 'package:life_tracker/funcionalidad/accion.dart';
+import 'package:life_tracker/funcionalidad/categoria.dart';
+import 'package:life_tracker/funcionalidad/formulario.dart';
 
 /// En este fichero se incluirán las pruebas unitarias de GestorFormulario
 

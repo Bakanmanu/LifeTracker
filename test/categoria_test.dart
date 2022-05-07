@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:practica2_ds/funcionalidad/accion.dart';
-import 'package:practica2_ds/funcionalidad/categoria.dart';
+import 'package:life_tracker/funcionalidad/accion.dart';
+import 'package:life_tracker/funcionalidad/categoria.dart';
 
 /// En este fichero se incluirán las pruebas unitarias de Categoria
 

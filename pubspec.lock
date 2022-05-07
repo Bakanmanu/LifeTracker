@@ -282,6 +282,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smiley_ui:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: main
+      resolved-ref: "92284106e9cf3862bf010eb4103354e06fda966e"
+      url: "https://github.com/TesteurManiak/bastiui_smileys.git"
+    source: git
+    version: "1.0.0"
   source_map_stack_trace:
     dependency: transitive
     description:
@@ -402,4 +411,5 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.16.1 <3.0.0"
+  dart: ">=2.16.2 <3.0.0"
+  flutter: ">=1.17.0"

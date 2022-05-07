@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:practica2_ds/interfaz_grafica/pantalla_menu.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
 
 /// En este fichero se incluirán las pruebas de Widgets
 /// En este fichero se incluirán las pruebas de pantallaMenu

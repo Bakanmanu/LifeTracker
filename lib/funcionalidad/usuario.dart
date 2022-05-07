@@ -1,5 +1,4 @@
-
-import 'package:practica2_ds/funcionalidad/formulario.dart';
+import 'formulario.dart';
 
 /// Clase que define toda la funcionalidad respecto a un usuario. Por ejemplo,
 /// aquí se guardarán todos los formularios y categorías que éste cree, además
