@@ -5,6 +5,14 @@ con una nueva clase "Usuario" o similar que contenga toda la información de una
 por ejemplo, la lista de formularios, las categorías que ha creado...
   El usuario puede que tenga que tener un gestor de formulario para tener los métodos para gestionarlos
   Habría que quitar el Singleton
+  
+- Poner un botón de si el usuario quiere compartir o no sus datos de forma anónima
+
+- Hacer un método para hacer las estadisticas locales
+
+- ***IMPORTANTE*** Poner una barra para horas de sueño y que sea estático
+
+- Añadir más categorías bases para hacer las estadísticas a partir de ellas
 
 - Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) al ser marcados
 en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
@@ -78,7 +86,14 @@ Todo esto hay que usarlo en la parte de *theme de MaterialApp en main.dart*
 - Color de botones
 - Color de botones secundario  
 - Colores de cada estado de ánimo
-- Tal vez una variable dinámica para cambiar el color de los formularios según E.Animo  
+- Tal vez una variable dinámica para cambiar el color de los formularios según E.Animo
+
+-----------------------------------------------
+
+# IDEAS CATEGORÍAS FIJAS:
+- Autoestima
+- Deporte que has hecho
+
 
 -----------------------------------------------
 
