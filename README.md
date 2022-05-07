@@ -33,7 +33,19 @@ añadir un apartado de modificar, cerrar sesión, etc
 - Hacer apartado para crear categorías desde la app
     > Clase gestor_categorías, probablemente vinculada al usuario
 
-Añadir apartado para crear/importar/modificar/borrar/subir categorías/acciones --> *investigar que se puedan quitar modularmente*
+***HAY QUE ESPERAR A APPWEB***
+- Poner un botón para que el usuario actualice en la BD sus formularios.
+  #####Formas de llevarlo a cabo
+    - Poner un botón que actualice cada vez que se crea/modifica un formulario/categoría.
+    - Añadir a usuario un atributo de "Fecha de última subida"
+      - Opción 1: Añadir a cada formulario, además de la fecha de creación, una fecha de
+        última modificación y, cuando se suban, se comprueban todos los formularios cuya fechaCreación ó
+        fechaModificación sean superiores al atributo de "Fecha última subida"
+      - Opción 2: Hacer en Usuario una lista de Formularios temporales que, cuando se crea o se
+        modifica uno, se guarda ahí y, cuando se llame a "Actualizar BD", se creen/actualicen todos
+        los formularios de esa lista y luego se vacíe
+
+- Añadir apartado para crear/importar/modificar/borrar/subir categorías/acciones --> *investigar que se puedan quitar modularmente*
     > Por ejemplo: hacer método que quite y ponga categoría según nombre/id y que se acceda cuando se pulsa un botón
     de un menú que tendrá que mostrar previamente todas las categorias disponibles (se pueden activar y desactivar)
 
