@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue, //todo aqui hay que hacer el theme y especificar los colores por defecto
         backgroundColor: background,
+
       ),
       home: const Inicio(),
     );

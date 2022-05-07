@@ -36,9 +36,9 @@ const Color caraNeutral = Color(0xFF5065FF);
 const Color caraFeliz = Color(0xFF50FFB0);
 const Color caraContento = Color(0xFF75FF51);
 
-// Colores de los formularios
-const Color formEnfadado = Color(0xFFFD9292);
-const Color formTriste = Color(0xFFFDC092);
-const Color formNeutral = Color(0xFFA0AFFF);
-const Color formFeliz = Color(0xFF92FDCB);
-const Color formContento = Color(0xFFA9FD92);
+// Colores de los formularios todo revisar la opacidad y cómo queda
+const Color formEnfadado = Color(0xFEFD9292);
+const Color formTriste = Color(0xFEFDC092);
+const Color formNeutral = Color(0xFEA0AFFF);
+const Color formFeliz = Color(0xFE92FDCB);
+const Color formContento = Color(0xFEA9FD92);
