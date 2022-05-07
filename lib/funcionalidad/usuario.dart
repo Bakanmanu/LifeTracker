@@ -17,5 +17,7 @@ class Usuario { // todo habría que añadir un apartado para crear usuario o pre
 
   // Tal vez una ID de usuario única que le identifique pero que se lo devuelva la base de datos
 
+  //Método para que devuelva el gestor y/o métodos del gestor  --> editar o nuevo formulario
+
   // todo pensar más posibles métodos
 }

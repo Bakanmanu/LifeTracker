@@ -58,7 +58,9 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         Column(
           children: <Widget>[
             // Generamos los distintos campos del formulario
-            generarTablaEstadoAnimo(),
+
+            generarTablaEstadoAnimo2(),
+            //generarTablaEstadoAnimo(), //todo cambiar
             generarCategorias(),
             generarCampoTexto(),
           ],
@@ -66,6 +68,14 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
 
       /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
       floatingActionButton: generarBotonEnvio(),
+    );
+  }
+
+
+  /// PRUEBAS
+  Widget generarTablaEstadoAnimo2() { // todo poner mas bonito y hacer iconos un poco más grandes
+    return Row( // todo cambiar a un SmileyWidget
+
     );
   }
 

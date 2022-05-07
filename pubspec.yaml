@@ -35,6 +35,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+
+smiley_ui:
+  git:
+    url: https://github.com/TesteurManiak/bastiui_smileys.git
+    ref: main # Optional, use it if you want a specific branch or tag.
+
+
 dev_dependencies:
   test: any
   flutter_test:
