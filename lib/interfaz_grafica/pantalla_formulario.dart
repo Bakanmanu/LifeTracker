@@ -59,8 +59,8 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           children: <Widget>[
             // Generamos los distintos campos del formulario
 
-            generarTablaEstadoAnimo2(),
-            //generarTablaEstadoAnimo(), //todo cambiar
+            generarTablaEstadoAnimo(),
+            // generarTablaEstadoAnimo2(),
             generarCategorias(),
             generarCampoTexto(),
           ],
@@ -73,7 +73,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
 
 
   /// PRUEBAS
-  Widget generarTablaEstadoAnimo2() { // todo revisar para que no rebote
+  Widget generarTablaEstadoAnimo() { // todo revisar para que no rebote
     return
       Padding(
         padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
@@ -147,7 +147,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
   }
 
   /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO
-  Widget generarTablaEstadoAnimo() { // todo poner mas bonito y hacer iconos un poco más grandes
+  Widget generarTablaEstadoAnimo2() { // todo poner mas bonito y hacer iconos un poco más grandes
     return Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
