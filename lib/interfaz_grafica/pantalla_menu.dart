@@ -26,6 +26,15 @@ class _PantallaMenuState extends State<PantallaMenu>{
               //Decoration todo revisar
               child: GestureDetector(
                 key: const Key("BotonesMenu"),
+
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset("assets/"+menu[index].imagen, width: 80,),
+                    Text('\n' + menu[index].nombre,), //todo poner un poco más bonito el texto, tal vez con un container
+                  ],
+                ),
+
                 onTap: (){
 
                   // SWITCH PARA ACCEDER A LOS DISTINTOS MENÚS
@@ -51,13 +60,6 @@ class _PantallaMenuState extends State<PantallaMenu>{
                       break;
                   }
                 },
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/"+menu[index].imagen, width: 80,),
-                      Text(menu[index].nombre,),
-                    ],
-              )
               ),
             );
           }

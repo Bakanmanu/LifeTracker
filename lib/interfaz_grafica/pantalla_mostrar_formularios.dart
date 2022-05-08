@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
+import 'package:smiley_ui/smiley_ui.dart';
 
 import '../funcionalidad/elementos_estado_animo.dart';
 import '../funcionalidad/formulario.dart';
@@ -44,8 +45,8 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ListTile(
-                      leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
+                    ListTile( //leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
+                      leading: getCaraEstadoAnimo(gestor.listaFormularios[index].estadoAnimo), // Elegimos la cara según
                       isThreeLine: true,
                       title: Text(gestor.getFechaFormat(gestor.listaFormularios[index]) + '\n'),
                       subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])),
@@ -97,6 +98,21 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
     );
   }
 
+  Widget getCaraEstadoAnimo(int estadoAnimo){
+      switch(estadoAnimo){
+        case 1:
+          return const SmileyWidget(expression: SmileyExpression.verySad);
+        case 2:
+          return const SmileyWidget(expression: SmileyExpression.sad);
+        case 3:
+          return const SmileyWidget(expression: SmileyExpression.neutral);
+        case 4:
+          return const SmileyWidget(expression: SmileyExpression.happy);
+        case 5:
+          return const SmileyWidget(expression: SmileyExpression.veryHappy);
+      }
+      return const SmileyWidget(expression: SmileyExpression.neutral, isEnabled: false,); //valor que se devuelve por si hay algún error
+  }
 
   /// Esta función se llama cuando se va a borrar un formulario, para asegurarse
   /// Además, actualiza la página para que desaparezca el form borrado
