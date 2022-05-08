@@ -72,81 +72,82 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
   }
 
 
-  /// PRUEBAS
-  Widget generarTablaEstadoAnimo() { // todo revisar para que no rebote
+  /// Método para generar las caras animadas para el estado de ánimo
+  Widget generarTablaEstadoAnimo() {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     return
-      Padding(
-        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-        child:
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SmileyWidget(
-                expression: SmileyExpression.verySad,
-                isEnabled:  _estadoAnimo == 1 ? true : false,
-                isSelected: _estadoAnimo == 1 ? true : false,
-                onTap: () => setState(
-                      () {
-                    print("click en "+estadosAnimo[0].nombre); // DEBUG
-                    _estadoAnimo = 1;
-                  },
-                ),
+      SizedBox(
+        height: queryData.size.height * 0.13,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SmileyWidget(
+              expression: SmileyExpression.verySad,
+              isEnabled:  _estadoAnimo == 1 ? true : false,
+              isSelected: _estadoAnimo == 1 ? true : false,
+              onTap: () => setState(
+                    () {
+                  print("click en "+estadosAnimo[0].nombre); // DEBUG
+                  _estadoAnimo = 1;
+                },
               ),
+            ),
 
-              SmileyWidget(
-                expression: SmileyExpression.sad,
-                isEnabled:  _estadoAnimo == 2 ? true : false,
-                isSelected: _estadoAnimo == 2 ? true : false,
-                onTap: () => setState(
-                      () {
-                    print("click en "+estadosAnimo[1].nombre); // DEBUG
-                    _estadoAnimo = 2;
-                  },
-                ),
+            SmileyWidget(
+              expression: SmileyExpression.sad,
+              isEnabled:  _estadoAnimo == 2 ? true : false,
+              isSelected: _estadoAnimo == 2 ? true : false,
+              onTap: () => setState(
+                    () {
+                  print("click en "+estadosAnimo[1].nombre); // DEBUG
+                  _estadoAnimo = 2;
+                },
               ),
+            ),
 
-              SmileyWidget(
-                  expression: SmileyExpression.neutral,
-                isEnabled:  _estadoAnimo == 3 ? true : false,
-                isSelected: _estadoAnimo == 3 ? true : false,
-                onTap: () => setState(
-                      () {
-                    print("click en "+estadosAnimo[2].nombre); // DEBUG
-                    _estadoAnimo = 3;
-                  },
-                ),
+            SmileyWidget(
+                expression: SmileyExpression.neutral,
+              isEnabled:  _estadoAnimo == 3 ? true : false,
+              isSelected: _estadoAnimo == 3 ? true : false,
+              onTap: () => setState(
+                    () {
+                  print("click en "+estadosAnimo[2].nombre); // DEBUG
+                  _estadoAnimo = 3;
+                },
               ),
+            ),
 
-              SmileyWidget(
-                expression: SmileyExpression.happy,
-                isEnabled:  _estadoAnimo == 4 ? true : false,
-                isSelected: _estadoAnimo == 4 ? true : false,
-                onTap: () => setState(
-                      () {
-                    print("click en "+estadosAnimo[3].nombre); // DEBUG
-                    _estadoAnimo = 4;
-                  },
-                ),
+            SmileyWidget(
+              expression: SmileyExpression.happy,
+              isEnabled:  _estadoAnimo == 4 ? true : false,
+              isSelected: _estadoAnimo == 4 ? true : false,
+              onTap: () => setState(
+                    () {
+                  print("click en "+estadosAnimo[3].nombre); // DEBUG
+                  _estadoAnimo = 4;
+                },
               ),
+            ),
 
-              SmileyWidget(
-                expression: SmileyExpression.veryHappy,
-                isEnabled:  _estadoAnimo == 5 ? true : false,
-                isSelected: _estadoAnimo == 5 ? true : false,
-                onTap: () => setState(
-                      () {
-                    print("click en "+estadosAnimo[4].nombre); // DEBUG
-                    _estadoAnimo = 5;
-                  },
-                ),
+            SmileyWidget(
+              expression: SmileyExpression.veryHappy,
+              isEnabled:  _estadoAnimo == 5 ? true : false,
+              isSelected: _estadoAnimo == 5 ? true : false,
+              onTap: () => setState(
+                    () {
+                  print("click en "+estadosAnimo[4].nombre); // DEBUG
+                  _estadoAnimo = 5;
+                },
               ),
-            ],
-          )
-    );
+            ),
+          ],
+        ),
+      );
   }
 
-  /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO
+  /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO ANTIGUA (DESUSO)
   Widget generarTablaEstadoAnimo2() { // todo poner mas bonito y hacer iconos un poco más grandes
     return Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -160,7 +161,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           ],
         );
   }
-
+  /// MÉTODO ADICIONAL RELACIONADO CON generarTablaEstadoAnimo2 para marcar o desmarcar botones de estado de ánimo
   Widget _icon(int index, {required String text, required IconData icon}) {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
