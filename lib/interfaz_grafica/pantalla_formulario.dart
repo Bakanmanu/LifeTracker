@@ -73,6 +73,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
 
 
   /// Método para generar las caras animadas para el estado de ánimo
+  /// FUENTE: https://github.com/TesteurManiak/bastiui_smileys
   Widget generarTablaEstadoAnimo() {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
