@@ -162,6 +162,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           ],
         );
   }
+
   /// MÉTODO ADICIONAL RELACIONADO CON generarTablaEstadoAnimo2 para marcar o desmarcar botones de estado de ánimo
   Widget _icon(int index, {required String text, required IconData icon}) {
     MediaQueryData queryData;
@@ -199,43 +200,43 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         ListView(
           children: [
             Container(
-              margin: const EdgeInsets.all(15),
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+              //margin: const EdgeInsets.all(15),
+              padding: const EdgeInsets.only(left: 25, right: 15, top: 10, bottom: 0), // todo revisar responsive
               child:
-              Column(
-                children: List.generate(
-                  _categorias.length,
-                      (indexCategorias){
-                    final categoria = _categorias[indexCategorias];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(categoria.enunciado),
-                        const SizedBox(height: 15,),
-                        Wrap(
-                          children: List.generate(
-                              categoria.acciones.length,
-                                  (indexAcciones){
-                                return Row(
-                                  children: [
-                                    Checkbox(
-                                      value: categoria.acciones[indexAcciones].activo,
-                                      onChanged: (value){
-                                        setState(() {
-                                          categoria.acciones[indexAcciones].cambiarActivo(); //Cambiamos el estado de la acción al hacer click
-                                        });
-                                      },
-                                    ),
-                                    Text(categoria.acciones[indexAcciones].nombre)
-                                  ],
-                                );
-                              }),
-                        )
-                      ],
-                    );
-                  },
+                Column(
+                  children: List.generate(
+                    _categorias.length,
+                        (indexCategorias){
+                      final categoria = _categorias[indexCategorias];
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(categoria.enunciado),
+                          const SizedBox(height: 15,),
+                          Wrap(
+                            children: List.generate(
+                                categoria.acciones.length,
+                                    (indexAcciones){
+                                  return Row(
+                                    children: [
+                                      Checkbox(
+                                        value: categoria.acciones[indexAcciones].activo,
+                                        onChanged: (value){
+                                          setState(() {
+                                            categoria.acciones[indexAcciones].cambiarActivo(); //Cambiamos el estado de la acción al hacer click
+                                          });
+                                        },
+                                      ),
+                                      Text(categoria.acciones[indexAcciones].nombre)
+                                    ],
+                                  );
+                                }),
+                          )
+                        ],
+                      );
+                    },
+                  ),
                 ),
-              ),
             )
           ],
         ),
@@ -245,13 +246,12 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
 
   /// MÉTODO PARA GENERAR EL CAMPO DE TEXTO
   Widget generarCampoTexto() {
-
     return Container(
-      padding: const EdgeInsets.fromLTRB(5, 5, 5, 60),
+      padding: const EdgeInsets.fromLTRB(5, 5, 5, 50), // todo revisar responsive
       child:
       Container(
-        margin: const EdgeInsets.all(15),
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+        //margin: const EdgeInsets.all(15),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 25), // todo revisar responsive
         child: TextFormField(
           key: const Key("addTexto"),
           initialValue: _campoTexto, // Si _campoTexto == '', entonces no pondrá valor incial, si no, pondrá lo que esté guardado

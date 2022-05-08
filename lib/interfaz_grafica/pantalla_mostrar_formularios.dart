@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
 import 'package:smiley_ui/smiley_ui.dart';
 
-import '../funcionalidad/elementos_estado_animo.dart';
 import '../funcionalidad/formulario.dart';
 
 ///Este fichero sirve para crear la parte gráfica a la hora de visualizar
@@ -52,7 +51,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                       subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])),
                     ),
 
-                    /// Aquí se podría hacer un container si se quisiera poner más bonito todo revisar
+                    // Aquí se podría hacer un container si se quisiera poner más bonito todo revisar
                     Text(gestor.listaFormularios[index].campoTexto),
 
                     Row(
