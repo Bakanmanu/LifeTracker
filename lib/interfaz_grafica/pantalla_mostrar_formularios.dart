@@ -37,7 +37,6 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
           itemCount: gestor.listaFormularios.length,       // Obtiene la cantidad de Formularios que contiene la lista  para así iterar como un bucle for
           itemBuilder: (BuildContext context, int index) { // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
             return Container(
-              //height: 80,
               //color: Colors.purpleAccent[400], //todo cambiar color según tipo de formulario. ESTO SERÍA SOLO EL BORDE
               child: Card(
                 //color: Colors.purpleAccent, //todo cambiar color según tipo de formulario. ESTO SERÍA EL CONTENIDO
