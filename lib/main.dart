@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Life Tracker',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      // ThemeData(
-      //   primarySwatch: Colors.blue, //todo aqui hay que hacer el theme y especificar los colores por defecto
-      //   backgroundColor: background,
-      // ),
+      theme: //ThemeData.dark(),
+      ThemeData(
+        primarySwatch: Colors.purple, //todo aqui hay que hacer el theme y especificar los colores por defecto
+        backgroundColor: background,
+      ),
       home: const Inicio(),
     );
   }
