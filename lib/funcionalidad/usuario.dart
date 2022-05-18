@@ -11,7 +11,6 @@ class Usuario { // todo habría que añadir un apartado para crear usuario o pre
   late String pass; // ¿?
   late int userID;  // todo revisar si es necesario
 
-  List<Formulario> listaFormularios = []; // Lista que guarda los formularios del Usuario
   List<Categoria> categoriasDLC = [];     // Lista que contiene las categorías que se vayan descargando todo pensar si hay que diferenciar de las default
   late GestorFormulario gestorFormulario;
 

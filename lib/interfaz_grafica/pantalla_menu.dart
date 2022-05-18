@@ -42,7 +42,7 @@ class _PantallaMenuState extends State<PantallaMenu>{
                     case 1: //Caso de que sea para rellenar un nuevo formulario
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) {
-                            GestorFormulario.instance.setStratCrear(); // Ponemos la estrategia Crear
+                            GestorFormulario.instance.setStratCrear(); // Ponemos la estrategia Crear //todo quitar de aqui
                             return const PantallaFormulario();
                           }));
                       break;

@@ -14,7 +14,7 @@ const Color bgTextField = Color(0xFFF7F8F8);
 
 //Paleta de color hecha //todo pendiente de modificar
 // buscar https://coolors.co/65246d-7b2462-a43fa7-cd5d9d-fdcd87
-const Color background = Color(0xFFDD19FF);
+const Color background = Color(0xFFE049FF);
 const Color background2 = Color(0xFFFDCD87);
 const Color widgetBackground = Color(0xFFE4C9FF);
 const Color appBarColor = Color(0xFFB400D2);
