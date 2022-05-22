@@ -27,8 +27,17 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
       ///Listado de Formularios realizados
       body: gestor.listaFormularios.isEmpty ? //CONDICIONAL ENTRE CENTER Ó COLUMN SEGUN HAYA FORMULARIOS O NO
 
-      // todo formatear un poco este texto y ponerlo bonito
-      const Center(child: Text("Aún no tienes formularios :(. \nPrueba a crear uno desde 'Nuevo Formulario' en menú principal"),)
+      Container(
+        padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
+        child: const Text(
+          "Aún no tienes formularios :(\nPrueba a crear uno desde 'Nuevo Formulario' en menú principal",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
+          maxLines: 3,
+          textAlign: TextAlign.center,
+        ),
+      )
 
       : // operador ternario condicional, esto hace que si gestor.listaFormularios.isEmpty es false, sea esto lo que se ejecute
 
