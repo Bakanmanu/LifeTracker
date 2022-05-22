@@ -21,7 +21,7 @@ class PantallaFormulario extends StatefulWidget {
 
 class _PantallaFormularioState extends State<PantallaFormulario> {
 
-  late GestorFormulario gestor = GestorFormulario.instance;
+  late GestorFormulario gestor = GestorFormulario.instance; // todo cambiar
 
   ///Estos atributos sirven para guardar y enviar el estado del formulario definitivamente
   late int _estadoAnimo; //Valor por defecto: estado de ánimo neutral
