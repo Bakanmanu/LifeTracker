@@ -39,6 +39,8 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
         ),
       )
 
+      // todo hacer un botoncillo para que te lleve a crear un nuevo formulario
+
       : // operador ternario condicional, esto hace que si gestor.listaFormularios.isEmpty es false, sea esto lo que se ejecute
 
       ListView.builder(
