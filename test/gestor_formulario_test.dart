@@ -8,7 +8,7 @@ import 'package:life_tracker/funcionalidad/formulario.dart';
 void main() {
   group('GestorFormulario', () {
     test('los campos se han guardado bien y que la lista de formularios tiene el numero de formularios', (){
-      final gestor = GestorFormulario.instance;
+      GestorFormulario gestor = GestorFormulario();
 
       //Creamos una lista de categorías para poder llamar al método
       List<Categoria> lCategorias = [Categoria(enunciado: '¿Qué has comido?', acciones: [
@@ -34,7 +34,7 @@ void main() {
 
 
     test('el numero de formularios debe reducirse en 1 si se llama al metodo borrarFormulario()', (){
-      final gestor = GestorFormulario.instance;
+      GestorFormulario gestor = GestorFormulario();
 
       //Creamos una lista de categorías para poder llamar al método
       List<Categoria> lCategorias = [Categoria(enunciado: '¿Qué has comido?', acciones: [
