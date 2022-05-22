@@ -62,7 +62,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
             generarTablaEstadoAnimo(),
             // generarTablaEstadoAnimo2(),
             generarCategorias(),
-            generarCampoTexto(),
+            //generarCampoTexto(),
           ],
         ),
 
@@ -190,14 +190,13 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     );
   }
 
-
   /// MÉTODO PARA GENERAR LAS CATEGORÍAS Y ACCIONES
   Widget generarCategorias() {
     return Flexible(
       child:
       SafeArea(
         child:
-        ListView(
+        ListView( // todo si al final se pone todo en scroleable, cambiar el método para que sea un listview y se generen dentro los widgets
           children: [
             Container(
               //margin: const EdgeInsets.all(15),
@@ -237,7 +236,8 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                     },
                   ),
                 ),
-            )
+            ),
+            generarCampoTexto(), // todo revisar si es mejor ponerlo aquí
           ],
         ),
       ),
