@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/theme/colors.dart';
 import 'interfaz_grafica/pantalla_menu.dart';
 
@@ -66,6 +67,7 @@ class InicioState extends State<Inicio>{
                 child: TextButton(
                   child: const Text("Comenzar", style: TextStyle(color: Colors.white, fontSize: 20),),
                   onPressed: (){
+                    GestorUsuario.instance.setCurrentUserDefault(); // todo REVISAR PORQUE ESTO HAY QUE TOCARLO SEGÚN EL LOGIN
                     Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
                   },
                 ),

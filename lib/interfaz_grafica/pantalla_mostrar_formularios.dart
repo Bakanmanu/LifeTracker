@@ -5,6 +5,7 @@ import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
 import 'package:smiley_ui/smiley_ui.dart';
 
 import '../funcionalidad/formulario.dart';
+import '../funcionalidad/usuario.dart';
 
 ///Este fichero sirve para crear la parte gráfica a la hora de visualizar
 ///los formularios.
@@ -17,7 +18,7 @@ class PantallaMostrarFormulario extends StatefulWidget{
 }
 
 class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
-  GestorFormulario gestor = GestorFormulario.instance;
+  GestorFormulario gestor = GestorUsuario.instance.currentUser!.gestorFormulario;
 
   @override
   Widget build(BuildContext context){
@@ -88,7 +89,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                             gestor.setIndex(index);
                             await Navigator.push(context,
                                 MaterialPageRoute(builder: (_){
-                                  GestorFormulario.instance.setStratmodificar(); // Ponemos la estrategia Modificar
+                                  gestor.setStratmodificar(); // Ponemos la estrategia Modificar todo revisar
                                   return const PantallaFormulario();
                                 }
                             ));

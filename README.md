@@ -1,10 +1,6 @@
 # CAMBIOS A REALIZAR (por orden de importancia):
 
-- ***IMPORTANTE:*** Plantearse si sería buena idea refactorizar la clase *GestorFormulario* y repartirla
-con una nueva clase "Usuario" o similar que contenga toda la información de una persona, como, 
-por ejemplo, la lista de formularios, las categorías que ha creado...
-  El usuario puede que tenga que tener un gestor de formulario para tener los métodos para gestionarlos
-  Habría que quitar el Singleton
+- Poner el inicio de sesión y juntarlo con la clase GestorUsuario
   
 - Poner un botón de si el usuario quiere compartir o no sus datos de forma anónima
 
@@ -185,3 +181,12 @@ motivos expuestos a continuación:
 el color del estado actual. Si se cambia, se desactiva el anterior activo
     > Anteriormente: Eran imágenes en un GridView sensibles al tacto que no mostraban respuesta al usuario
 
+
+- Se han creado las clases Usuario y GestorUsuario. GestorUsuario funciona de forma similar que
+anteriormente el GestorFormulario. La diferencia es que ahora GestorFormulario es una clase no Singleton
+que existe en cada unidad de usuario. GestorUsuario sí que es un Singleton que contiene una estructura
+(Mapa) con todos los usuarios creados y tiene sistema de validación. Esto habrá que modificarlo una vez
+se interactúe con la API, ya que esta estructura de usuarios deberá validarse en la base de datos,
+además de almacenarse allí. Sólo faltaría unir con la pantalla de login para que utilice los métodos
+de esta nueva clase creada (GestorUsuario) y poder tener ya muchos usuarios.
+De momento, se inicia sesión automáticamente con un usuario doomie

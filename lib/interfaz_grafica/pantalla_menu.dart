@@ -4,6 +4,7 @@ import 'package:life_tracker/interfaz_grafica/pantalla_gestionar_categorias.dart
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_perfil.dart';
 import '../funcionalidad/formulario.dart';
+import '../funcionalidad/usuario.dart';
 import './elementos_menu.dart';
 class PantallaMenu extends StatefulWidget{
   const PantallaMenu({Key? key}) : super(key: key);
@@ -13,6 +14,9 @@ class PantallaMenu extends StatefulWidget{
 }
 
 class _PantallaMenuState extends State<PantallaMenu>{
+  
+  GestorFormulario gestor = GestorUsuario.instance.currentUser!.gestorFormulario;
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -42,7 +46,8 @@ class _PantallaMenuState extends State<PantallaMenu>{
                     case 1: //Caso de que sea para rellenar un nuevo formulario
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) {
-                            GestorFormulario.instance.setStratCrear(); // Ponemos la estrategia Crear //todo quitar de aqui
+                            //GestorFormulario.instance.setStratCrear(); // Ponemos la estrategia Crear //todo quitar de aqui
+                            gestor.setStratCrear(); // todo revisar
                             return const PantallaFormulario();
                           }));
                       break;

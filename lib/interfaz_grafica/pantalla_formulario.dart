@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
 import 'package:smiley_ui/smiley_ui.dart';
@@ -21,7 +22,7 @@ class PantallaFormulario extends StatefulWidget {
 
 class _PantallaFormularioState extends State<PantallaFormulario> {
 
-  late GestorFormulario gestor = GestorFormulario.instance; // todo cambiar
+  GestorFormulario gestor = GestorUsuario.instance.currentUser!.gestorFormulario; // todo revisar
 
   ///Estos atributos sirven para guardar y enviar el estado del formulario definitivamente
   late int _estadoAnimo; //Valor por defecto: estado de ánimo neutral

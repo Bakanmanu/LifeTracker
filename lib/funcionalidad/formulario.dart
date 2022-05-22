@@ -7,16 +7,11 @@ import 'formato_fecha.dart';
 ///También, tiene la variable global que guarda todos los formularios que se han ido creando
 class GestorFormulario {
 
-  List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando todo borrar
+  List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
   late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
   bool isModificar = false; // variable que nos va a servir para elegir la estrategia al rellenar un formulario: crear o modificar
-  List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando todo borrar
+  List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando todo pensar si poner en otro lado
   // todo revisar si es util hacer un atributo de todas las categorías que se tengan y ver cómo puede chocar con las categorías del propio formulario
-
-  ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR todo borrar
-  GestorFormulario._privateConstructor();
-  static final GestorFormulario _instance = GestorFormulario._privateConstructor();
-  static GestorFormulario get instance => _instance;
 
 
   /// Método para crear un nuevo formulario con los parámetros que se recojan de la interfaz
