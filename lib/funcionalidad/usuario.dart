@@ -8,7 +8,7 @@ import 'formulario.dart';
 /// usuario que esté actualmente utilizando la aplicación
 class GestorUsuario {
   Map<String, Usuario> mapaUsuarios = { // usamos un mapa para que sea más rápido
-    "admin" : Usuario("admin", "1234"),
+    "asdf" : Usuario("asdf", "1234"),
   }; // siempre inicializamos con un usuario por defecto
 
   Usuario? currentUser; // el usuario que esté actualmente verificado. Puede ser null
@@ -19,6 +19,7 @@ class GestorUsuario {
   static GestorUsuario get instance => _instance;
 
   GestorUsuario(){
+    this.
     currentUser = mapaUsuarios["admin"];
   }
 

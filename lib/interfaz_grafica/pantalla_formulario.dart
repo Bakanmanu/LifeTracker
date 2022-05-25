@@ -63,7 +63,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
             generarTablaEstadoAnimo(),
             // generarTablaEstadoAnimo2(),
             generarCategorias(),
-            //generarCampoTexto(),
+            //generarCampoTexto(), // todo revisar si poner aquí o en generarCategorías
           ],
         ),
 
