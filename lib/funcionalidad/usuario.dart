@@ -7,7 +7,7 @@ import 'formulario.dart';
 /// encarga de crear usuarios, almacenarlos, validarlos y poder acceder al
 /// usuario que esté actualmente utilizando la aplicación
 class GestorUsuario {
-  Map<String, Usuario> listaUsuarios = { // usamos un mapa para que sea más rápido
+  Map<String, Usuario> mapaUsuarios = { // usamos un mapa para que sea más rápido
     "admin" : Usuario("admin", "1234"),
   }; // siempre inicializamos con un usuario por defecto
 
@@ -19,7 +19,7 @@ class GestorUsuario {
   static GestorUsuario get instance => _instance;
 
   GestorUsuario(){
-    currentUser = listaUsuarios["admin"];
+    currentUser = mapaUsuarios["admin"];
   }
 
 
@@ -30,10 +30,10 @@ class GestorUsuario {
   int iniciarSesion(String user, String pass) {
     int codigo = 0; // 0: usuario no existe / 1: inicio correcto / 2: credenciales inválidas
 
-    if (listaUsuarios.containsKey(user)){ // el usuario existe -> true
-      if (listaUsuarios[user]?.pass == pass){
+    if (mapaUsuarios.containsKey(user)){ // el usuario existe -> true
+      if (mapaUsuarios[user]?.pass == pass){
         codigo = 1; // correcto
-        setCurrentUser(listaUsuarios[user]); // no puede ser nulo porque ya hemos comprobado que existe
+        setCurrentUser(mapaUsuarios[user]); // no puede ser nulo porque ya hemos comprobado que existe
       }
       else {
         codigo = 2; // no coincide contraseña
@@ -57,13 +57,13 @@ class GestorUsuario {
   int registrarse(String user, String pass){
     int codigo = 0; // 0: usuario ya existe / 1: correcto / 2: campo contraseña no válido
 
-    if (!listaUsuarios.containsKey(user)){ // el usuario NO existe -> true
+    if (!mapaUsuarios.containsKey(user)){ // el usuario NO existe -> true
       if (pass == ''){
         codigo = 2; // contraseña no válida
       }
       else{
         codigo = 1;
-        listaUsuarios[user] = Usuario(user, pass); // añadimos el nuevo usuario al mapa
+        mapaUsuarios[user] = Usuario(user, pass); // añadimos el nuevo usuario al mapa
       }
     }
     else{
@@ -74,8 +74,8 @@ class GestorUsuario {
 
   /// Método para borrar un usuario existente de la lista
   void borrarUsuario(String user){
-    if(listaUsuarios.containsKey(user)){
-      listaUsuarios.remove(user);
+    if(mapaUsuarios.containsKey(user)){
+      mapaUsuarios.remove(user);
     }
   }
 
@@ -89,7 +89,7 @@ class GestorUsuario {
   /// Método debug para poder usar la aplicación antes de tener el sistema de
   /// login
   void setCurrentUserDefault(){
-    setCurrentUser(listaUsuarios["admin"]);
+    setCurrentUser(mapaUsuarios["admin"]);
   }
 }
 
@@ -100,12 +100,12 @@ class Usuario {
   /// Atributos
   late String user; // Pensar si hay que comprobar en la base de datos que exista ese nombre
   late String pass;
-  List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando todo pensar si hay que diferenciar de las default
-  GestorFormulario gestorFormulario = GestorFormulario();
+  late GestorFormulario gestorFormulario;
 
-  Usuario(this.user, this.pass); // Constructor
+  Usuario(this.user, this.pass){
+    gestorFormulario = GestorFormulario();
+  } // Constructor todo aseguriarse de que se genera un objeto gestor
 
-// todo método para añadir las categoriasDLC pasadas por parámetro al gestor formulario
 
 //Método para que devuelva el gestor y/o métodos del gestor  --> editar o nuevo formulario
 

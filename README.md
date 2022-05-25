@@ -1,6 +1,8 @@
 # CAMBIOS A REALIZAR (por orden de importancia):
 
 - Poner el inicio de sesión y juntarlo con la clase GestorUsuario
+
+- Borrar todo lo referente a contenido descargable
   
 - Poner un botón de si el usuario quiere compartir o no sus datos de forma anónima
 
