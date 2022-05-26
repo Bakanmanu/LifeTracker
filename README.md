@@ -183,6 +183,7 @@ motivos expuestos a continuación:
 el color del estado actual. Si se cambia, se desactiva el anterior activo
     > Anteriormente: Eran imágenes en un GridView sensibles al tacto que no mostraban respuesta al usuario
 
+## En Práctica 4
 
 - Se han creado las clases Usuario y GestorUsuario. GestorUsuario funciona de forma similar que
 anteriormente el GestorFormulario. La diferencia es que ahora GestorFormulario es una clase no Singleton
@@ -192,3 +193,12 @@ se interactúe con la API, ya que esta estructura de usuarios deberá validarse 
 además de almacenarse allí. Sólo faltaría unir con la pantalla de login para que utilice los métodos
 de esta nueva clase creada (GestorUsuario) y poder tener ya muchos usuarios.
 De momento, se inicia sesión automáticamente con un usuario doomie
+
+- Se ha creado la pantalla de registro, vinculada al inicio de sesión
+
+- Se han creado alertas relacionadas con problemas al registrarse / iniciar sesión. Se propone
+la siguiente simbología de códigos que devuelven las funciones de registro y login:
+  - 0: Login: el usuario no existe / Registro: el usuario ya existe
+  - 1: Login / registro correcto
+  - 2: Contraseña incorrecta / no válida
+  - 3: Campos vacíos

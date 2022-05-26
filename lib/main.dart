@@ -110,21 +110,14 @@ class InicioState extends State<Inicio>{
                 child: TextButton(
                   child: const Text("Comenzar", style: TextStyle(color: Colors.white, fontSize: 20),),
                   onPressed: (){
-                    print("BOTON PULSADO");
-                    print(user);
-                    print(pass);
-                    print(gestor.iniciarSesion(user, pass));
-                    if (gestor.iniciarSesion(user, pass) == 0){ //todo revisar cuando la API
-                      // todo poner alerta de credenciales erróneas
-                      // avisar de que el usuario no existe y sugerir registrarse
-                    }
-                    else if (gestor.iniciarSesion(user, pass) == 1){
-                      // todo poner un mensaje de inicio de sesión correcto
+                    //todo revisar cuando la API
+                    int codigoLogin = gestor.iniciarSesion(user, pass); // intento de inicio de sesión
+
+                    if (codigoLogin == 1){ // INICIO CORRECTO
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
                     }
-                    else if (gestor.iniciarSesion(user, pass) == 2){
-                      // todo poner alerta de credenciales erróneas (user existe pero contraseña mal)
-                      //pass.;
+                    else { // FALLO AL LOGIN
+                      _mostrarAlerta(codigoLogin);
                     }
                   },
                 ),
@@ -144,18 +137,21 @@ class InicioState extends State<Inicio>{
     );
   }
 
-  Future <void> _mostrarAlerta(int codigo) async { //todo
+  Future <void> _mostrarAlerta(int codigo) async {
     String texto = '';
 
     switch (codigo){
       case 0:
-        texto = "El usuario no existe";
+        texto = "El usuario no existe.\nPruebe registrarse";
         break;
-      case 1:
+      case 1: // este caso no debería ser llamado
         texto = "Inicio de sesión correcto :)";
         break;
       case 2:
         texto = "Las credenciales no son válidas";
+        break;
+      case 3:
+        texto = "Por favor, rellene los campos";
         break;
     }
 
@@ -164,15 +160,25 @@ class InicioState extends State<Inicio>{
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('El formulario se ha guardado correctamente'),
+          title: const Text('Error al iniciar sesión'),
           content: SingleChildScrollView(
             child: ListBody(
-              children: const <Widget>[
-                Text("texto"), ///todo poner variable texto
+              children: <Widget>[
+                Text(texto),
               ],
             ),
           ),
           actions: <Widget>[
+            if (codigo == 0) ( // si el nombre de usuario no existe
+              TextButton(
+                child: const Text('Registrarse'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaRegistro()));
+                },
+              )
+            ),
+
             TextButton(
               child: const Text('Vale'),
               onPressed: () {
