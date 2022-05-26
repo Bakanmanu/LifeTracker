@@ -1,10 +1,13 @@
 # CAMBIOS A REALIZAR (por orden de importancia):
 
-- Poner el inicio de sesión y juntarlo con la clase GestorUsuario
+- Crear método para editar username y passwor
+
+- Revisar que cuando haces un formulario y te lleve al menú inicial, lo haga con pop para descargar la pila
+en vez de seguir haciendo pushs
 
 - Borrar todo lo referente a contenido descargable
   
-- Poner un botón de si el usuario quiere compartir o no sus datos de forma anónima
+- Poner un botón de si el usuario quiere compartir o no sus datos (de forma anónima)
 
 - Hacer un método para hacer las estadisticas locales
 
@@ -202,3 +205,7 @@ la siguiente simbología de códigos que devuelven las funciones de registro y l
   - 1: Login / registro correcto
   - 2: Contraseña incorrecta / no válida
   - 3: Campos vacíos
+
+- Arreglado (creo) el overflow y se ha hecho que, cuando se cierra sesión, no se permita hacer
+pop y volver a donde antes, sino que se borra toda la pila. Además, cuando se inicia sesión no permite
+volver atrás a no ser que se cierre sesión. Esto para evitar incordios.

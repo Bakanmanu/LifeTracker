@@ -83,6 +83,8 @@ class GestorUsuario {
     return codigo;
   }
 
+  // todo hacer método para cambiar user name y password
+
   /// Método para borrar un usuario existente de la lista
   void borrarUsuario(String user) {
     if (mapaUsuarios.containsKey(user)) {

@@ -29,11 +29,12 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                 blurRadius: 20.0,
                 spreadRadius: 5.0,
                 offset: Offset(5.0, 5.0)
-            )],
+            )
+            ],
             color: Colors.purpleAccent, //todo poner color
             borderRadius: BorderRadius.circular(20)
         ),
-        margin: const EdgeInsets.only(top: 50, left: 20, right: 20 ,bottom: 40),
+        margin: const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 40),
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Center(
           child: Column(
@@ -41,25 +42,29 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
             children: [
 
               /// MENSAJE todo poner más bonito
-              const Text(
-                "Introduce tus datos para crear una nueva cuenta",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-                maxLines: 3,
-                textAlign: TextAlign.center,
+              if (MediaQuery.of(context).viewInsets.bottom == 0) ( // si el teclado NO está activo
+                  const Text(
+                    "Introduce tus datos para crear una nueva cuenta",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                    maxLines: 3,
+                    textAlign: TextAlign.center,
+                  )
               ),
 
               /// CAMPO USERNAME
               Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 25, bottom: 10), // todo revisar responsive
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 25, bottom: 10),
+                // todo revisar responsive
                 child: TextFormField(
                   key: const Key("addTexto"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Nombre de usuario',
                   ),
-                  onChanged: (String userInput){
+                  onChanged: (String userInput) {
                     user = userInput;
                   },
                 ),
@@ -67,7 +72,9 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
 
               /// CAMPO PASSWORD
               Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15), // todo revisar responsive
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 15, bottom: 10),
+                // todo revisar responsive
                 child: TextFormField(
                   obscureText: true,
                   key: const Key("addTexto"),
@@ -75,7 +82,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                     border: OutlineInputBorder(),
                     labelText: 'Contraseña',
                   ),
-                  onChanged: (String passInput){
+                  onChanged: (String passInput) {
                     pass = passInput;
                   },
                 ),
@@ -83,20 +90,23 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
 
               /// BOTÓN CREAR CUENTA
               Container(
-                margin: const EdgeInsets.only(left: 0, right: 0, top: 20, bottom: 20),
+                margin: const EdgeInsets.only(
+                    left: 0, right: 0, top: 10, bottom: 15),
                 width: 200,
                 decoration: BoxDecoration(
                     color: Colors.deepPurple, //todo poner color
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: TextButton(
-                  child: const Text("Crear cuenta", style: TextStyle(color: Colors.white, fontSize: 20),),
-                  onPressed: (){
+                  child: const Text("Crear cuenta",
+                    style: TextStyle(color: Colors.white, fontSize: 20),),
+                  onPressed: () {
                     //todo revisar cuando la API
-                    int codigoReg = gestor.registrarse(user, pass); // intento de inicio de sesión
+                    int codigoReg = gestor.registrarse(
+                        user, pass); // intento de inicio de sesión
 
-                    if (codigoReg == 1){ // REGISTRO CORRECTO
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
+                    if (codigoReg == 1) { // REGISTRO CORRECTO
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const PantallaMenu()));
                     }
                     else { // FALLO AL REGISTRO
                       _mostrarAlerta(codigoReg);
@@ -122,7 +132,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
   Future <void> _mostrarAlerta(int codigo) async {
     String texto = '';
 
-    switch (codigo){
+    switch (codigo) {
       case 0:
         texto = "El usuario introducido ya existe. Pruebe con otro";
         break;
@@ -156,7 +166,8 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                   child: const Text('Iniciar sesión'),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const Inicio()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const Inicio()));
                   },
                 )
             ),

@@ -42,6 +42,7 @@ class InicioState extends State<Inicio>{
 
   @override
   Widget build(BuildContext context){
+
     return Scaffold(
       backgroundColor: Colors.purple, //todo poner color
       body: Container(
@@ -63,14 +64,13 @@ class InicioState extends State<Inicio>{
             children: [
 
               /// LOGO
-              Container(
-                  margin: const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 10),
-                  child: Image.asset("assets/logo_transparent.png", height: 230,)
+              if (MediaQuery.of(context).viewInsets.bottom == 0) ( // si el teclado NO está activo
+                  Image.asset("assets/logo_transparent.png", height: 270,)
               ),
 
               /// CAMPO USERNAME
               Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 25, bottom: 10), // todo revisar responsive
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 15), // todo revisar responsive
                 child: TextFormField(
                   key: const Key("addTexto"),
                   decoration: const InputDecoration(
@@ -85,7 +85,8 @@ class InicioState extends State<Inicio>{
 
               /// CAMPO PASSWORD
               Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15), // todo revisar responsive
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 0), // todo revisar responsive
+                //margin: const EdgeInsets.only(bottom: 125), // todo revisar responsive
                 child: TextFormField(
                   obscureText: true,
                   key: const Key("addTexto"),
@@ -101,7 +102,7 @@ class InicioState extends State<Inicio>{
 
               /// BOTÓN COMENZAR
               Container(
-                margin: const EdgeInsets.only(left: 0, right: 0, top: 20, bottom: 20),
+                margin: const EdgeInsets.only(top: 20, bottom: 20),
                 width: 200,
                 decoration: BoxDecoration(
                   color: Colors.deepPurple, //todo poner color
@@ -114,7 +115,8 @@ class InicioState extends State<Inicio>{
                     int codigoLogin = gestor.iniciarSesion(user, pass); // intento de inicio de sesión
 
                     if (codigoLogin == 1){ // INICIO CORRECTO
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
+                      // pushReplacement hace push y luego borra para que no se pueda volver atrás
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
                     }
                     else { // FALLO AL LOGIN
                       _mostrarAlerta(codigoLogin);
@@ -124,11 +126,14 @@ class InicioState extends State<Inicio>{
               ),
 
               /// BOTÓN REGISTRAR
-              GestureDetector(
-                child: const Text("¿Eres nuevo? Registrate aquí"),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaRegistro()));
-                },
+              Container(
+                margin: const EdgeInsets.only(bottom: 30),
+                child: GestureDetector(
+                  child: const Text("¿Eres nuevo? Registrate aquí"),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaRegistro()));
+                  },
+                ),
               ),
             ],
           ),
