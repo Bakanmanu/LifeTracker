@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
-import 'package:life_tracker/interfaz_grafica/pantalla_gestionar_categorias.dart';
+import 'package:life_tracker/deprecated/pantalla_gestionar_categorias.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_perfil.dart';
 import '../funcionalidad/formulario.dart';
@@ -20,7 +20,18 @@ class _PantallaMenuState extends State<PantallaMenu>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: const Text("MENÚ"),),
+      appBar: AppBar(
+        title: const Text("MENÚ"),
+        actions: [
+          GestureDetector(
+              onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaPerfilUsuario()));},
+              child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Image.asset("assets/perfil.png"))
+          ),
+        ],
+      ),
+
       body: GridView.builder(
         itemCount: menu.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
@@ -56,10 +67,12 @@ class _PantallaMenuState extends State<PantallaMenu>{
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
                       break;
 
+                      /// deprecated
                     case 3: //Caso para editar el perfil, implementación en un futuro
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaPerfilUsuario()));
                       break;
 
+                      /// deprecated
                     case 4: //Caso para gestionar categorías
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaGestionarCategoria()));
                       break;

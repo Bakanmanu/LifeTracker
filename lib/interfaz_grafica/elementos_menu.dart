@@ -8,6 +8,6 @@ class Elemento{
 final menu = [
   Elemento(1, "Formulario nuevo", "plus.png"),
   Elemento(2, "Buscar formulario", "buscador.png"),
-  Elemento(3, "Editar perfil", "perfil.png"),
-  Elemento(4, "Gestionar categorias", "categorias.png"),
+  //Elemento(3, "Editar perfil", "perfil.png"),
+  //Elemento(4, "Gestionar categorias", "categorias.png"),
 ];
