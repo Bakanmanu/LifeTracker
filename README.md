@@ -209,3 +209,6 @@ la siguiente simbología de códigos que devuelven las funciones de registro y l
 - Arreglado (creo) el overflow y se ha hecho que, cuando se cierra sesión, no se permita hacer
 pop y volver a donde antes, sino que se borra toda la pila. Además, cuando se inicia sesión no permite
 volver atrás a no ser que se cierre sesión. Esto para evitar incordios.
+
+- Cambiada la interfaz del menú: se ha quitado el apartado de gestionar categorías y el apartado
+de editar perfil se encuentra en la appbar
