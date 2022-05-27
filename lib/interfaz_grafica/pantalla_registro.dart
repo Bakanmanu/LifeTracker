@@ -90,8 +90,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
 
               /// BOTÓN CREAR CUENTA
               Container(
-                margin: const EdgeInsets.only(
-                    left: 0, right: 0, top: 10, bottom: 15),
+                margin: const EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 15),
                 width: 200,
                 decoration: BoxDecoration(
                     color: Colors.deepPurple, //todo poner color
@@ -102,11 +101,9 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                     style: TextStyle(color: Colors.white, fontSize: 20),),
                   onPressed: () {
                     //todo revisar cuando la API
-                    int codigoReg = gestor.registrarse(
-                        user, pass); // intento de inicio de sesión
-
+                    int codigoReg = gestor.registrarse(user, pass); // intento de inicio de sesión
                     if (codigoReg == 1) { // REGISTRO CORRECTO
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const PantallaMenu()));
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()), (route) => false,);
                     }
                     else { // FALLO AL REGISTRO
                       _mostrarAlerta(codigoReg);

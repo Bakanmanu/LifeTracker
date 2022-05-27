@@ -69,8 +69,7 @@ class GestorUsuario {
         codigo = 2; // contraseña no válida
       } else {
         codigo = 1;
-        mapaUsuarios[user] =
-            Usuario(user, pass); // añadimos el nuevo usuario al mapa
+        mapaUsuarios[user] = Usuario(user, pass); // añadimos el nuevo usuario al mapa
         iniciarSesion(user, pass); // todo revisar iniciamos sesión directamente
       }
     } else {
