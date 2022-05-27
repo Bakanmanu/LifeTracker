@@ -26,8 +26,9 @@ class _PantallaMenuState extends State<PantallaMenu>{
           GestureDetector(
               onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaPerfilUsuario()));},
               child: Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Image.asset("assets/perfil.png"))
+                  padding: const EdgeInsets.only(right: 10),
+                  child: const Icon(Icons.manage_accounts, color: Colors.black, size: 50,), // otros icons: account_circle / account_box / manage_accounts
+              )
           ),
         ],
       ),
