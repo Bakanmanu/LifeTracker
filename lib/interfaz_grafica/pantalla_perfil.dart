@@ -26,14 +26,28 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
-                Text("Username:\n" + gestor.currentUser!.user, style: const TextStyle(color: Colors.white, fontSize: 20),), // todo poner más bonito
+                // todo poner más bonito
+                Text("Username:\n" + gestor.currentUser!.user, style: const TextStyle(color: Colors.white, fontSize: 20),),
 
-                TextButton(
-                  child: const Text("Cerrar Sesión", style: TextStyle(color: Colors.white, fontSize: 20),), // todo poner un botón de asegurarse
-                  onPressed: (){
-                    _alertaCerrarSesion();
-                  },
+                // todo hacer botón para cambiar los datos
+
+                Container(
+                  margin: const EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 15),
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: TextButton(
+                    child: const Text("Cerrar Sesión", style: TextStyle(color: Colors.white, fontSize: 20),),
+                    onPressed: (){
+                      _alertaCerrarSesion();
+                    },
+                  ),
                 ),
+
+
+
               ],
             ),
           )
