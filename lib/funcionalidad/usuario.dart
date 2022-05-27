@@ -4,13 +4,11 @@ import 'formulario.dart';
 /// encarga de crear usuarios, almacenarlos, validarlos y poder acceder al
 /// usuario que esté actualmente utilizando la aplicación
 class GestorUsuario {
-  Map<String, Usuario> mapaUsuarios = {
-    // usamos un mapa para que sea más rápido
+  Map<String, Usuario> mapaUsuarios = { // usamos un mapa para que sea más rápido
     "asdf": Usuario("asdf", "1234"),
   }; // siempre inicializamos con un usuario por defecto
 
-  Usuario?
-      currentUser; // el usuario que esté actualmente verificado. Puede ser null
+  Usuario? currentUser; // el usuario que esté actualmente verificado. Puede ser null
 
   ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
   GestorUsuario._privateConstructor();
@@ -60,8 +58,7 @@ class GestorUsuario {
   /// Primero comprueba si el nombre de usuario es válido y que no se ha
   /// introducido una contraseña vacía
   int registrarse(String user, String pass) {
-    int codigo =
-        0; // 0: usuario ya existe / 1: correcto / 2: campo contraseña no válido / 3: user vacío
+    int codigo = 0; // 0: usuario ya existe / 1: correcto / 2: campo contraseña no válido / 3: user vacío
 
     if (!mapaUsuarios.containsKey(user) && user != '') {
       // el usuario NO existe -> true
@@ -117,9 +114,9 @@ class Usuario {
 
   Usuario(this.user, this.pass) {
     gestorFormulario = GestorFormulario();
-  } // Constructor todo aseguriarse de que se genera un objeto gestor
+  } // Constructor
 
 //Método para que devuelva el gestor y/o métodos del gestor  --> editar o nuevo formulario
 
-// todo pensar más posibles métodos: métodos para editar los campos
+// todo pensar más posibles métodos: métodos para editar los campos --> hay que tocar la BD
 }

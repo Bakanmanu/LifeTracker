@@ -1,29 +1,29 @@
 # CAMBIOS A REALIZAR (por orden de importancia):
 
-- Crear método para editar username y passwor
+- Crear método para editar username y password
 
-- Revisar que cuando haces un formulario y te lleve al menú inicial, lo haga con pop para descargar la pila
-en vez de seguir haciendo pushs
+- Hacer TAB que se muestren los formularios de primeras y una appbar abajo con botones de:
+  - Ver formularios
+  - Nuevo formulario (en forma de botón redondo en medio)
+  - Editar perfil
+
+- En el crear formulario, poner el campo de texto al fondo y un botón de guardar, aparte
+del que pueda aparecer arriba a la derecha
+
+- Intentar que no aparezcan las categorías que no tengan acciones elegidas
+
+- Intentar agrupar cada categoría 
+
+- Ver cómo se podría hacer para que fueran iconos clicables
+en vez de ListView: Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) 
+al ser marcados en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
+del CheckBox o del ListView)
 
 - Borrar todo lo referente a contenido descargable
   
 - Poner un botón de si el usuario quiere compartir o no sus datos (de forma anónima)
 
 - Hacer un método para hacer las estadisticas locales
-
-- ***IMPORTANTE*** Poner una barra para horas de sueño y que sea estático
-
-- Añadir más categorías bases para hacer las estadísticas a partir de ellas
-
-- Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) al ser marcados
-en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
-del CheckBox o del ListView)
-  
-- Hacer apartado para crear usuarios
-  - POSIBLES OPCIONES:
-  > Hacer un login y un register que pregunte al inicio (o que se guarde con un token). Habría que
-añadir un apartado de modificar, cerrar sesión, etc
-  > Que se pregunte una única vez al principio y que sea estático: una cuenta por móvil
 
 ***HAY QUE ESPERAR A APPWEB***
 - Hacer una clase _(para las estadísticas)_ que se comunique con el gestor de formularios que sea la que permita subir la 
@@ -60,13 +60,6 @@ formularios del mismo día se muestren en el mismo apartado y se diferencien de 
 - Poner el icono bonito a la app (poner con el fondo lila)
   
 ### Bugs:
-- En "Nuevo Formulario", el apartado de Categorías se pega demasiado al apartado de Estado de Ánimo cuando
-se hace scroll hacia abajo
-  
-- Las caras del formulario no coinciden con la *imagen* que se muestra en Mostrar Formularios
-Tal vez pensar en convertir las imágenes en iconos y usar esos
-
-- Cuando no hay formularios, el mensaje se muestra de manera muy pobre y fea
 
 -----------------------------------------------
 
@@ -79,7 +72,6 @@ Tal vez pensar en convertir las imágenes en iconos y usar esos
   - Configuración en appBar arriba y pequeñito
   - Ver formularios más en pequeñito pero visible
 - Poner colores análogos para la interfaz porque genera tranquilidad en vez de contrastes
-
 
 - Plantear hacer un fondo así blanco y sólo tener colores de detalle
 
@@ -210,5 +202,10 @@ la siguiente simbología de códigos que devuelven las funciones de registro y l
 pop y volver a donde antes, sino que se borra toda la pila. Además, cuando se inicia sesión no permite
 volver atrás a no ser que se cierre sesión. Esto para evitar incordios.
 
-- Cambiada la interfaz del menú: se ha quitado el apartado de gestionar categorías y el apartado
-de editar perfil se encuentra en la appbar
+- Cambiada la interfaz del menú: 
+  - Se ha quitado el apartado de gestionar categorías y el apartado de editar perfil se encuentra en la appbar
+  - El botón de guardar formulario ahora está en la esquina superior derecha
+  - Ahora la preview de los formularios cambia de color según el estado de ánimo
+
+- Se han añadido y modificado muchisimas categorías base
+

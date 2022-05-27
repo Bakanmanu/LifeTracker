@@ -31,8 +31,8 @@ const Color appBarColor = Color(0xFFB400D2);
 /// COLORES RELACIONADOS CON ESTADOS DE ÁNIMO
 
 // Colores de los formularios todo revisar la opacidad y cómo queda
-const Color formEnfadado = Color(0xFEFD9292);
-const Color formTriste = Color(0xFEFDC092);
-const Color formNeutral = Color(0xFEA0AFFF);
-const Color formFeliz = Color(0xFE92FDCB);
-const Color formContento = Color(0xFEA9FD92);
+const Color formEnfadado = Color(0xFFFFB7B7);
+const Color formTriste = Color(0xFEFFD4B6);
+const Color formNeutral = Color(0xFEB8C4FD);
+const Color formFeliz = Color(0xFEB2FDDA);
+const Color formContento = Color(0xFEC6FDB2);

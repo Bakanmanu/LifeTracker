@@ -7,11 +7,12 @@ import 'formato_fecha.dart';
 ///También, tiene la variable global que guarda todos los formularios que se han ido creando
 class GestorFormulario {
 
+  // todo ver si hay que guardar los formularios de la BD en listaFormularios
   List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
   late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
   bool isModificar = false; // variable que nos va a servir para elegir la estrategia al rellenar un formulario: crear o modificar
-  List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando todo pensar si poner en otro lado
-  // todo revisar si es util hacer un atributo de todas las categorías que se tengan y ver cómo puede chocar con las categorías del propio formulario
+
+  //List<Categoria> categoriasDLC = []; // Lista que contiene las categorías que se vayan descargando //DEPRECATED
 
 
   /// Método para crear un nuevo formulario con los parámetros que se recojan de la interfaz
@@ -33,20 +34,21 @@ class GestorFormulario {
     Formulario form = Formulario(estadoAnimo, listaCategorias, campoTexto, fecha);
     
     //Guardamos el formulario AL PRINCIPIO lista global de formularios
-    listaFormularios.insert(0, form); //todo esto hay que guardarlo en la lista del usuario
-
-    //print('Formulario creado correctamente'); //DEBUG
-    //mostrarFormularioTerminal(); //DEBUG
+    //todo revisar API: hacer que se suba a la BD, y cuando se valide la operación, se guarde en la listaFormularios
+    // para hacer como si se guardara en paralelo y no tocar mucha funcionalidad
+    listaFormularios.insert(0, form);
   }
 
   ///Método que edita el formulario
+  /// todo revisar API
   void editarFormulario(int estadoAnimo, List<Categoria> listaCategorias, String campoTexto){
-    listaFormularios[indexFormEditar].modificarFormulario(estadoAnimo, listaCategorias, campoTexto); //todo esto hay que guardarlo en usuario
+    listaFormularios[indexFormEditar].modificarFormulario(estadoAnimo, listaCategorias, campoTexto);
   }
 
   ///Borra el formulario que se le pasa por parámetro
+  /// todo revisar API
   void borrarFormulario(Formulario form){
-    listaFormularios.remove(form); //todo esto hay que borrarlo en usuario
+    listaFormularios.remove(form);
   }
 
   ///Pone el valor de índice en pantallaMostrarFormulario cuando se pulsa
@@ -64,7 +66,7 @@ class GestorFormulario {
   void setStratCrear() => isModificar = false;
 
   /// Método que ha de ser llamado para modificar un formulario existente
-  void setStratmodificar() => isModificar = true;
+  void setStratModificar() => isModificar = true;
 
   /// Devuelve el formulario que se va a editar
   Formulario getFormEditar(){
@@ -72,24 +74,34 @@ class GestorFormulario {
   }
 
   /// Devuelve un string con lista de acciones == true del formulario dado
-  String getRespuestasAcciones(Formulario form){ //todo ver la relación que tiene con usuario
+  String getRespuestasAcciones(Formulario form){
     String respuestas = '';
     for(Categoria cat in form.listaCategorias){
 
-      //IMPRIMIMOS TÍTULO DE CATEGORÍA
-      respuestas += "→" + cat.enunciado + '\n';
+      // Hemos considerado que no hace falta poner la categoría si no tiene
+      // ninguna acción marcada
 
       if (cat.respuestas.isEmpty){ // si no hay respuestas, ponemos una raya
-        respuestas += '-\n';
-      } else { //si hay respuestas, las ponemos
+        //respuestas += '-\n';
+      }
+      else { //si hay respuestas, las ponemos
+
+        //IMPRIMIMOS TÍTULO DE CATEGORÍA
+        respuestas += "→" + cat.enunciado + '\n';
+
         for(Accion acc in cat.respuestas){
-          respuestas += acc.nombre; //PONEMOS TÍTULO DE RESPUESTA
+          respuestas += acc.nombre; //TÍTULO DE RESPUESTA
           if(acc == cat.respuestas.last){/*nada*/} //si es el último elemento no añadimos nada
           else {respuestas += " / ";} //ponemos una barra para separar si no es el último
         }
         respuestas += '\n━━━━━━━━\n'; //ponemos barra separadora en caso de haber respuestas
       }
     }
+
+    if (respuestas == ''){ // Si se han dejado las categorías vacías
+      respuestas = 'No se ha marcado ninguna acción 😬';
+    }
+
     return respuestas;
   }
 
@@ -101,8 +113,8 @@ class GestorFormulario {
   /// Este método devuelve todas las categorías que haya (DEFAULT + DLC)
   List<Categoria> generateCategorias(){
     List<Categoria> lista = crearCategoriasDefault();
-    lista += crearCategoriasDLC();
-    lista += categoriasDLC; // metemos las que ya estaban
+    //lista += crearCategoriasDLC(); // DEPRECATED
+    //lista += categoriasDLC; // metemos las que ya estaban DEPRECATED
     return lista;
   }
 
@@ -110,10 +122,41 @@ class GestorFormulario {
   List<Categoria> crearCategoriasDefault(){
     return [
       Categoria(enunciado: '¿Cuánto has dormido?', acciones: [
+        Accion("0 horas", false),
         Accion("1-3 horas", false),
         Accion("4-6 horas", false),
         Accion("6-8 horas", false),
         Accion("más de 8 horas", false)
+      ]),
+      Categoria(enunciado: 'Calidad del sueño', acciones: [
+        Accion("Insomnio", false),
+        Accion("Mala", false),
+        Accion("Neutral", false),
+        Accion("Buena", false),
+        Accion("Dormir acompañado", false),
+      ]),
+      Categoria(enunciado: 'Autoestima', acciones: [
+        Accion("Muy baja", false),
+        Accion("Baja", false),
+        Accion("Neutral", false),
+        Accion("Alta", false),
+        Accion("Muy alta", false),
+      ]),
+      Categoria(enunciado: 'Productividad', acciones: [
+        Accion("Muy baja", false),
+        Accion("Baja", false),
+        Accion("Neutral", false),
+        Accion("Alta", false),
+        Accion("Muy alta", false),
+      ]),
+      Categoria(enunciado: 'Quehaceres', acciones: [
+        Accion("Hacer la compra", false),
+        Accion("Hacer la colada", false),
+        Accion("Hacer la comida", false),
+        Accion("Limpiar el cuarto", false),
+        Accion("Barrer la casa", false),
+        Accion("Lavar los platos", false),
+        Accion("Lavar el coche", false),
       ]),
       Categoria(enunciado: '¿Qué has comido?', acciones: [
         Accion("fruta", false),
@@ -122,35 +165,49 @@ class GestorFormulario {
         Accion("pollo", false),
         Accion("pasta", false)
       ]),
-      Categoria(enunciado: '¿Qué has hecho?', acciones: [
-        Accion("tocar la guitarra", false),
-        Accion("salir a correr", false),
-        Accion("ir al gimnasio", false),
-        Accion("echar la siesta", false),
-        Accion("comer con amigos", false),
-        Accion("hacer la colada", false)
+      Categoria(enunciado: 'Entretenimiento', acciones: [
+        Accion("Echar la siesta", false),
+        Accion("Comer con amigos", false),
+        Accion("Salir de fiesta", false),
+        Accion("Ver una peli/serie", false),
+        Accion("Jugar videojuegos", false),
+        Accion("Tocar un instrumento", false),
       ]),
+      Categoria(enunciado: '¿Cuánto deporte has hecho?', acciones: [
+        Accion("0h", false),
+        Accion("0.5h", false),
+        Accion("1h", false),
+        Accion("1.5h", false),
+        Accion("2h", false),
+        Accion("+2h", false),
+      ],),
+      Categoria(enunciado: '¿Qué tiempo hacía?', acciones: [
+        Accion("Soleado", false),
+        Accion("Nublado", false),
+        Accion("Lluvia", false),
+        Accion("Nieve", false),
+        Accion("Granizo", false),
+        Accion("Tormenta", false),
+        Accion("Frío", false),
+        Accion("Calor", false),
+      ],),
     ];
   }
 
   /// Método para añadir packs de categorías descargados
+  /// DEPRECATED hasta añadir la funcionalidad de descargar Categorías
   void anadirCategoriasDLC(List <Categoria> lista){
-    for (Categoria cat in lista){
-      categoriasDLC.add(cat);
-    }
+    // for (Categoria cat in lista){
+    //   categoriasDLC.add(cat); // descomentar el atributo categoriasDLC
+    // }
   }
 
   /// Método de prueba para cargar las categorías DLC
+  /// DEPRECATED
+  //ESTE MÉTODO AÚN NO SE PUEDE IMPLEMENTAR. Esperar a aplicación web
   List<Categoria> crearCategoriasDLC(){
-    //TODO ESTE MÉTODO AÚN NO SE PUEDE IMPLEMENTAR. Esperar a aplicación web
     // La idea es que este método obtenga de alguna manera una categoría descargada
-    return [
-      Categoria(enunciado: '¡DLC Nuevo! ¿Cuánto deporte has hecho?', acciones: [
-        Accion("1h", false),
-        Accion("2h", false),
-        Accion("3h", false),
-        Accion("4h", false),],
-    )];
+    return [];
   }
 
   ///Este método sirve para debuggear y ver que se crean bien los formularios

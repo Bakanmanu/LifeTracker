@@ -6,6 +6,7 @@ import 'package:smiley_ui/smiley_ui.dart';
 
 import '../funcionalidad/formulario.dart';
 import '../funcionalidad/usuario.dart';
+import '../theme/colors.dart';
 
 ///Este fichero sirve para crear la parte gráfica a la hora de visualizar
 ///los formularios.
@@ -48,23 +49,43 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
           padding: const EdgeInsets.all(8),
           itemCount: gestor.listaFormularios.length,       // Obtiene la cantidad de Formularios que contiene la lista  para así iterar como un bucle for
           itemBuilder: (BuildContext context, int index) { // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
+
+            /// Selección del color para el fondo del formulario
+            late Color color;
+            switch(gestor.listaFormularios[index].estadoAnimo){
+              case 1: color = formEnfadado; break;
+              case 2: color = formTriste;   break;
+              case 3: color = formNeutral;  break;
+              case 4: color = formFeliz;    break;
+              case 5: color = formContento; break;
+            }
+
             return Container(
               //color: Colors.purpleAccent[400], //todo cambiar color según tipo de formulario. ESTO SERÍA SOLO EL BORDE
               child: Card(
-                //color: Colors.purpleAccent, //todo cambiar color según tipo de formulario. ESTO SERÍA EL CONTENIDO
+                color: color, //todo cambiar color según tipo de formulario. ESTO SERÍA EL FONDO
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+
+                    /// INFO ESTADO ANIMO + CATEGORÍAS
                     ListTile( //leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
                       leading: getCaraEstadoAnimo(gestor.listaFormularios[index].estadoAnimo), // Elegimos la cara según
                       isThreeLine: true,
                       title: Text(gestor.getFechaFormat(gestor.listaFormularios[index]) + '\n'),
-                      subtitle: Text(gestor.getRespuestasAcciones(gestor.listaFormularios[index])),
+                      subtitle: Text( // todo formatear un poco el texto para que se ponga bonito o al menos solo cuando no haya info
+                          gestor.getRespuestasAcciones(gestor.listaFormularios[index]),
+                          style: TextStyle(
+                            //color: color, //todo cambiar color según tipo de formulario. ESTO SERÍA EL TEXTO
+                              ),
+                      ),
                     ),
 
+                    /// TEXTO DEL CAMPO DE TEXTO
                     // Aquí se podría hacer un container si se quisiera poner más bonito todo revisar
-                    Text(gestor.listaFormularios[index].campoTexto),
+                    Text(gestor.listaFormularios[index].campoTexto, ),
 
+                    /// BOTONES DE EDITAR Y BORRAR
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -89,7 +110,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                             gestor.setIndex(index);
                             await Navigator.push(context,
                                 MaterialPageRoute(builder: (_){
-                                  gestor.setStratmodificar(); // Ponemos la estrategia Modificar todo revisar
+                                  gestor.setStratModificar(); // Ponemos la estrategia Modificar todo revisar
                                   return const PantallaFormulario();
                                 }
                             ));

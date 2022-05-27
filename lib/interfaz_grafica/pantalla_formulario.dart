@@ -54,6 +54,9 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       appBar: AppBar(
         /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
         title: gestor.isModificar ? const Text('Modificar formulario') : const Text('Nuevo formulario'),
+        actions: [
+          generarBotonEnvio(), // todo revisar si aquí está guay el botón
+        ],
       ),
       body:
         Column(
@@ -63,12 +66,12 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
             generarTablaEstadoAnimo(),
             // generarTablaEstadoAnimo2(),
             generarCategorias(),
-            //generarCampoTexto(), // todo revisar si poner aquí o en generarCategorías
+            generarCampoTexto(), // todo revisar si poner aquí o en generarCategorías
           ],
         ),
 
       /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
-      floatingActionButton: generarBotonEnvio(),
+      //floatingActionButton: generarBotonEnvio(),
     );
   }
 
@@ -149,47 +152,49 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       );
   }
 
-  /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO ANTIGUA (DESUSO)
-  Widget generarTablaEstadoAnimo2() { // todo poner mas bonito y hacer iconos un poco más grandes
-    return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _icon(0, text: "Enfadado", icon: Icons.sentiment_very_dissatisfied_rounded), // todo intentar poner las imagenes en vez de iconos
-            _icon(1, text: "Triste", icon: Icons.sentiment_dissatisfied_rounded),
-            _icon(2, text: "Neutral", icon: Icons.sentiment_neutral_rounded),
-            _icon(3, text: "Contento", icon: Icons.sentiment_satisfied_alt_rounded),
-            _icon(4, text: "Feliz", icon: Icons.sentiment_very_satisfied_rounded),
-          ],
-        );
-  }
+  /// MÉTODO PARA GENERAR LA BARRA DE ESTADO DE ANIMO ANTIGUA
+  /// deprecated
+  // Widget generarTablaEstadoAnimo2() {
+  //   return Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //         crossAxisAlignment: CrossAxisAlignment.center,
+  //         children: [
+  //           _icon(0, text: "Enfadado", icon: Icons.sentiment_very_dissatisfied_rounded),
+  //           _icon(1, text: "Triste", icon: Icons.sentiment_dissatisfied_rounded),
+  //           _icon(2, text: "Neutral", icon: Icons.sentiment_neutral_rounded),
+  //           _icon(3, text: "Contento", icon: Icons.sentiment_satisfied_alt_rounded),
+  //           _icon(4, text: "Feliz", icon: Icons.sentiment_very_satisfied_rounded),
+  //         ],
+  //       );
+  // }
 
   /// MÉTODO ADICIONAL RELACIONADO CON generarTablaEstadoAnimo2 para marcar o desmarcar botones de estado de ánimo
-  Widget _icon(int index, {required String text, required IconData icon}) {
-    MediaQueryData queryData;
-    queryData = MediaQuery.of(context);
-    return Padding(
-      padding: EdgeInsets.fromLTRB(0, queryData.size.height/50, 0, 0), // padding para que no se muestre pegado a la appBar todo ajustar
-      child: InkResponse(
-        child: Column (
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              color: _estadoAnimo == index+1 ? Colors.red : null, // esto es lo que hace que sean botones exclusivos //todo cambiar color
-            ),
-            Text(text, style: TextStyle(color: _estadoAnimo == index+1 ? Colors.red : null)), // todo hacer que el color se quede según el animo
-          ],
-        ),
-        onTap: () => setState(
-              () {
-                print("click en "+estadosAnimo[index].nombre); // DEBUG
-                _estadoAnimo = index+1;
-          },
-        ),
-      ),
-    );
-  }
+  /// deprecated
+  // Widget _icon(int index, {required String text, required IconData icon}) {
+  //   MediaQueryData queryData;
+  //   queryData = MediaQuery.of(context);
+  //   return Padding(
+  //     padding: EdgeInsets.fromLTRB(0, queryData.size.height/50, 0, 0), // padding para que no se muestre pegado a la appBar
+  //     child: InkResponse(
+  //       child: Column (
+  //         mainAxisSize: MainAxisSize.min,
+  //         children: [
+  //           Icon(
+  //             icon,
+  //             color: _estadoAnimo == index+1 ? Colors.red : null, // esto es lo que hace que sean botones exclusivos
+  //           ),
+  //           Text(text, style: TextStyle(color: _estadoAnimo == index+1 ? Colors.red : null)),
+  //         ],
+  //       ),
+  //       onTap: () => setState(
+  //             () {
+  //               print("click en "+estadosAnimo[index].nombre); // DEBUG
+  //               _estadoAnimo = index+1;
+  //         },
+  //       ),
+  //     ),
+  //   );
+  // }
 
   /// MÉTODO PARA GENERAR LAS CATEGORÍAS Y ACCIONES
   Widget generarCategorias() {
@@ -197,7 +202,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       child:
       SafeArea(
         child:
-        ListView( // todo si al final se pone todo en scroleable, cambiar el método para que sea un listview y se generen dentro los widgets
+        ListView(
           children: [
             Container(
               //margin: const EdgeInsets.all(15),
@@ -238,7 +243,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                   ),
                 ),
             ),
-            generarCampoTexto(), // todo revisar si es mejor ponerlo aquí
           ],
         ),
       ),
@@ -248,22 +252,18 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
   /// MÉTODO PARA GENERAR EL CAMPO DE TEXTO
   Widget generarCampoTexto() {
     return Container(
-      padding: const EdgeInsets.fromLTRB(5, 5, 5, 50), // todo revisar responsive
-      child:
-      Container(
-        //margin: const EdgeInsets.all(15),
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 25), // todo revisar responsive
-        child: TextFormField(
-          key: const Key("addTexto"),
-          initialValue: _campoTexto, // Si _campoTexto == '', entonces no pondrá valor incial, si no, pondrá lo que esté guardado
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Cuenta aquí qué tal te ha ido el día',
-          ),
-          onChanged: (String textoEscrito){
-            _campoTexto = textoEscrito;
-          },
+      //margin: const EdgeInsets.all(15),
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 25), // todo revisar responsive
+      child: TextFormField(
+        key: const Key("addTexto"),
+        initialValue: _campoTexto, // Si _campoTexto == '', entonces no pondrá valor incial, si no, pondrá lo que esté guardado
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Cuenta aquí qué tal te ha ido el día',
         ),
+        onChanged: (String textoEscrito){
+          _campoTexto = textoEscrito;
+        },
       ),
     );
   }
@@ -284,7 +284,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         }
       },
       /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
-      child: gestor.isModificar ? const Text('Guardar formulario') : const Text('Crear formulario'),
+      child: gestor.isModificar ? const Text('Guardar') : const Text('Crear'),
     );
   }
 
