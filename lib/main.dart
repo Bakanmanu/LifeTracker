@@ -3,6 +3,7 @@ import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_registro.dart';
 import 'package:life_tracker/theme/colors.dart';
 import 'interfaz_grafica/pantalla_menu.dart';
+import 'package:dcdg/dcdg.dart';
 
 void main() {
   runApp(const MyApp());

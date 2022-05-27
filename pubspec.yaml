@@ -30,6 +30,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  dcdg: ^4.0.1
+
   smiley_ui:
     git:
       url: https://github.com/TesteurManiak/bastiui_smileys.git

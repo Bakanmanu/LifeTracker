@@ -1,0 +1,275 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "life_tracker::deprecated::form_strategy.dart::FormularioStrategy" {
+  +String ponerTitulo()
+  +List<dynamic> cargarDatos()
+  +void enviarDatos()
+}
+
+class "life_tracker::deprecated::form_strat_crear.dart::FormStrategyCrear" {
+  +List<dynamic> cargarDatos()
+  +void enviarDatos()
+  +String ponerTitulo()
+}
+
+"life_tracker::deprecated::form_strategy.dart::FormularioStrategy" <|-- "life_tracker::deprecated::form_strat_crear.dart::FormStrategyCrear"
+
+class "life_tracker::deprecated::form_strat_modificar.dart::FormStrategyModificar" {
+  +List<dynamic> cargarDatos()
+  +void enviarDatos()
+  +String ponerTitulo()
+}
+
+"life_tracker::deprecated::form_strategy.dart::FormularioStrategy" <|-- "life_tracker::deprecated::form_strat_modificar.dart::FormStrategyModificar"
+
+class "life_tracker::deprecated::gestor_categorias.dart::GestorCategorias" {
+  {static} -GestorCategorias _instance
+  {static} +GestorCategorias instance
+}
+
+"life_tracker::deprecated::gestor_categorias.dart::GestorCategorias" o-- "life_tracker::deprecated::gestor_categorias.dart::GestorCategorias"
+
+class "life_tracker::deprecated::login.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "life_tracker::deprecated::login.dart::MyApp"
+
+class "life_tracker::deprecated::login.dart::_login" {
+  +__loginState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "life_tracker::deprecated::login.dart::_login"
+
+class "life_tracker::deprecated::login.dart::__loginState" {
+  +TextEditingController email
+  +TextEditingController pass
+  +Widget build()
+}
+
+"life_tracker::deprecated::login.dart::__loginState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "life_tracker::deprecated::login.dart::__loginState"
+
+class "life_tracker::deprecated::pantalla_gestionar_categorias.dart::PantallaGestionarCategoria" {
+  +_PantallaGestionarCategoriaState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "life_tracker::deprecated::pantalla_gestionar_categorias.dart::PantallaGestionarCategoria"
+
+class "life_tracker::deprecated::pantalla_gestionar_categorias.dart::_PantallaGestionarCategoriaState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "life_tracker::deprecated::pantalla_gestionar_categorias.dart::_PantallaGestionarCategoriaState"
+
+class "life_tracker::funcionalidad::accion.dart::Accion" {
+  +String nombre
+  +bool activo
+  +Accion crearAccion()
+  +Accion modificarAccion()
+  +void cambiarActivo()
+}
+
+class "life_tracker::funcionalidad::categoria.dart::Categoria" {
+  +String enunciado
+  +List<Accion> acciones
+  +List<Accion> respuestas
+  +void anadirAccion()
+  +void anadirRespuesta()
+  +void actualizarRespuestas()
+}
+
+class "life_tracker::funcionalidad::elementos_estado_animo.dart::ElementoEstadoAnimo" {
+  +int id
+  +String nombre
+  +String imagen
+}
+
+class "life_tracker::funcionalidad::formato_fecha.dart::FormatoFecha" {
+  {static} +String separadorDiag
+  {static} +String separadorHoriz
+  {static} +String separador
+  {static} +String getFecha_es_ddmmyyyy_hhmm()
+  {static} +String getHHMM()
+  {static} +String getDiaSemana()
+  {static} +String getDDMMYYYY()
+  {static} +void setSeparadorBarra()
+  {static} +void setSeparadorDiagonal()
+}
+
+class "life_tracker::funcionalidad::formulario.dart::GestorFormulario" {
+  +List<Formulario> listaFormularios
+  +int indexFormEditar
+  +bool isModificar
+  +List<Categoria> categoriasDLC
+  +void crearFormulario()
+  +void editarFormulario()
+  +void borrarFormulario()
+  +void setIndex()
+  +Formulario getFormByIndex()
+  +void setStratCrear()
+  +void setStratmodificar()
+  +Formulario getFormEditar()
+  +String getRespuestasAcciones()
+  +String getFechaFormat()
+  +List<Categoria> generateCategorias()
+  +List<Categoria> crearCategoriasDefault()
+  +void anadirCategoriasDLC()
+  +List<Categoria> crearCategoriasDLC()
+}
+
+class "life_tracker::funcionalidad::formulario.dart::Formulario" {
+  -int _estadoAnimo
+  -List<Categoria> _listaCategorias
+  -String _campoTexto
+  -DateTime _fecha
+  +String campoTexto
+  +int estadoAnimo
+  +List<Categoria> listaCategorias
+  +DateTime fecha
+  +void modificarFormulario()
+}
+
+class "life_tracker::funcionalidad::usuario.dart::GestorUsuario" {
+  +Map<String, Usuario> mapaUsuarios
+  +Usuario? currentUser
+  {static} -GestorUsuario _instance
+  {static} +GestorUsuario instance
+  +int iniciarSesion()
+  +void cerrarSesion()
+  +int registrarse()
+  +void borrarUsuario()
+  +void setCurrentUser()
+  +void setCurrentUserDefault()
+}
+
+"life_tracker::funcionalidad::usuario.dart::GestorUsuario" o-- "life_tracker::funcionalidad::usuario.dart::Usuario"
+"life_tracker::funcionalidad::usuario.dart::GestorUsuario" o-- "life_tracker::funcionalidad::usuario.dart::GestorUsuario"
+
+class "life_tracker::funcionalidad::usuario.dart::Usuario" {
+  +String user
+  +String pass
+  +GestorFormulario gestorFormulario
+}
+
+"life_tracker::funcionalidad::usuario.dart::Usuario" o-- "life_tracker::funcionalidad::formulario.dart::GestorFormulario"
+
+class "life_tracker::interfaz_grafica::elementos_menu.dart::Elemento" {
+  +int id
+  +String nombre
+  +String imagen
+}
+
+class "life_tracker::interfaz_grafica::pantalla_formulario.dart::PantallaFormulario" {
+  +_PantallaFormularioState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "life_tracker::interfaz_grafica::pantalla_formulario.dart::PantallaFormulario"
+
+class "life_tracker::interfaz_grafica::pantalla_formulario.dart::_PantallaFormularioState" {
+  +GestorFormulario gestor
+  -int _estadoAnimo
+  -List<Categoria> _categorias
+  -String _campoTexto
+  +List<Categoria> categorias
+  +Widget build()
+  +Widget generarTablaEstadoAnimo()
+  +Widget generarTablaEstadoAnimo2()
+  -Widget _icon()
+  +Widget generarCategorias()
+  +Widget generarCampoTexto()
+  +Widget generarBotonEnvio()
+  -Future<void> _mostrarAlertaFormCorrecto()
+}
+
+"life_tracker::interfaz_grafica::pantalla_formulario.dart::_PantallaFormularioState" o-- "life_tracker::funcionalidad::formulario.dart::GestorFormulario"
+"flutter::src::widgets::framework.dart::State" <|-- "life_tracker::interfaz_grafica::pantalla_formulario.dart::_PantallaFormularioState"
+
+class "life_tracker::interfaz_grafica::pantalla_menu.dart::PantallaMenu" {
+  +_PantallaMenuState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "life_tracker::interfaz_grafica::pantalla_menu.dart::PantallaMenu"
+
+class "life_tracker::interfaz_grafica::pantalla_menu.dart::_PantallaMenuState" {
+  +GestorFormulario gestor
+  +Widget build()
+}
+
+"life_tracker::interfaz_grafica::pantalla_menu.dart::_PantallaMenuState" o-- "life_tracker::funcionalidad::formulario.dart::GestorFormulario"
+"flutter::src::widgets::framework.dart::State" <|-- "life_tracker::interfaz_grafica::pantalla_menu.dart::_PantallaMenuState"
+
+class "life_tracker::interfaz_grafica::pantalla_mostrar_formularios.dart::PantallaMostrarFormulario" {
+  +_PantallaMostrarFormularioState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "life_tracker::interfaz_grafica::pantalla_mostrar_formularios.dart::PantallaMostrarFormulario"
+
+class "life_tracker::interfaz_grafica::pantalla_mostrar_formularios.dart::_PantallaMostrarFormularioState" {
+  +GestorFormulario gestor
+  +Widget build()
+  +Widget getCaraEstadoAnimo()
+  -Future<void> _alertaBorrar()
+}
+
+"life_tracker::interfaz_grafica::pantalla_mostrar_formularios.dart::_PantallaMostrarFormularioState" o-- "life_tracker::funcionalidad::formulario.dart::GestorFormulario"
+"flutter::src::widgets::framework.dart::State" <|-- "life_tracker::interfaz_grafica::pantalla_mostrar_formularios.dart::_PantallaMostrarFormularioState"
+
+class "life_tracker::interfaz_grafica::pantalla_perfil.dart::PantallaPerfilUsuario" {
+  +_PantallaPerfilUsuarioState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "life_tracker::interfaz_grafica::pantalla_perfil.dart::PantallaPerfilUsuario"
+
+class "life_tracker::interfaz_grafica::pantalla_perfil.dart::_PantallaPerfilUsuarioState" {
+  +GestorUsuario gestor
+  +Widget build()
+  -Future<void> _alertaCerrarSesion()
+}
+
+"life_tracker::interfaz_grafica::pantalla_perfil.dart::_PantallaPerfilUsuarioState" o-- "life_tracker::funcionalidad::usuario.dart::GestorUsuario"
+"flutter::src::widgets::framework.dart::State" <|-- "life_tracker::interfaz_grafica::pantalla_perfil.dart::_PantallaPerfilUsuarioState"
+
+class "life_tracker::interfaz_grafica::pantalla_registro.dart::PantallaRegistro" {
+  +_PantallaRegistroState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "life_tracker::interfaz_grafica::pantalla_registro.dart::PantallaRegistro"
+
+class "life_tracker::interfaz_grafica::pantalla_registro.dart::_PantallaRegistroState" {
+  +GestorUsuario gestor
+  +String user
+  +String pass
+  +Widget build()
+  -Future<void> _mostrarAlerta()
+}
+
+"life_tracker::interfaz_grafica::pantalla_registro.dart::_PantallaRegistroState" o-- "life_tracker::funcionalidad::usuario.dart::GestorUsuario"
+"flutter::src::widgets::framework.dart::State" <|-- "life_tracker::interfaz_grafica::pantalla_registro.dart::_PantallaRegistroState"
+
+class "life_tracker::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "life_tracker::main.dart::MyApp"
+
+class "life_tracker::main.dart::Inicio" {
+  +InicioState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "life_tracker::main.dart::Inicio"
+
+class "life_tracker::main.dart::InicioState" {
+  +GestorUsuario gestor
+  +String user
+  +String pass
+  +Widget build()
+  -Future<void> _mostrarAlerta()
+}
+
+"life_tracker::main.dart::InicioState" o-- "life_tracker::funcionalidad::usuario.dart::GestorUsuario"
+"flutter::src::widgets::framework.dart::State" <|-- "life_tracker::main.dart::InicioState"
+
+
+@enduml
