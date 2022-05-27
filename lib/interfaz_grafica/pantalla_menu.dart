@@ -32,6 +32,7 @@ class _PantallaMenuState extends State<PantallaMenu>{
         ],
       ),
 
+      // todo probar a poner directamente todos los formularios y un botón flotante de nuevo formulario
       body: GridView.builder(
         itemCount: menu.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
