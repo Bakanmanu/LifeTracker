@@ -6,9 +6,9 @@ const Color white = Color(0xFFFFFFFF);
 const Color black = Color(0xFF000000);
 
 /// COLORES DE LA PROPIA APLICACIÓN todo cambiar un poco
-const Color primary = Color(0xFF92A3FD);
+const Color primary = Color(0xFFC58BF2);
 const Color secondary = Color(0xFF9DCEFF);
-const Color thirdColor = Color(0xFFC58BF2);
+const Color thirdColor = Color(0xFF92A3FD);
 const Color fourthColor = Color(0xFFEEA4CE);
 const Color bgTextField = Color(0xFFF7F8F8);
 

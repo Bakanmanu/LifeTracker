@@ -210,6 +210,7 @@ volver atrás a no ser que se cierre sesión. Esto para evitar incordios.
   - Ahora, las categorías se separan con un borde del color del estado de animo
   - La fuente de los formularios cambia de color según el estado de ánimo
   - Los botones de modificar formulario cambia según el estado de ánimo
+  - Ahora el menú principal tiene una BottomNavigationBar más elegante para moverse por la interfaz
 
 - Se han añadido y modificado muchisimas categorías base
 

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_login.dart';
 
+import '../theme/colors.dart';
+
 ///Este fichero sirve para crear la parte gráfica a la hora de
 ///editar el perfil de usuario
 
@@ -23,11 +25,20 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
           appBar: AppBar(title: const Text("Configuración"),),
           body: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
 
                 // todo poner más bonito
-                Text("Username:\n" + gestor.currentUser!.user, style: const TextStyle(color: Colors.white, fontSize: 20),),
+                Row(
+                  children: [
+                    const Text("Username: ",
+                      style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Text(gestor.currentUser!.user,
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                  ],
+                ),
 
                 // todo hacer botón para cambiar los datos
 
@@ -64,7 +75,7 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[
-                Text("Vas a cerrar sesión. ¿de verdad quieres hacerlo?"),
+                Text("Vas a cerrar sesión, ¿de verdad quieres hacerlo?"),
               ],
             ),
           ),
