@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
-import 'package:life_tracker/main.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_login.dart';
 
 ///Este fichero sirve para crear la parte gráfica a la hora de
 ///editar el perfil de usuario
@@ -45,9 +45,6 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
                     },
                   ),
                 ),
-
-
-
               ],
             ),
           )
@@ -78,7 +75,7 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
                   GestorUsuario.instance.cerrarSesion();
 
                   // esto hace que se borre toda la pila y no se pueda volver hacia atrás una vez pulsado este botón
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const Inicio()), (r) => false);
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const Login()), (r) => false);
                 }),
 
             TextButton(

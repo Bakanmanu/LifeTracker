@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
-import 'package:life_tracker/interfaz_grafica/pantalla_login.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_registro.dart';
 
-///Este fichero sirve para que un usuario pueda registrarse
 
-class PantallaRegistro extends StatefulWidget {
-  const PantallaRegistro({Key? key}) : super(key: key);
+class Login extends StatefulWidget{
+  const Login({Key? key}) : super(key: key);
 
   @override
-  _PantallaRegistroState createState() => _PantallaRegistroState();
+  LoginState createState() => LoginState();
 }
 
-class _PantallaRegistroState extends State<PantallaRegistro> {
+class LoginState extends State<Login>{
 
   GestorUsuario gestor = GestorUsuario.instance;
   String user = '';
   String pass = '';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
+
     return Scaffold(
       backgroundColor: Colors.purple, //todo poner color
       body: Container(
@@ -29,51 +29,32 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                 blurRadius: 20.0,
                 spreadRadius: 5.0,
                 offset: Offset(5.0, 5.0)
-            )
-            ],
+            )],
             color: Colors.purpleAccent, //todo poner color
             borderRadius: BorderRadius.circular(20)
         ),
-        margin: const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 40),
+        margin: const EdgeInsets.only(top: 50, left: 20, right: 20 ,bottom: 40),
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              /// MENSAJE todo poner más bonito
-              if (MediaQuery.of(context).viewInsets.bottom == 0) Column(
-                children: [
-                   // si el teclado NO está activo
-                      Container(
-                          padding: const EdgeInsets.only(bottom: 50),
-                          child: const Icon(Icons.login, size: 120,)
-                      ),
-
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 25),
-                        child: const Text("Introduce tus datos para crear una nueva cuenta",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                          maxLines: 3,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                ],
+              /// LOGO
+              if (MediaQuery.of(context).viewInsets.bottom == 0) ( // si el teclado NO está activo
+                  Image.asset("assets/logo_transparent.png", height: 270,)
               ),
 
               /// CAMPO USERNAME
               Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 10),
-                // todo revisar responsive
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 15), // todo revisar responsive
                 child: TextFormField(
                   key: const Key("addTexto"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Nombre de usuario',
                   ),
-                  onChanged: (String userInput) {
+                  onChanged: (String userInput){
                     user = userInput;
                   },
                 ),
@@ -81,8 +62,8 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
 
               /// CAMPO PASSWORD
               Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 10),
-                // todo revisar responsive
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 0), // todo revisar responsive
+                //margin: const EdgeInsets.only(bottom: 125), // todo revisar responsive
                 child: TextFormField(
                   obscureText: true,
                   key: const Key("addTexto"),
@@ -90,42 +71,46 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                     border: OutlineInputBorder(),
                     labelText: 'Contraseña',
                   ),
-                  onChanged: (String passInput) {
+                  onChanged: (String passInput){
                     pass = passInput;
                   },
                 ),
               ),
 
-              /// BOTÓN CREAR CUENTA
+              /// BOTÓN INICIAR SESIÓN
               Container(
-                margin: const EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 15),
+                margin: const EdgeInsets.only(top: 20, bottom: 20),
                 width: 200,
                 decoration: BoxDecoration(
                     color: Colors.deepPurple, //todo poner color
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: TextButton(
-                  child: const Text("Crear cuenta",
-                    style: TextStyle(color: Colors.white, fontSize: 20),),
-                  onPressed: () {
+                  child: const Text("Iniciar Sesión", style: TextStyle(color: Colors.white, fontSize: 20),),
+                  onPressed: (){
                     //todo revisar cuando la API
-                    int codigoReg = gestor.registrarse(user, pass); // intento de inicio de sesión
-                    if (codigoReg == 1) { // REGISTRO CORRECTO
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()), (route) => false,);
+                    int codigoLogin = gestor.iniciarSesion(user, pass); // intento de inicio de sesión
+
+                    if (codigoLogin == 1){ // INICIO CORRECTO
+                      // pushReplacement hace push y luego borra para que no se pueda volver atrás
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
                     }
-                    else { // FALLO AL REGISTRO
-                      _mostrarAlerta(codigoReg);
+                    else { // FALLO AL LOGIN
+                      _mostrarAlerta(codigoLogin);
                     }
                   },
                 ),
               ),
 
               /// BOTÓN REGISTRAR
-              GestureDetector(
-                child: const Text("¿Ya tienes una cuenta? Inicia sesión"),
-                onTap: () {
-                  Navigator.pop(context);
-                },
+              Container(
+                margin: const EdgeInsets.only(bottom: 30),
+                child: GestureDetector(
+                  child: const Text("¿Eres nuevo? Registrate aquí"),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaRegistro()));
+                  },
+                ),
               ),
             ],
           ),
@@ -137,15 +122,15 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
   Future <void> _mostrarAlerta(int codigo) async {
     String texto = '';
 
-    switch (codigo) {
+    switch (codigo){
       case 0:
-        texto = "El usuario introducido ya existe. Pruebe con otro";
+        texto = "El usuario no existe.\nPruebe registrarse";
         break;
-      case 1:
-        texto = "Cuenta creada con éxito :)";
+      case 1: // este caso no debería ser llamado
+        texto = "Inicio de sesión correcto :)";
         break;
       case 2:
-        texto = "La contraseña no es válida. Prueba con otra anda";
+        texto = "Las credenciales no son válidas";
         break;
       case 3:
         texto = "Por favor, rellene los campos";
@@ -157,7 +142,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Oye!'),
+          title: const Text('Error al iniciar sesión'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -166,13 +151,12 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
             ),
           ),
           actions: <Widget>[
-            if (codigo == 0) ( // si el nombre de usuario existe
+            if (codigo == 0) ( // si el nombre de usuario no existe
                 TextButton(
-                  child: const Text('Iniciar sesión'),
+                  child: const Text('Registrarse'),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const Login()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaRegistro()));
                   },
                 )
             ),
