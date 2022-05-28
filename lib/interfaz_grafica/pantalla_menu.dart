@@ -1,45 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
-import 'package:life_tracker/deprecated/pantalla_gestionar_categorias.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_perfil.dart';
 import '../funcionalidad/formulario.dart';
 import '../funcionalidad/usuario.dart';
 import '../theme/colors.dart';
 import './elementos_menu.dart';
-class PantallaMenu extends StatefulWidget{
+
+class PantallaMenu extends StatefulWidget {
   const PantallaMenu({Key? key}) : super(key: key);
 
   @override
   _PantallaMenuState createState() => _PantallaMenuState();
 }
 
-class _PantallaMenuState extends State<PantallaMenu>{
-  
-  GestorFormulario gestor = GestorUsuario.instance.currentUser!.gestorFormulario;
+class _PantallaMenuState extends State<PantallaMenu> {
+  GestorFormulario gestor =
+      GestorUsuario.instance.currentUser!.gestorFormulario;
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-
       /// APPBAR
       appBar: AppBar(
         title: const Text("MENÚ"),
         actions: [
           GestureDetector(
-              onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaPerfilUsuario()));},
+              onTap: () {
+                irEditarPerfil();
+              },
               child: Container(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: const Icon(Icons.manage_accounts, color: Colors.black, size: 50,), // otros icons: account_circle / account_box / manage_accounts
-              )
-          ),
+                padding: const EdgeInsets.only(right: 10),
+                child: const Icon(
+                  Icons.manage_accounts,
+                  color: Colors.black,
+                  size: 50,
+                ), // otros icons: account_circle / account_box / manage_accounts
+              )),
         ],
       ),
 
       /// FLOATING ACTION BUTTON (para crear formularios
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: (){irNuevoFormulario();},
+        onPressed: () {
+          irNuevoFormulario();
+        },
         tooltip: 'Nuevo formulario',
         child: const Icon(Icons.add),
       ),
@@ -78,32 +84,36 @@ class _PantallaMenuState extends State<PantallaMenu>{
         ),
       ),
 
-      /// BODY (el resto del menú
+
+
+      /// BODY (el resto del menú)
       // todo probar a poner directamente todos los formularios y un botón flotante de nuevo formulario
       body: GridView.builder(
-        itemCount: menu.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          itemBuilder: (context,index){
+          itemCount: menu.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2),
+          itemBuilder: (context, index) {
             return Container(
               margin: const EdgeInsets.all(10),
               //Decoration todo revisar
               child: GestureDetector(
                 key: const Key("BotonesMenu"),
-
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/"+menu[index].imagen, width: 80,),
-                    Text('\n' + menu[index].nombre,
+                    Image.asset(
+                      "assets/" + menu[index].imagen,
+                      width: 80,
+                    ),
+                    Text(
+                      '\n' + menu[index].nombre,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
-
-                onTap: (){
-
+                onTap: () {
                   // SWITCH PARA ACCEDER A LOS DISTINTOS MENÚS
-                  switch(menu[index].id){
+                  switch (menu[index].id) {
                     case 1: //Caso de que sea para rellenar un nuevo formulario
                       irNuevoFormulario();
                       break;
@@ -112,12 +122,12 @@ class _PantallaMenuState extends State<PantallaMenu>{
                       irVerFormularios();
                       break;
 
-                      /// deprecated
+                    /// deprecated
                     // case 3: //Caso para editar el perfil, implementación en un futuro
                     //   Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaPerfilUsuario()));
                     //   break;
 
-                      /// deprecated
+                    /// deprecated
                     // case 4: //Caso para gestionar categorías
                     //   Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaGestionarCategoria()));
                     //   break;
@@ -125,21 +135,23 @@ class _PantallaMenuState extends State<PantallaMenu>{
                 },
               ),
             );
-          }
-      ),
+          }),
     );
   }
 
   Future irNuevoFormulario() {
-    return Navigator.push(context,
-        MaterialPageRoute(builder: (_) {
-          //GestorFormulario.instance.setStratCrear(); // Ponemos la estrategia Crear //todo quitar de aqui
-          gestor.setStratCrear(); // todo revisar
-          return const PantallaFormulario();
-        }));
+    return Navigator.push(context, MaterialPageRoute(builder: (_) {
+      //GestorFormulario.instance.setStratCrear(); // Ponemos la estrategia Crear //todo quitar de aqui
+      gestor.setStratCrear(); // todo revisar
+      return const PantallaFormulario();
+    }));
   }
 
   Future irVerFormularios() {
-    return Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
+    return Navigator.push(context, MaterialPageRoute(builder: (_) => const PantallaMostrarFormulario()));
+  }
+
+  Future irEditarPerfil() {
+    return Navigator.push(context,MaterialPageRoute(builder: (_) => const PantallaPerfilUsuario()));
   }
 }
