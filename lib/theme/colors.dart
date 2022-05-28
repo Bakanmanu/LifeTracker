@@ -29,6 +29,11 @@ const Color appBarColor = Color(0xFFB400D2);
 - Tal vez una variable dinámica para cambiar el color de los formularios según E.Animo*/
 
 /// COLORES RELACIONADOS CON ESTADOS DE ÁNIMO
+const Color enfadado = Color(0xFFB91C1C);
+const Color triste = Color(0xFECB6416);
+const Color neutral = Color(0xFE15289D);
+const Color feliz = Color(0xFE189458);
+const Color contento = Color(0xFE559D13);
 
 // Colores de los formularios todo revisar la opacidad y cómo queda
 const Color formEnfadado = Color(0xFFFFB7B7);

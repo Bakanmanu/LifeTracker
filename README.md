@@ -206,6 +206,10 @@ volver atrás a no ser que se cierre sesión. Esto para evitar incordios.
   - Se ha quitado el apartado de gestionar categorías y el apartado de editar perfil se encuentra en la appbar
   - El botón de guardar formulario ahora está en la esquina superior derecha
   - Ahora la preview de los formularios cambia de color según el estado de ánimo
+  - Ahora, las categorías que no tienen acciones activas, no se muestran en la preview
+  - Ahora, las categorías se separan con un borde del color del estado de animo
+  - La fuente de los formularios cambia de color según el estado de ánimo
+  - Los botones de modificar formulario cambia según el estado de ánimo
 
 - Se han añadido y modificado muchisimas categorías base
 

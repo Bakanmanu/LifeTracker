@@ -181,7 +181,7 @@ class GestorFormulario {
         Accion("2h", false),
         Accion("+2h", false),
       ],),
-      Categoria(enunciado: '¿Qué tiempo hacía?', acciones: [
+      Categoria(enunciado: '¿Qué tiempo hace?', acciones: [
         Accion("Soleado", false),
         Accion("Nublado", false),
         Accion("Lluvia", false),

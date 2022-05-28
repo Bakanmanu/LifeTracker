@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Life Tracker',
       debugShowCheckedModeBanner: false,
-      theme: //ThemeData.dark(),
+      theme: //ThemeData.fallback(),
       ThemeData(
         primarySwatch: Colors.purple, //todo aqui hay que hacer el theme y especificar los colores por defecto
         scaffoldBackgroundColor: background, //todo ajustar el color

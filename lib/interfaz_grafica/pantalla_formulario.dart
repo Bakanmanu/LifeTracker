@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
+import 'package:life_tracker/theme/colors.dart';
 import 'package:smiley_ui/smiley_ui.dart';
 import "../funcionalidad/categoria.dart";
 import '../funcionalidad/elementos_estado_animo.dart';
@@ -198,6 +199,16 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
 
   /// MÉTODO PARA GENERAR LAS CATEGORÍAS Y ACCIONES
   Widget generarCategorias() {
+    /// Selección del color para el fondo del formulario
+    late Color color;
+    switch(_estadoAnimo){
+      case 1: color = enfadado; break;
+      case 2: color = triste;   break;
+      case 3: color = neutral;  break;
+      case 4: color = feliz;    break;
+      case 5: color = contento; break;
+    }
+
     return Flexible(
       child:
       SafeArea(
@@ -216,26 +227,50 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(categoria.enunciado),
-                          const SizedBox(height: 15,),
-                          Wrap(
-                            children: List.generate(
-                                categoria.acciones.length,
-                                    (indexAcciones){
-                                  return Row(
-                                    children: [
-                                      Checkbox(
-                                        value: categoria.acciones[indexAcciones].activo,
-                                        onChanged: (value){
-                                          setState(() {
-                                            categoria.acciones[indexAcciones].cambiarActivo(); //Cambiamos el estado de la acción al hacer click
-                                          });
-                                        },
-                                      ),
-                                      Text(categoria.acciones[indexAcciones].nombre)
-                                    ],
-                                  );
-                                }),
+
+                          /// Enunciado
+                          Text(categoria.enunciado,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: color)
+                          ),
+
+                          /// Lista de acciones
+                          Container(
+                            //Decoración
+                            margin: const EdgeInsets.only(bottom: 15, top: 5),
+                            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: color, width: 2)
+                            ),
+
+                            child: Wrap(
+                              children: List.generate(
+                                  categoria.acciones.length,
+                                      (indexAcciones){
+                                    return Row(
+                                      children: [
+                                        Checkbox( // todo revisar a ver si se puede cambiar que sea un Checkbox
+                                          value: categoria.acciones[indexAcciones].activo,
+
+                                          // Decoración
+                                          activeColor: color,
+                                          shape: const ContinuousRectangleBorder(),
+                                          // Funcionalidad
+                                          onChanged: (value){
+                                            setState(() {
+                                              categoria.acciones[indexAcciones].cambiarActivo(); //Cambiamos el estado de la acción al hacer click
+                                            });
+                                          },
+                                        ),
+                                        Text(categoria.acciones[indexAcciones].nombre,
+                                            style: TextStyle(
+                                                //fontWeight: FontWeight.bold,
+                                                color: color))
+                                      ],
+                                    );
+                                  }),
+                            ),
                           )
                         ],
                       );
@@ -284,7 +319,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         }
       },
       /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
-      child: gestor.isModificar ? const Text('Guardar') : const Text('Crear'),
+      child: gestor.isModificar ? const Text('Guardar',) : const Text('Crear'),
     );
   }
 

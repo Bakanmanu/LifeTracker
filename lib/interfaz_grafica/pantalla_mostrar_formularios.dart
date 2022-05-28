@@ -51,13 +51,13 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
           itemBuilder: (BuildContext context, int index) { // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
 
             /// Selección del color para el fondo del formulario
-            late Color color;
+            late Color color, colorStrong;
             switch(gestor.listaFormularios[index].estadoAnimo){
-              case 1: color = formEnfadado; break;
-              case 2: color = formTriste;   break;
-              case 3: color = formNeutral;  break;
-              case 4: color = formFeliz;    break;
-              case 5: color = formContento; break;
+              case 1: color = formEnfadado; colorStrong = enfadado; break;
+              case 2: color = formTriste;   colorStrong = triste;   break;
+              case 3: color = formNeutral;  colorStrong = neutral;  break;
+              case 4: color = formFeliz;    colorStrong = feliz;    break;
+              case 5: color = formContento; colorStrong = contento; break;
             }
 
             return Container(
@@ -75,9 +75,6 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                       title: Text(gestor.getFechaFormat(gestor.listaFormularios[index]) + '\n'),
                       subtitle: Text( // todo formatear un poco el texto para que se ponga bonito o al menos solo cuando no haya info
                           gestor.getRespuestasAcciones(gestor.listaFormularios[index]),
-                          style: TextStyle(
-                            //color: color, //todo cambiar color según tipo de formulario. ESTO SERÍA EL TEXTO
-                              ),
                       ),
                     ),
 
@@ -89,10 +86,12 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
+
+                        /// Botón Borrar
                         TextButton(
-                          // style: ButtonStyle( //todo cambiar color del boton ¿?
-                          //   foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                          // ),
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(enfadado), // todo revisar si poner este rojo ó colorStrong
+                          ),
                           child: const Text('BORRAR'),
                           onPressed: (){
                             //Llamamos a la funcion que se asegura de borrar y,
@@ -101,10 +100,12 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           },
                         ),
                         const SizedBox(width: 8),
-                        TextButton(               //Boton para editar un formulario ya creado
-                          // style: ButtonStyle( //todo cambiar color del boton ¿?
-                          //   foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                          // ),
+
+                        /// Botón Editar
+                        TextButton(
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(colorStrong),
+                          ),
                           child: const Text('MODIFICAR'),
                           onPressed: () async {
                             gestor.setIndex(index);
