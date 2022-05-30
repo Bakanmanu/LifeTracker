@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_perfil.dart';
+import 'package:life_tracker/theme/colors.dart';
 import '../funcionalidad/formulario.dart';
 import '../funcionalidad/usuario.dart';
 
@@ -30,6 +31,7 @@ class _PantallaTabsState extends State<PantallaTabs> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             irNuevoFormulario();
+            setState(() {});
           },
           tooltip: 'Nuevo formulario',
           child: const Icon(Icons.add),
@@ -37,7 +39,8 @@ class _PantallaTabsState extends State<PantallaTabs> {
 
         /// BOTTOM NAVIGATION BAR
         bottomNavigationBar: const TabBar(
-
+          indicator: BoxDecoration(color: primary),
+          automaticIndicatorColorAdjustment: true,
           tabs: [
             Tab(icon: Icon(Icons.search)),
             Tab(icon: Icon(Icons.manage_accounts)),

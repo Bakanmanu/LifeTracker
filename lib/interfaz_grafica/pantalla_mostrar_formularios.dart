@@ -108,14 +108,14 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                           ),
                           child: const Text('MODIFICAR'),
                           onPressed: () async {
+                            setState(() {});
                             gestor.setIndex(index);
                             await Navigator.push(context,
                                 MaterialPageRoute(builder: (_){
-                                  gestor.setStratModificar(); // Ponemos la estrategia Modificar todo revisar
+                                  gestor.setStratModificar(); // Ponemos la estrategia Modificar
                                   return const PantallaFormulario();
                                 }
                             ));
-                            setState(() {});
                           },
                         ),
                         const SizedBox(width: 8),

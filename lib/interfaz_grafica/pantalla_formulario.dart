@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_tabs.dart';
 import 'package:life_tracker/theme/colors.dart';
 import 'package:smiley_ui/smiley_ui.dart';
 import "../funcionalidad/categoria.dart";
@@ -35,7 +36,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     if (gestor.isModificar){ /// MODIFICAR UN FORMULARIO
       // Recuperamos los campos del formulario
       _estadoAnimo = gestor.getFormEditar().estadoAnimo;
-      _categorias = gestor.getFormEditar().listaCategorias;
+      _categorias = gestor.getFormEditar().listaCategorias; // todo revisar para que se haga una copia y no se pase por referencia
       _campoTexto = gestor.getFormEditar().campoTexto;
     }
     else{ /// CREAR UN FORMULARIO
@@ -223,7 +224,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                   children: List.generate(
                     _categorias.length,
                         (indexCategorias){
-                      final categoria = _categorias[indexCategorias];
+                      Categoria categoria = _categorias[indexCategorias]; // todo revisar si cambiar Categoria por final
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -259,6 +260,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                                           // Funcionalidad
                                           onChanged: (value){
                                             setState(() {
+                                              // todo revisar para que se guarde cuando le des al botón, porque ahora se guarda automáticamente
                                               categoria.acciones[indexAcciones].cambiarActivo(); //Cambiamos el estado de la acción al hacer click
                                             });
                                           },
@@ -310,12 +312,16 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         if (gestor.isModificar){ /// MODIFICAR UN FORMULARIO
           gestor.editarFormulario(_estadoAnimo, _categorias, _campoTexto);
           await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
-          Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const PantallaTabs()), (r) => false);
+          //Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
         }
         else{ /// CREAR UN FORMULARIO
           gestor.crearFormulario(_estadoAnimo, _categorias, _campoTexto);
           await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
-          Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
+
+          // todo intentar revisar por qué aquí no funciona lo mismo que al modificar formulario. Testear a ver si va bien
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const PantallaTabs()), (r) => false);
+          //Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
         }
       },
       /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR

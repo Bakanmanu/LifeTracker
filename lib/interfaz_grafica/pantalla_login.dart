@@ -123,8 +123,8 @@ class LoginState extends State<Login>{
 
   Future irMenuPrincipal(){
     return
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
-      //Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaTabs()));
+      //Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaTabs()));
   }
 
   Future <void> _mostrarAlerta(int codigo) async {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_login.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_tabs.dart';
 
 ///Este fichero sirve para que un usuario pueda registrarse
 
@@ -111,7 +112,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                     //todo revisar cuando la API
                     int codigoReg = gestor.registrarse(user, pass); // intento de inicio de sesión
                     if (codigoReg == 1) { // REGISTRO CORRECTO
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()), (route) => false,);
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const PantallaTabs()), (route) => false,); // todo revisar ruta
                     }
                     else { // FALLO AL REGISTRO
                       _mostrarAlerta(codigoReg);

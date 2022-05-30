@@ -237,7 +237,6 @@ class GestorFormulario {
 }
 
 
-
 /// *************CLASE FORMULARIO*******************************************
 ///Esta clase se encarga de definir los formularios que el usuario tiene que
 ///rellenar para completar su diario
