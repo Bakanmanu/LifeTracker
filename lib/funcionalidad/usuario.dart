@@ -1,3 +1,4 @@
+import 'estadisticas.dart';
 import 'formulario.dart';
 
 /// Clase para gestionar lo relacionado con los usuarios. Esta clase se
@@ -110,6 +111,7 @@ class Usuario {
   late String user; // Pensar si hay que comprobar en la base de datos que exista ese nombre
   late String pass;
   late GestorFormulario gestorFormulario;
+  late Estadisticas estadisticas; // todo revisar
 
   Usuario(this.user, this.pass) {
     gestorFormulario = GestorFormulario();

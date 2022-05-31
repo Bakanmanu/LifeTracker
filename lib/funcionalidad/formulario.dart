@@ -159,11 +159,11 @@ class GestorFormulario {
         Accion("Lavar el coche", false),
       ]),
       Categoria(enunciado: '¿Qué has comido?', acciones: [
-        Accion("fruta", false),
-        Accion("verdura", false),
-        Accion("carne", false),
-        Accion("pollo", false),
-        Accion("pasta", false)
+        Accion("Fruta", false),
+        Accion("Verdura", false),
+        Accion("Carne", false),
+        Accion("Lácteos", false),
+        Accion("Pasta", false)
       ]),
       Categoria(enunciado: 'Entretenimiento', acciones: [
         Accion("Echar la siesta", false),

@@ -8,6 +8,12 @@ class Estadisticas {
 
   // todo métodos:
     /*
+      Ver si es mejor hacer una clase Static o global que te calcula todos
+      los métodos pasandole por parámetro (menos eficiente pero menos acoplado)
+      o si guardar todos los datos en atributos de la clase para que estén
+      ya calculados
+    */
+    /*
       Calcular el número de formularios
       Calcular la media de ánimo
       Calcular la media de cada categoría mesurable
@@ -17,4 +23,8 @@ class Estadisticas {
       es llamado, que recalcule las estadísticas
 
      */
+
+  int getNumFormularios(){
+    return 0;
+  }
 }
