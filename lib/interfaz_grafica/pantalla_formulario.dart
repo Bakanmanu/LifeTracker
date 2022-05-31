@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
+import 'package:life_tracker/deprecated/pantalla_menu_old.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
-import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
-import 'package:life_tracker/interfaz_grafica/pantalla_tabs.dart';
 import 'package:life_tracker/theme/colors.dart';
 import 'package:smiley_ui/smiley_ui.dart';
 import "../funcionalidad/categoria.dart";
@@ -312,7 +311,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         if (gestor.isModificar){ /// MODIFICAR UN FORMULARIO
           gestor.editarFormulario(_estadoAnimo, _categorias, _campoTexto);
           await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
-          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const PantallaTabs()), (r) => false);
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const PantallaMenu()), (r) => false);
           //Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMostrarFormulario()));
         }
         else{ /// CREAR UN FORMULARIO
@@ -320,7 +319,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
 
           // todo intentar revisar por qué aquí no funciona lo mismo que al modificar formulario. Testear a ver si va bien
-          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const PantallaTabs()), (r) => false);
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const PantallaMenu()), (r) => false);
           //Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
         }
       },

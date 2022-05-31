@@ -5,28 +5,21 @@ import 'package:flutter/material.dart';
 const Color white = Color(0xFFFFFFFF);
 const Color black = Color(0xFF000000);
 
-/// COLORES DE LA PROPIA APLICACIÓN todo cambiar un poco
+/// COLORES DE LA PROPIA APLICACIÓN
+const Color background = Color(0xFFE4C9FF);
 const Color primary = Color(0xFFC58BF2);
 const Color secondary = Color(0xFF9DCEFF);
 const Color thirdColor = Color(0xFF92A3FD);
 const Color fourthColor = Color(0xFFEEA4CE);
 const Color bgTextField = Color(0xFFF7F8F8);
 
-//Paleta de color hecha //todo pendiente de modificar
+/// Paleta de color hecha
 // buscar https://coolors.co/65246d-7b2462-a43fa7-cd5d9d-fdcd87
-const Color background = Color(0xFFE4C9FF);
-const Color background2 = Color(0xFFFDCD87);
-const Color widgetBackground = Color(0xFFE4C9FF);
-const Color appBarColor = Color(0xFFB400D2);
-/*
-- Color de fondo de Widgets
-- Color de barras
-- Color de fuente principal
-- Color de fuente secundario
-- Color de botones
-- Color de botones secundario
-- Colores de cada estado de ánimo
-- Tal vez una variable dinámica para cambiar el color de los formularios según E.Animo*/
+const Color midnight = Color(0xFF65246D);
+const Color byzantium = Color(0xFF7B2462);
+const Color purpureus = Color(0xFFA43FA7);
+const Color mulberry = Color(0xFFCD5D9D);
+const Color champagne = Color(0xFFFDCD87);
 
 /// COLORES RELACIONADOS CON ESTADOS DE ÁNIMO
 const Color enfadado = Color(0xFFB91C1C);

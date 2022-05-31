@@ -107,8 +107,7 @@ class GestorUsuario {
 /// de servir como identificador a la hora de subir información a la BD
 class Usuario {
   /// Atributos
-  late String
-      user; // Pensar si hay que comprobar en la base de datos que exista ese nombre
+  late String user; // Pensar si hay que comprobar en la base de datos que exista ese nombre
   late String pass;
   late GestorFormulario gestorFormulario;
 

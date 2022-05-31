@@ -12,8 +12,6 @@ del que pueda aparecer arriba a la derecha
 
 - Intentar que no aparezcan las categorías que no tengan acciones elegidas
 
-- Intentar agrupar cada categoría 
-
 - Ver cómo se podría hacer para que fueran iconos clicables
 en vez de ListView: Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) 
 al ser marcados en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites

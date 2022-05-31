@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../interfaz_grafica/pantalla_menu.dart';
+import 'pantalla_menu_old.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -89,7 +89,7 @@ class __loginState extends State<_login>{
                 child: FlatButton(
                   child: const Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),),
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const PantallaMenuOld()));
                   },
                 ),
               ),

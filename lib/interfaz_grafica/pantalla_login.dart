@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
-import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_registro.dart';
-import 'package:life_tracker/interfaz_grafica/pantalla_tabs.dart';
+import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
+
+import '../theme/colors.dart';
 
 
 class Login extends StatefulWidget{
@@ -124,7 +125,7 @@ class LoginState extends State<Login>{
   Future irMenuPrincipal(){
     return
       //Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaTabs()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
   }
 
   Future <void> _mostrarAlerta(int codigo) async {

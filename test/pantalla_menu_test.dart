@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
+import 'package:life_tracker/deprecated/pantalla_menu_old.dart';
 
 /// En este fichero se incluirán las pruebas de Widgets
 /// En este fichero se incluirán las pruebas de pantallaMenu
@@ -13,7 +13,7 @@ void main() {
     final botonesMenu = find.byKey(const ValueKey("BotonesMenu"));
 
     //Ejecutamos el test
-    await tester.pumpWidget(const MaterialApp(home: PantallaMenu()));
+    await tester.pumpWidget(const MaterialApp(home: PantallaMenuOld()));
     await tester.tap(botonesMenu.at(0));
     await tester.pump();
 
@@ -27,7 +27,7 @@ void main() {
     final botonesMenu = find.byKey(const ValueKey("BotonesMenu"));
 
     //Ejecutamos el test
-    await tester.pumpWidget(const MaterialApp(home: PantallaMenu()));
+    await tester.pumpWidget(const MaterialApp(home: PantallaMenuOld()));
     await tester.tap(botonesMenu.at(1));
     await tester.pump();
 
@@ -41,7 +41,7 @@ void main() {
     final botonesMenu = find.byKey(const ValueKey("BotonesMenu"));
 
     //Ejecutamos el test
-    await tester.pumpWidget(const MaterialApp(home: PantallaMenu()));
+    await tester.pumpWidget(const MaterialApp(home: PantallaMenuOld()));
     await tester.tap(botonesMenu.at(2));
     await tester.pump();
 
