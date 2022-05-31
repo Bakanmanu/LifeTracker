@@ -18,6 +18,7 @@ class LoginState extends State<Login>{
   GestorUsuario gestor = GestorUsuario.instance;
   String user = '';
   String pass = '';
+  bool passVisible = false;
 
   @override
   Widget build(BuildContext context){
@@ -67,10 +68,23 @@ class LoginState extends State<Login>{
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 0), // todo revisar responsive
                 //margin: const EdgeInsets.only(bottom: 125), // todo revisar responsive
                 child: TextFormField(
-                  obscureText: true,
+                  obscureText: !passVisible,
                   key: const Key("addTexto"),
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+
+                    /// Botón para mostrar u ocultar la contraseña
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          passVisible = !passVisible;
+                        });
+                      },
+                      icon: passVisible? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                      color: black,
+                    ),
+
+                    /// Campo de contraseña en si
+                    border: const OutlineInputBorder(),
                     labelText: 'Contraseña',
                   ),
                   onChanged: (String passInput){

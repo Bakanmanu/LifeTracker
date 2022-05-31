@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Este fichero contiene constantes para los colores que se van a usar en la app
+/// Este fichero contiene constantes para los colores
 
 const Color white = Color(0xFFFFFFFF);
 const Color black = Color(0xFF000000);
@@ -14,11 +14,11 @@ const Color fourthColor = Color(0xFFEEA4CE);
 const Color bgTextField = Color(0xFFF7F8F8);
 
 /// Paleta de color hecha
-// buscar https://coolors.co/65246d-7b2462-a43fa7-cd5d9d-fdcd87
+// https://coolors.co/65246d-7b2462-a43fa7-cd5d9d-fdcd87
 const Color midnight = Color(0xFF65246D);
 const Color byzantium = Color(0xFF7B2462);
 const Color purpureus = Color(0xFFA43FA7);
-const Color mulberry = Color(0xFFCD5D9D);
+const Color mulberry = Color(0xFFD088A8);
 const Color champagne = Color(0xFFFDCD87);
 
 /// COLORES RELACIONADOS CON ESTADOS DE ÁNIMO
@@ -28,7 +28,7 @@ const Color neutral = Color(0xFE15289D);
 const Color feliz = Color(0xFE189458);
 const Color contento = Color(0xFE559D13);
 
-// Colores de los formularios todo revisar la opacidad y cómo queda
+/// Colores de los formularios
 const Color formEnfadado = Color(0xFFFFB7B7);
 const Color formTriste = Color(0xFEFFD4B6);
 const Color formNeutral = Color(0xFEB8C4FD);

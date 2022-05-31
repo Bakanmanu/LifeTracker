@@ -29,19 +29,22 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
       ///Listado de Formularios realizados
       body: gestor.listaFormularios.isEmpty ? //CONDICIONAL ENTRE CENTER Ó COLUMN SEGUN HAYA FORMULARIOS O NO
 
-      Container(
-        padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
-        child: const Text(
-          "Aún no tienes formularios :(\nPrueba a crear uno desde 'Nuevo Formulario' en menú principal",
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20),
-          maxLines: 3,
-          textAlign: TextAlign.center,
-        ),
+      Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+            child: const Text(
+              "Aún no tienes formularios :(\nPrueba a crear uno pulsando el botón de abajo",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+              maxLines: 3,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const Icon(Icons.arrow_downward),
+        ],
       )
-
-      // todo hacer un botoncillo para que te lleve a crear un nuevo formulario
 
       : // operador ternario condicional, esto hace que si gestor.listaFormularios.isEmpty es false, sea esto lo que se ejecute
 
@@ -50,7 +53,7 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
           itemCount: gestor.listaFormularios.length,       // Obtiene la cantidad de Formularios que contiene la lista  para así iterar como un bucle for
           itemBuilder: (BuildContext context, int index) { // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
 
-            /// Selección del color para el fondo del formulario
+            /// Selección del color para el fondo del formulario segun estado animo
             late Color color, colorStrong;
             switch(gestor.listaFormularios[index].estadoAnimo){
               case 1: color = formEnfadado; colorStrong = enfadado; break;
@@ -61,15 +64,14 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
             }
 
             return Container(
-              //color: Colors.purpleAccent[400], //todo cambiar color según tipo de formulario. ESTO SERÍA SOLO EL BORDE
               child: Card(
-                color: color, //todo cambiar color según tipo de formulario. ESTO SERÍA EL FONDO
+                color: color,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
 
                     /// INFO ESTADO ANIMO + CATEGORÍAS
-                    ListTile( //leading: Image.asset("assets/"+estadosAnimo[gestor.listaFormularios[index].estadoAnimo - 1].imagen, width:40),
+                    ListTile(
                       leading: getCaraEstadoAnimo(gestor.listaFormularios[index].estadoAnimo), // Elegimos la cara según
                       isThreeLine: true,
                       title: Text(gestor.getFechaFormat(gestor.listaFormularios[index]) + '\n'),

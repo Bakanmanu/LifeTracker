@@ -2,16 +2,6 @@
 
 - Crear método para editar username y password
 
-- Hacer TAB que se muestren los formularios de primeras y una appbar abajo con botones de:
-  - Ver formularios
-  - Nuevo formulario (en forma de botón redondo en medio)
-  - Editar perfil
-
-- En el crear formulario, poner el campo de texto al fondo y un botón de guardar, aparte
-del que pueda aparecer arriba a la derecha
-
-- Intentar que no aparezcan las categorías que no tengan acciones elegidas
-
 - Ver cómo se podría hacer para que fueran iconos clicables
 en vez de ListView: Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) 
 al ser marcados en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
@@ -211,4 +201,6 @@ volver atrás a no ser que se cierre sesión. Esto para evitar incordios.
   - Ahora el menú principal tiene una BottomNavigationBar más elegante para moverse por la interfaz
 
 - Se han añadido y modificado muchisimas categorías base
+
+- Ahora el campo contraseña puede ponerse visible u oculto
 

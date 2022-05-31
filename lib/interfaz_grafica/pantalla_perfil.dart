@@ -22,46 +22,109 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
   Widget build(BuildContext context){
     return Center(
       child: Scaffold(
-          appBar: AppBar(title: const Text("Configuración"),),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+        appBar: AppBar(
+          title: const Text("Mi perfil"),
+          actions: [
+
+            /// Botón de Logout
+            Container(
+              decoration: BoxDecoration(
+                  color: enfadado,
+                  borderRadius: BorderRadius.circular(10)
+              ),
+              child: TextButton(
+                child: const Text("Cerrar Sesión", style: TextStyle(color: Colors.white,)),
+                onPressed: (){
+                  _alertaCerrarSesion();
+                },
+              ),
+            ),
+          ],
+
+        ),
+        body: Container(
+          decoration: BoxDecoration(
+              color: primary,
+              borderRadius: BorderRadius.circular(20)
+          ),
+          margin: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+          padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+          child: Center(
+            child: ListView(
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
-                // todo poner más bonito
-                Row(
-                  children: [
-                    const Text("Username: ",
-                      style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text(gestor.currentUser!.user,
-                      style: const TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                  ],
-                ),
-
-                // todo hacer botón para cambiar los datos
-
+                /// Nombre del usuario
                 Container(
-                  margin: const EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 15),
-                  width: 200,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: TextButton(
-                    child: const Text("Cerrar Sesión", style: TextStyle(color: Colors.white, fontSize: 20),),
-                    onPressed: (){
-                      _alertaCerrarSesion();
-                    },
+                  margin: const EdgeInsets.only(bottom: 15),
+                  child: TextField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                        labelText: "Nombre de usuario",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        hintText: gestor.currentUser!.user,
+                        hintStyle: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold,
+                          color: black,
+                        )
+                    ),
                   ),
                 ),
+
+                const Text("Estadísticas: ",
+                  style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+
+                /// Apartado de categorias "Mediables"
+                const Text("Medias: ",
+                  style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+
+                /// Texto generado a partir de las estadísicas
+                /// todo esto hay que tocarlo mucho para que saque las categorias el valor y tal
+                buildTextoEstadisticas("categoria", "X"),
+                buildTextoEstadisticas("categoria", "X"),
+                buildTextoEstadisticas("categoria", "X"),
+                buildTextoEstadisticas("categoria", "X"),
+
+
+                /// Apartado de categorias min/max
+                const SizedBox(height: 8),
+                const Text("Min-Max: ",
+                  style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                buildTextoEstadisticas("categoria", "X"),
+                buildTextoEstadisticas("categoria", "X"),
+                buildTextoEstadisticas("categoria", "X"),
+                buildTextoEstadisticas("categoria", "X"),
+                buildTextoEstadisticas("categoria", "X"),
               ],
             ),
-          )
+          ),
+        ),
       ),
     );
   }
+
+  Container buildTextoEstadisticas(String categoria, String stat) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15),
+      child: Row(
+        children: [
+          Text(categoria + ": ",
+            style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          Text(stat,
+            style: const TextStyle(color: Colors.black, fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
+
 
 
   /// Función que muestra una alerta para asegurarse de si se quiere cerrar sesión

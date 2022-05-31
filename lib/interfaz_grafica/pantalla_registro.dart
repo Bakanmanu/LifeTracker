@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_login.dart';
-import 'package:life_tracker/deprecated/pantalla_menu_old.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
+
 
 ///Este fichero sirve para que un usuario pueda registrarse
 
@@ -18,6 +18,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
   GestorUsuario gestor = GestorUsuario.instance;
   String user = '';
   String pass = '';
+  bool passVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +86,21 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 10),
                 // todo revisar responsive
                 child: TextFormField(
-                  obscureText: true,
+                  obscureText: passVisible,
                   key: const Key("addTexto"),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+
+                    /// Botón para mostrar u ocultar la contraseña
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          passVisible = !passVisible;
+                        });
+                      },
+                      icon: passVisible? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
+                      color: Colors.black,
+                    ),
+
                     border: OutlineInputBorder(),
                     labelText: 'Contraseña',
                   ),
