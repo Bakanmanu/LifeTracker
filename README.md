@@ -204,3 +204,5 @@ volver atrás a no ser que se cierre sesión. Esto para evitar incordios.
 
 - Ahora el campo contraseña puede ponerse visible u oculto
 
+- Se ha creado la clase de categorías y su correspondiente implementación en la pantalla de perfil
+

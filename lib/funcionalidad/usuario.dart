@@ -28,6 +28,9 @@ class GestorUsuario {
   /// pueda iniciar sesión y pasar a ser el usuario actual
   /// Se comprueba si el usuario existe. Si existe, se comprueba que la
   /// contraseña introducida coincide con la almacenada
+  /// todo cambiar con API
+  /// todo pensar si guardar los usuarios en la estructura y revisar si existe para agilizar el proceso
+  /// todo hacer que se descarguen autmáticamente los datos si se ha logueado bien
   int iniciarSesion(String user, String pass) {
     int codigo =
         0; // 0: usuario no existe / 1: inicio correcto / 2: credenciales inválidas / 3: campos vacíos
@@ -60,6 +63,7 @@ class GestorUsuario {
   /// Método que permite crear un nuevo usuario
   /// Primero comprueba si el nombre de usuario es válido y que no se ha
   /// introducido una contraseña vacía
+  /// todo cambiar con API
   int registrarse(String user, String pass) {
     int codigo = 0; // 0: usuario ya existe / 1: correcto / 2: campo contraseña no válido / 3: user vacío
 
@@ -70,7 +74,7 @@ class GestorUsuario {
       } else {
         codigo = 1;
         mapaUsuarios[user] = Usuario(user, pass); // añadimos el nuevo usuario al mapa
-        iniciarSesion(user, pass); // todo revisar iniciamos sesión directamente
+        iniciarSesion(user, pass);
       }
     } else {
       if (user == '') {
@@ -85,6 +89,7 @@ class GestorUsuario {
   // todo hacer método para cambiar user name y password
 
   /// Método para borrar un usuario existente de la lista
+  /// todo cambiar con API
   void borrarUsuario(String user) {
     if (mapaUsuarios.containsKey(user)) {
       mapaUsuarios.remove(user);
@@ -98,11 +103,6 @@ class GestorUsuario {
     currentUser = user;
   }
 
-  /// Método debug para poder usar la aplicación antes de tener el sistema de
-  /// login
-  void setCurrentUserDefault() {
-    setCurrentUser(mapaUsuarios["admin"]);
-  }
 }
 
 /// Clase que define toda la funcionalidad respecto a un usuario. Por ejemplo,
@@ -113,7 +113,7 @@ class Usuario {
   late String user; // Pensar si hay que comprobar en la base de datos que exista ese nombre
   late String pass;
   late GestorFormulario gestorFormulario;
-  late Estadisticas estadisticas; // todo revisar
+  late Estadisticas estadisticas;
 
   Usuario(this.user, this.pass) {
     gestorFormulario = GestorFormulario();
@@ -126,8 +126,4 @@ class Usuario {
   void actualizarEstadisticas(){
     estadisticas.actualizarEstadisticas(gestorFormulario.listaFormularios);
   }
-
-//Método para que devuelva el gestor y/o métodos del gestor  --> editar o nuevo formulario
-
-// todo pensar más posibles métodos: métodos para editar los campos --> hay que tocar la BD
 }

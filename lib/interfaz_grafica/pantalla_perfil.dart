@@ -45,7 +45,7 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
         ),
         body: Container(
             decoration: BoxDecoration(
-                color: primary,
+                color: user.estadisticas.nFormularios == 420 ? formContento : primary, // easter egg hora porro
                 borderRadius: BorderRadius.circular(20)
             ),
             margin: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),

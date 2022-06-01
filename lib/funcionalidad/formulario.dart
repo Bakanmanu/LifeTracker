@@ -25,7 +25,7 @@ class GestorFormulario {
     //Comprobamos que el estado de ánimo es un int entre 1 y 5
     assert(estadoAnimo >= 1 && estadoAnimo <= 5);
 
-    //Guardamos las acciones seleccionadas en la lista "respuestas" de categoría
+    //Guardamos las acciones seleccionadas en la lista "respuestas" de cada categoría
     for(Categoria cat in listaCategorias){
       cat.actualizarRespuestas(); //todo revisar dónde se actualizan las respuestas
     }
@@ -129,17 +129,17 @@ class GestorFormulario {
     return [
       Categoria(enunciado: '¿Cuánto has dormido?', acciones: [
         Accion(0, "0 horas", false),
-        Accion(1, "1-3 horas", false),
-        Accion(2, "4-6 horas", false),
-        Accion(3, "7-8 horas", false),
-        Accion(4, "+8 horas", false),
+        Accion(2, "1-3 horas", false),
+        Accion(5, "4-6 horas", false),
+        Accion(8, "7-8 horas", false),
+        Accion(10, "+8 horas", false),
       ]),
       Categoria(enunciado: 'Calidad del sueño', acciones: [
-        Accion(0, "Insomnio", false),
-        Accion(1, "Mala", false),
-        Accion(2, "Neutral", false),
-        Accion(3, "Buena", false),
-        Accion(4, "Dormir acompañado", false),
+        Accion(1, "Insomnio", false),
+        Accion(2, "Mala", false),
+        Accion(3, "Neutral", false),
+        Accion(4, "Buena", false),
+        Accion(0, "Dormir acompañado", false),
       ]),
       Categoria(enunciado: 'Autoestima', acciones: [
         Accion(1, "Muy baja", false),
@@ -205,7 +205,8 @@ class GestorFormulario {
   }
 
   /// Método para añadir packs de categorías descargados
-  /// DEPRECATED hasta añadir la funcionalidad de descargar Categorías
+  /// hasta añadir la funcionalidad de descargar Categorías
+  /// @deprecated
   void anadirCategoriasDLC(List <Categoria> lista){
     // for (Categoria cat in lista){
     //   categoriasDLC.add(cat); // descomentar el atributo categoriasDLC
@@ -213,36 +214,12 @@ class GestorFormulario {
   }
 
   /// Método de prueba para cargar las categorías DLC
-  /// DEPRECATED
+  /// @deprecated
   //ESTE MÉTODO AÚN NO SE PUEDE IMPLEMENTAR. Esperar a aplicación web
   List<Categoria> crearCategoriasDLC(){
     // La idea es que este método obtenga de alguna manera una categoría descargada
     return [];
   }
-
-  ///Este método sirve para debuggear y ver que se crean bien los formularios
-  // void mostrarFormularioTerminal(){
-  //   Formulario form = listaFormularios.last;
-  //
-  //   print(form._estadoAnimo);
-  //   print(form._campoTexto);
-  //
-  //   print('ACCIÓN + BOOL:');
-  //   for (Categoria cat in form._listaCategorias){
-  //     print('CATEGORÍA: ' + cat.enunciado);
-  //     for (Accion acc in cat.acciones){
-  //       acc.activo ? print(acc.nombre + ": TRUE") : print(acc.nombre + ": FALSE");
-  //     }
-  //   }
-  //   print('ACCIONES ACTIVAS:');
-  //   for (Categoria cat in form._listaCategorias){
-  //     print('CATEGORÍA: ' + cat.enunciado);
-  //     for (Accion acc in cat.respuestas){
-  //       print(acc.nombre);
-  //     }
-  //   }
-  //   print(form._fecha);
-  // }
 
 }
 

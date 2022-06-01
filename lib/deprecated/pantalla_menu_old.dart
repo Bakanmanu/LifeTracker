@@ -5,7 +5,7 @@ import 'package:life_tracker/interfaz_grafica/pantalla_perfil.dart';
 import '../funcionalidad/formulario.dart';
 import '../funcionalidad/usuario.dart';
 import '../theme/colors.dart';
-import '../interfaz_grafica/elementos_menu.dart';
+import 'elementos_menu.dart';
 
 class PantallaMenuOld extends StatefulWidget {
   const PantallaMenuOld({Key? key}) : super(key: key);
