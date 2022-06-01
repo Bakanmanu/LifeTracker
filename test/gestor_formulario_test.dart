@@ -12,11 +12,11 @@ void main() {
 
       //Creamos una lista de categorías para poder llamar al método
       List<Categoria> lCategorias = [Categoria(enunciado: '¿Qué has comido?', acciones: [
-        Accion("fruta", false),
-        Accion("verdura", false),
-        Accion("carne", false),
-        Accion("pollo", false),
-        Accion("pasta", false)
+        Accion(1, "fruta", false),
+        Accion(2, "verdura", false),
+        Accion(3, "carne", false),
+        Accion(4, "pollo", false),
+        Accion(5, "pasta", false)
       ])];
 
       expect(gestor.listaFormularios.length, 0); //comprobamos que se inicializa a 0 formularios
@@ -38,11 +38,11 @@ void main() {
 
       //Creamos una lista de categorías para poder llamar al método
       List<Categoria> lCategorias = [Categoria(enunciado: '¿Qué has comido?', acciones: [
-        Accion("fruta", false),
-        Accion("verdura", false),
-        Accion("carne", false),
-        Accion("pollo", false),
-        Accion("pasta", false)
+        Accion(1, "fruta", false),
+        Accion(2, "verdura", false),
+        Accion(3, "carne", false),
+        Accion(4, "pollo", false),
+        Accion(5, "pasta", false)
       ])];
 
       // Añadimos un par de formularios

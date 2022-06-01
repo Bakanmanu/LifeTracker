@@ -6,8 +6,8 @@ import 'package:life_tracker/funcionalidad/accion.dart';
 void main() {
   group('Accion', () {
     test('ver que se crea la accion', (){
-      Accion acc1 = Accion("Prueba1", true);
-      Accion acc2 = Accion("Prueba2", false);
+      Accion acc1 = Accion(1, "Prueba1", true);
+      Accion acc2 = Accion(1, "Prueba2", false);
 
       expect(acc1.nombre, "Prueba1");
       expect(acc1.activo, true);
@@ -17,7 +17,7 @@ void main() {
     });
 
     test('comprobar que se cambia correctamente cada vez que se llama cambiarActivo()', (){
-      Accion acc = Accion("Prueba1", true);
+      Accion acc = Accion(1, "Prueba1", true);
 
       //Llamamos al método
       acc.cambiarActivo();

@@ -95,7 +95,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
               isSelected: _estadoAnimo == 1 ? true : false,
               onTap: () => setState(
                     () {
-                  print("click en "+estadosAnimo[0].nombre); // DEBUG
                   _estadoAnimo = 1;
                 },
               ),
@@ -107,7 +106,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
               isSelected: _estadoAnimo == 2 ? true : false,
               onTap: () => setState(
                     () {
-                  print("click en "+estadosAnimo[1].nombre); // DEBUG
                   _estadoAnimo = 2;
                 },
               ),
@@ -119,7 +117,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
               isSelected: _estadoAnimo == 3 ? true : false,
               onTap: () => setState(
                     () {
-                  print("click en "+estadosAnimo[2].nombre); // DEBUG
                   _estadoAnimo = 3;
                 },
               ),
@@ -131,7 +128,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
               isSelected: _estadoAnimo == 4 ? true : false,
               onTap: () => setState(
                     () {
-                  print("click en "+estadosAnimo[3].nombre); // DEBUG
                   _estadoAnimo = 4;
                 },
               ),
@@ -143,7 +139,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
               isSelected: _estadoAnimo == 5 ? true : false,
               onTap: () => setState(
                     () {
-                  print("click en "+estadosAnimo[4].nombre); // DEBUG
                   _estadoAnimo = 5;
                 },
               ),

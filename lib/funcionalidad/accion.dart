@@ -1,13 +1,14 @@
 class Accion {
+  int index;
   String nombre;
   bool activo = false;
 
   //Constructor
-  Accion(this.nombre, this.activo);
+  Accion(this.index, this.nombre, this.activo);
 
   //Método para crear una acción públicamente usando el constructor
   Accion crearAccion(String nombre){
-    return Accion(nombre, activo);
+    return Accion(index, nombre, activo);
   }
 
   Accion modificarAccion(String nom){

@@ -55,24 +55,18 @@ class Estadisticas {
      */
 
   void actualizarEstadisticas(List <Formulario> listaF){
-
-    //todo IMPORTANTE: intentar hacer que cada método getLokesea sea el que
-    //actualice el atributo y el mapa
     actualizarNumFormularios(listaF);
-    actualizarMediaEstadoAnimo(listaF);
-    // mediaSueno          = 0;
-    // mediaCalidadSueno   = 0;
-    // mediaAutoestima     = 0;
-    // mediaProductividad  = 0;
 
-    // minQuehaceres;
-    // maxQuehaceres;
-    // minComida;
-    // maxComida;
-    // minEntretenimiento;
-    // maxEntretenimiento;
-    // minTiempo;
-    // maxTiempo;
+    actualizarMediaEstadoAnimo(listaF);
+    actualizarMediaSueno(listaF);
+    actualizarMediaCalidadSueno(listaF);
+    actualizarMediaAutoestima(listaF);
+    actualizarMediaProductividad(listaF);
+
+    actualizarMinMaxQuehaceres(listaF);
+    actualizarMinMaxComida(listaF);
+    actualizarMinMaxEntretenimiento(listaF);
+    actualizarMinMaxTiempo(listaF);
 
     _actualizarMapas(); //Actualizamos los mapas para poder mostrar los cambios
   }
@@ -109,24 +103,44 @@ class Estadisticas {
         suma += element.estadoAnimo;
       }
       media = suma/nFormularios;
+
+      mediaEstadoAnimo = media;
+      mediaEstadoAnimoStr = estadosAnimo[media.round()-1].nombre;
     }
-    mediaEstadoAnimo = media;
-    mediaEstadoAnimoStr = estadosAnimo[media.round()-1].nombre;
+    else {
+      mediaEstadoAnimo = media;
+      mediaEstadoAnimoStr = "Sin datos";
+    }
   }
-  double getMediaSueno(List<Formulario> listForm){
+  void actualizarMediaSueno(List<Formulario> listForm){
     double media = 0;
-    return 0;
+    if(nFormularios > 0){
+      //listForm.first.listaCategorias.first.
+    }
+    else {
+      mediaSueno = media;
+      mediaEstadoAnimoStr = "Sin datos";
+    }
   }
-  double getMediaCalidadSueno(List<Formulario> listForm){
+  void actualizarMediaCalidadSueno(List<Formulario> listForm){
     double media = 0;
-    return 0;
   }
-  double getMediaAutoestima(List<Formulario> listForm){
+  void actualizarMediaAutoestima(List<Formulario> listForm){
     double media = 0;
-    return 0;
   }
-  double getProductividad(List<Formulario> listForm){
+  void actualizarMediaProductividad(List<Formulario> listForm){
     double media = 0;
-    return 0;
+  }
+
+  void actualizarMinMaxQuehaceres(List<Formulario> listForm){
+  }
+
+  void actualizarMinMaxComida(List<Formulario> listForm){
+  }
+
+  void actualizarMinMaxEntretenimiento(List<Formulario> listForm){
+  }
+
+  void actualizarMinMaxTiempo(List<Formulario> listForm){
   }
 }
