@@ -1,6 +1,8 @@
 import 'package:life_tracker/funcionalidad/elementos_estado_animo.dart';
 import 'package:life_tracker/funcionalidad/formulario.dart';
 
+import 'categoria.dart';
+
 /// Clase que gestiona lo relacionado con las estadísticas de usuario para
 /// facilitar la recopilación de datos en la BD y mostrar las estadisticas
 /// del propio usuario
@@ -99,8 +101,8 @@ class Estadisticas {
     double media = 0;
     if(nFormularios > 0){
       double suma = 0;
-      for (var element in listForm) {
-        suma += element.estadoAnimo;
+      for (Formulario f in listForm) {
+        suma += f.estadoAnimo;
       }
       media = suma/nFormularios;
 
@@ -115,21 +117,39 @@ class Estadisticas {
   void actualizarMediaSueno(List<Formulario> listForm){
     double media = 0;
     if(nFormularios > 0){
-      //listForm.first.listaCategorias.first.
+      for (Formulario f in listForm) {
+        for (Categoria c in f.listaCategorias){
+
+        }
+      }
     }
     else {
       mediaSueno = media;
-      mediaEstadoAnimoStr = "Sin datos";
     }
   }
   void actualizarMediaCalidadSueno(List<Formulario> listForm){
     double media = 0;
+    for (Formulario f in listForm) {
+      for (Categoria c in f.listaCategorias){
+
+      }
+    }
   }
   void actualizarMediaAutoestima(List<Formulario> listForm){
     double media = 0;
+    for (Formulario f in listForm) {
+      for (Categoria c in f.listaCategorias){
+
+      }
+    }
   }
   void actualizarMediaProductividad(List<Formulario> listForm){
     double media = 0;
+    for (Formulario f in listForm) {
+      for (Categoria c in f.listaCategorias){
+
+      }
+    }
   }
 
   void actualizarMinMaxQuehaceres(List<Formulario> listForm){

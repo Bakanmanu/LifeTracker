@@ -129,15 +129,10 @@ class GestorFormulario {
     return [
       Categoria(enunciado: '¿Cuánto has dormido?', acciones: [
         Accion(0, "0 horas", false),
-        Accion(1, "1 hora", false),
-        Accion(2, "2 horas", false),
-        Accion(3, "3 horas", false),
-        Accion(4, "4 horas", false),
-        Accion(5, "5 horas", false),
-        Accion(6, "6 horas", false),
-        Accion(7, "7 horas", false),
-        Accion(8, "8 horas", false),
-        Accion(9, "+8 horas", false),
+        Accion(1, "1-3 horas", false),
+        Accion(2, "4-6 horas", false),
+        Accion(3, "7-8 horas", false),
+        Accion(4, "+8 horas", false),
       ]),
       Categoria(enunciado: 'Calidad del sueño', acciones: [
         Accion(0, "Insomnio", false),
