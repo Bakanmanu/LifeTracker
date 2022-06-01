@@ -1,15 +1,14 @@
 class ElementoEstadoAnimo{
   int id;
   String nombre;
-  String imagen;
 
-  ElementoEstadoAnimo(this.id, this.nombre, this.imagen);
+  ElementoEstadoAnimo(this.id, this.nombre);
 
 }
 final estadosAnimo = [
-  ElementoEstadoAnimo(1, "Enfadado", "enfadado.png"),
-  ElementoEstadoAnimo(2, "Triste", "triste.png"),
-  ElementoEstadoAnimo(3, "Neutro", "neutral.png"),
-  ElementoEstadoAnimo(4, "Contento", "contento.png"),
-  ElementoEstadoAnimo(5, "Feliz", "feliz.png")
+  ElementoEstadoAnimo(1, "Enfadado"),
+  ElementoEstadoAnimo(2, "Triste"),
+  ElementoEstadoAnimo(3, "Neutro"),
+  ElementoEstadoAnimo(4, "Contento"),
+  ElementoEstadoAnimo(5, "Feliz")
 ];

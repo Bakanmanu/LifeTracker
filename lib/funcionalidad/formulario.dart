@@ -57,6 +57,12 @@ class GestorFormulario {
     indexFormEditar = index;
   }
 
+
+  /// Devuelve el número de formularios que hay
+  int getNumeroFormularios(){
+    return listaFormularios.length;
+  }
+
   ///Devuelve el formulario correspondiente al índice en la lista de formularios
   Formulario getFormByIndex(int index){
     return listaFormularios[index]; // todo ver si esto hay que hacerlo en la lista del Usuario
@@ -149,6 +155,14 @@ class GestorFormulario {
         Accion("Alta", false),
         Accion("Muy alta", false),
       ]),
+      Categoria(enunciado: '¿Cuánto deporte has hecho?', acciones: [
+        Accion("0h", false),
+        Accion("0.5h", false),
+        Accion("1h", false),
+        Accion("1.5h", false),
+        Accion("2h", false),
+        Accion("+2h", false),
+      ],),
       Categoria(enunciado: 'Quehaceres', acciones: [
         Accion("Hacer la compra", false),
         Accion("Hacer la colada", false),
@@ -173,14 +187,6 @@ class GestorFormulario {
         Accion("Jugar videojuegos", false),
         Accion("Tocar un instrumento", false),
       ]),
-      Categoria(enunciado: '¿Cuánto deporte has hecho?', acciones: [
-        Accion("0h", false),
-        Accion("0.5h", false),
-        Accion("1h", false),
-        Accion("1.5h", false),
-        Accion("2h", false),
-        Accion("+2h", false),
-      ],),
       Categoria(enunciado: '¿Qué tiempo hace?', acciones: [
         Accion("Soleado", false),
         Accion("Nublado", false),

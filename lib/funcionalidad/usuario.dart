@@ -1,3 +1,5 @@
+import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
+
 import 'estadisticas.dart';
 import 'formulario.dart';
 
@@ -115,7 +117,15 @@ class Usuario {
 
   Usuario(this.user, this.pass) {
     gestorFormulario = GestorFormulario();
+    estadisticas = Estadisticas();
   } // Constructor
+
+  /// Método para mantener las estadísticas actualizadas.
+  /// Se llama cada vez que se crea o modifica un formulario en
+  /// [PantallaFormulario] método: generarBotonEnvio()
+  void actualizarEstadisticas(){
+    estadisticas.actualizarEstadisticas(gestorFormulario.listaFormularios);
+  }
 
 //Método para que devuelva el gestor y/o métodos del gestor  --> editar o nuevo formulario
 

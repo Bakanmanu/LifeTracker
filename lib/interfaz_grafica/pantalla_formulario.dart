@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
-import 'package:life_tracker/deprecated/pantalla_menu_old.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
 import 'package:life_tracker/theme/colors.dart';
 import 'package:smiley_ui/smiley_ui.dart';
@@ -56,6 +55,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
         title: gestor.isModificar ? const Text('Modificar formulario') : const Text('Nuevo formulario'),
         actions: [
+          /// Este botón se encarga de crear o actualizar los formularios (y estadísticas)
           generarBotonEnvio(), // todo revisar si aquí está guay el botón
         ],
       ),
@@ -322,6 +322,10 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const PantallaMenu()), (r) => false);
           //Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
         }
+
+        /// Cada vez que haya cambios en los formularios, actualizamos las estadísticas
+        // todo revisar si esto está bien puesto aquí, preferible desde el propio crear formulario
+        GestorUsuario.instance.currentUser?.actualizarEstadisticas();
       },
       /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR
       child: gestor.isModificar ? const Text('Guardar',) : const Text('Crear'),

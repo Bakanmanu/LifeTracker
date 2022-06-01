@@ -169,6 +169,9 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
                 child: const Text("Sí, borrar"),
                 onPressed: () {
                   gestor.borrarFormulario(form);
+                  // Mandamos a actualizar las estadísticas // todo REVISAR
+                  GestorUsuario.instance.currentUser!.actualizarEstadisticas();
+                  
                   setState(() {}); //Actualizamos la pantalla para que no se quede el formulario estático
                   Navigator.of(context).pop(); //Quitamos la alerta
                 }),

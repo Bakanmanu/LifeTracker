@@ -17,6 +17,7 @@ class PantallaPerfilUsuario extends StatefulWidget{
 class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
 
   GestorUsuario gestor = GestorUsuario.instance;
+  Usuario user = GestorUsuario.instance.currentUser!;
 
   @override
   Widget build(BuildContext context){
@@ -43,69 +44,77 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
 
         ),
         body: Container(
-          decoration: BoxDecoration(
-              color: primary,
-              borderRadius: BorderRadius.circular(20)
-          ),
-          margin: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
-          padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-          child: Center(
-            child: ListView(
-              //mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-
-                /// Nombre del usuario
-                Container(
-                  margin: const EdgeInsets.only(bottom: 15),
-                  child: TextField(
-                    readOnly: true,
-                    decoration: InputDecoration(
-                        labelText: "Nombre de usuario",
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: gestor.currentUser!.user,
-                        hintStyle: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold,
-                          color: black,
-                        )
-                    ),
-                  ),
-                ),
-
-                const Text("Estadísticas: ",
-                  style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-
-                /// Apartado de categorias "Mediables"
-                const Text("Medias: ",
-                  style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-
-                /// Texto generado a partir de las estadísicas
-                /// todo esto hay que tocarlo mucho para que saque las categorias el valor y tal
-                buildTextoEstadisticas("categoria", "X"),
-                buildTextoEstadisticas("categoria", "X"),
-                buildTextoEstadisticas("categoria", "X"),
-                buildTextoEstadisticas("categoria", "X"),
-
-
-                /// Apartado de categorias min/max
-                const SizedBox(height: 8),
-                const Text("Min-Max: ",
-                  style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                buildTextoEstadisticas("categoria", "X"),
-                buildTextoEstadisticas("categoria", "X"),
-                buildTextoEstadisticas("categoria", "X"),
-                buildTextoEstadisticas("categoria", "X"),
-                buildTextoEstadisticas("categoria", "X"),
-              ],
+            decoration: BoxDecoration(
+                color: primary,
+                borderRadius: BorderRadius.circular(20)
             ),
-          ),
+            margin: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+            child: Center(
+              child: ListView(
+                children: [
+                  /// Nombre del usuario
+                  mostrarInfoUsuario(),
+                  /// Estadísticas
+                  mostrarEstadisticas(),
+                ],
+              ),
+            )
         ),
       ),
+    );
+  }
+
+  /// Método encargado de coger las estadísticas del usuario y mostrarlas
+  /// a partir de los mapas que debe haber
+  Widget mostrarEstadisticas() {
+    return Column(
+      children: [
+        const Center(
+          child: Text("Estadísticas",
+            style: TextStyle(color: Colors.black, fontSize: 20,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline),
+          ),
+        ),
+        const SizedBox(height: 8),
+
+        /// Número de Formularios
+        Row(
+          children: [
+            const Text("Número de formularios: ",
+              style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Text(user.estadisticas.nFormularios.toString(),
+              style: const TextStyle(color: Colors.black, fontSize: 18,),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
+
+        /// Apartado de categorias "Mediables"
+        const Text("Medias: ",
+          style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+
+        /// Texto generado a partir de las estadísicas mediables
+        for (var v in user.estadisticas.mapaMediables.entries)(
+            buildTextoEstadisticas(v.key, v.value)
+        ),
+
+        /// Apartado de categorias min/max
+        const SizedBox(height: 8),
+        const Text("Min-Max: ",
+          style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+
+        /// Texto generado a partir de las estadísicas MinMax
+        for (var v in user.estadisticas.mapaMinMax.entries)(
+            buildTextoEstadisticas(v.key, v.value)
+        ),
+      ],
     );
   }
 
@@ -117,9 +126,11 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
           Text(categoria + ": ",
             style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
           ),
+
           Text(stat,
             style: const TextStyle(color: Colors.black, fontSize: 16),
-          ),
+          )
+
         ],
       ),
     );
@@ -160,6 +171,24 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
           ],
         );
       },
+    );
+  }
+
+  Widget mostrarInfoUsuario(){
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15),
+      child: TextField(
+        readOnly: true,
+        decoration: InputDecoration(
+            labelText: "Nombre de usuario",
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintText: user.user,
+            hintStyle: const TextStyle(
+              fontSize: 16, fontWeight: FontWeight.bold,
+              color: black,
+            )
+        ),
+      ),
     );
   }
 }

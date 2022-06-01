@@ -101,7 +101,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                       color: Colors.black,
                     ),
 
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     labelText: 'Contraseña',
                   ),
                   onChanged: (String passInput) {
