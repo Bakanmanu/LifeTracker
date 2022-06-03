@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: //ThemeData.fallback(),
       ThemeData(
         primarySwatch: Colors.purple, //todo aqui hay que hacer el theme y especificar los colores por defecto
-        scaffoldBackgroundColor: background, //todo ajustar el color
+        scaffoldBackgroundColor: background,
         //backgroundColor: background,
       ),
       home: const Login(),

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
@@ -26,6 +27,9 @@ class _PantallaMenuState extends State<PantallaMenu> {
       length: 2,
       child: Scaffold(
 
+        // backgroundColor: Colors.transparent,
+        // extendBody: true,
+
         /// FLOATING ACTION BUTTON (para crear formularios
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
@@ -38,19 +42,19 @@ class _PantallaMenuState extends State<PantallaMenu> {
         ),
 
         /// BOTTOM NAVIGATION BAR
-          bottomNavigationBar: const BottomAppBar(
-            shape: CircularNotchedRectangle(),
-            color: primary,
-            child: TabBar(
-              automaticIndicatorColorAdjustment: true,
-              tabs: [
-                Tab(icon: Icon(Icons.search)),
-                Tab(icon: Icon(Icons.manage_accounts)),
-              ],
-            ),
+        bottomNavigationBar: const BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          color: primary,
+          child: TabBar(
+            automaticIndicatorColorAdjustment: true,
+            tabs: [
+              Tab(icon: Icon(Icons.search)),
+              Tab(icon: Icon(Icons.manage_accounts)),
+            ],
           ),
+        ),
 
-        /// BODY 2
+        /// BODY
         body: const TabBarView(
           children: [
             PantallaMostrarFormulario(),

@@ -7,12 +7,6 @@ en vez de ListView: Cambiar las categorías por iconos que cambien de color (el 
 al ser marcados en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
 del CheckBox o del ListView)
 
-- Borrar todo lo referente a contenido descargable
-  
-- Poner un botón de si el usuario quiere compartir o no sus datos (de forma anónima)
-
-- Hacer un método para hacer las estadisticas locales
-
 ***HAY QUE ESPERAR A APPWEB***
 - Hacer una clase _(para las estadísticas)_ que se comunique con el gestor de formularios que sea la que permita subir la 
   información de los formularios a la API (controlando que no se suba información repetida). 
