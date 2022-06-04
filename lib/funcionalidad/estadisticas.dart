@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:life_tracker/funcionalidad/accion.dart';
 import 'package:life_tracker/funcionalidad/elementos_estado_animo.dart';
 import 'package:life_tracker/funcionalidad/formulario.dart';
@@ -292,11 +294,11 @@ class Estadisticas {
   }
 
   void actualizarMinMaxQuehaceres(List<Formulario> listForm){
-
-    bool noData = true;
+    bool noData = true; // bool por si no hay datos de la categoría
 
     // Lista con el número de veces que está marcada la acción [i]
     List<int> ocurrencias = [0, 0, 0, 0, 0, 0, 0];
+    int minIndex, maxIndex;
 
     if(nFormularios > 0){
       for (Formulario f in listForm) {
@@ -308,6 +310,9 @@ class Estadisticas {
         }
       }
       if (!noData){ // si sí hay formularios y hay datos en la categoría
+        minIndex = ocurrencias.reduce(max);
+        maxIndex = ocurrencias.reduce(min);
+        print(minIndex + maxIndex);
         minQuehaceres = "Con datos";
         maxQuehaceres = "Con datos";
       }
