@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/accion.dart';
 import 'package:life_tracker/funcionalidad/elementos_estado_animo.dart';
 import 'package:life_tracker/funcionalidad/formulario.dart';
-
-import 'categoria.dart';
 
 /// Clase que gestiona lo relacionado con las estadísticas de usuario para
 /// facilitar la recopilación de datos en la BD y mostrar las estadisticas
@@ -80,38 +77,47 @@ class Estadisticas {
   }
 
   void _actualizarMapas(){
+
+    RegExp regex = RegExp(r'([.]*0)(?!.*\d)'); // para quitar .0 en números ( 5.0 -> 5)
+
     if (mediaEstadoAnimo != -1){
-      mapaMediables["Estado de ánimo"] = mediaEstadoAnimoStr + " (" + mediaEstadoAnimo.toStringAsFixed(1) + "/5)";
+      mapaMediables["Estado de ánimo"] =
+          mediaEstadoAnimoStr + " (" + mediaEstadoAnimo.toStringAsFixed(1).replaceAll(regex, '') + "/5)";
     } else {mapaMediables["Estado de ánimo"] = "Sin datos";}
 
     if (mediaSueno != -1) {
-      mapaMediables["Horas de sueño"] = mediaSueno.toStringAsFixed(1) + "h aprox.";
+      mapaMediables["Horas de sueño"] =
+          mediaSueno.toStringAsFixed(1).replaceAll(regex, '') + "h aprox.";
     } else {mapaMediables["Horas de sueño"] = "Sin datos";}
 
     if(mediaCalidadSueno != -1){
-      mapaMediables["Calidad de sueño"] = mediaCalidadSueno.toStringAsFixed(1) + "/4";
+      mapaMediables["Calidad de sueño"] =
+          mediaCalidadSueno.toStringAsFixed(1).replaceAll(regex, '') + "/4";
     } else {mapaMediables["Calidad de sueño"] = "Sin datos";}
 
     if(mediaAutoestima != -1) {
-      mapaMediables["Autoestima"] = mediaAutoestima.toStringAsFixed(1) + "/5";
+      mapaMediables["Autoestima"] =
+          mediaAutoestima.toStringAsFixed(1).replaceAll(regex, '') + "/5";
     } else {mapaMediables["Autoestima"] = "Sin datos";}
 
     if(mediaProductividad != -1) {
-      mapaMediables["Productividad"] = mediaProductividad.toStringAsFixed(1) + "/5";
+      mapaMediables["Productividad"] =
+          mediaProductividad.toStringAsFixed(1).replaceAll(regex, '') + "/5";
     } else {mapaMediables["Productividad"] = "Sin datos";}
 
     if(mediaHorasDeporte != -1) {
-      mapaMediables["Horas de deporte"] = mediaHorasDeporte.toStringAsFixed(1) + "h aprox";
+      mapaMediables["Horas de deporte"] =
+          mediaHorasDeporte.toStringAsFixed(1).replaceAll(regex, '') + "h aprox";
     } else {mapaMediables["Horas de deporte"] = "Sin datos";}
 
-    mapaMinMax["Mínimo Quehaceres"]       = minQuehaceres.toString();
-    mapaMinMax["Máximo Quehaceres"]       = maxQuehaceres.toString();
-    mapaMinMax["Mínimo Comida"]           = minComida.toString();
-    mapaMinMax["Máximo Comida"]           = maxComida.toString();
-    mapaMinMax["Mínimo Entretenimiento"]  = minEntretenimiento.toString();
-    mapaMinMax["Máximo Entretenimiento"]  = maxEntretenimiento.toString();
-    mapaMinMax["Mínimo Tiempo"]           = minTiempo.toString();
-    mapaMinMax["Máximo Tiempo"]           = maxTiempo.toString();
+    mapaMinMax["Mínimo Quehaceres"]       = minQuehaceres;
+    mapaMinMax["Máximo Quehaceres"]       = maxQuehaceres;
+    mapaMinMax["Mínimo Comida"]           = minComida;
+    mapaMinMax["Máximo Comida"]           = maxComida;
+    mapaMinMax["Mínimo Entretenimiento"]  = minEntretenimiento;
+    mapaMinMax["Máximo Entretenimiento"]  = maxEntretenimiento;
+    mapaMinMax["Mínimo Tiempo"]           = minTiempo;
+    mapaMinMax["Máximo Tiempo"]           = maxTiempo;
   }
   /// Método para obtener el número de formularios
   void actualizarNumFormularios(List<Formulario> listForm){
@@ -286,25 +292,32 @@ class Estadisticas {
   }
 
   void actualizarMinMaxQuehaceres(List<Formulario> listForm){
+
     bool noData = true;
+
+    // Lista con el número de veces que está marcada la acción [i]
+    List<int> ocurrencias = [0, 0, 0, 0, 0, 0, 0];
+
     if(nFormularios > 0){
       for (Formulario f in listForm) {
         if(!f.listaCategorias.elementAt(5).isRespuestasVacio){
           noData = false;
           for (Accion a in f.listaCategorias.elementAt(5).respuestas){
+            ocurrencias[a.value]++; // Se incrementa la posición equivalente
           }
         }
       }
-      if (noData){ // si hay formularios pero ninguno con esta categoria rellena
-
-      }
-      else { // si sí hay formularios y hay datos en la categoría
-
+      if (!noData){ // si sí hay formularios y hay datos en la categoría
+        minQuehaceres = "Con datos";
+        maxQuehaceres = "Con datos";
       }
     }
-    else { // si no hay formularios
-
+    else if (noData){ // si no hay formularios o no tienen datos de esta categoría
+      minQuehaceres = "Sin datos";
+      maxQuehaceres = "Sin datos";
     }
+
+    print(ocurrencias);
   }
 
   void actualizarMinMaxComida(List<Formulario> listForm){
