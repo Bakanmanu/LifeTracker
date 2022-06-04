@@ -110,6 +110,8 @@ class GestorUsuario {
 /// de servir como identificador a la hora de subir información a la BD
 class Usuario {
   /// Atributos
+
+  late int idUser; // este valor lo tiene que asignar la BD cuando se crea la Primary Key todo revisar
   late String user; // Pensar si hay que comprobar en la base de datos que exista ese nombre
   late String pass;
   late GestorFormulario gestorFormulario;

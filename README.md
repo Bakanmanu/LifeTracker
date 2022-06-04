@@ -7,93 +7,16 @@ en vez de ListView: Cambiar las categorías por iconos que cambien de color (el 
 al ser marcados en lugar de que sea un checklist simple (seguro que hay alguna forma de personalizar los sprites
 del CheckBox o del ListView)
 
-***HAY QUE ESPERAR A APPWEB***
-- Hacer una clase _(para las estadísticas)_ que se comunique con el gestor de formularios que sea la que permita subir la 
-  información de los formularios a la API (controlando que no se suba información repetida). 
-  > Esta clase, muy probablemente, también puede que tenga que ser Singleton (pensar alguna alternativa)
-
-***HAY QUE ESPERAR A APPWEB***
-- Hacer apartado para crear categorías desde la app
-    > Clase gestor_categorías, probablemente vinculada al usuario
-
-***HAY QUE ESPERAR A APPWEB***
-- Poner un botón para que el usuario actualice en la BD sus formularios.
-  #####Formas de llevarlo a cabo
-    - Poner un botón que actualice cada vez que se crea/modifica un formulario/categoría.
-    - Añadir a usuario un atributo de "Fecha de última subida"
-      - Opción 1: Añadir a cada formulario, además de la fecha de creación, una fecha de
-        última modificación y, cuando se suban, se comprueban todos los formularios cuya fechaCreación ó
-        fechaModificación sean superiores al atributo de "Fecha última subida"
-      - Opción 2: Hacer en Usuario una lista de Formularios temporales que, cuando se crea o se
-        modifica uno, se guarda ahí y, cuando se llame a "Actualizar BD", se creen/actualicen todos
-        los formularios de esa lista y luego se vacíe
-
 - Añadir apartado para crear/importar/modificar/borrar/subir categorías/acciones --> *investigar que se puedan quitar modularmente*
     > Por ejemplo: hacer método que quite y ponga categoría según nombre/id y que se acceda cuando se pulsa un botón
     de un menú que tendrá que mostrar previamente todas las categorias disponibles (se pueden activar y desactivar)
-
-- Estudiar y revisar que el que las categorías/acciones se creen en pantallaFormulario sea correcto o no y ver dónde se podria meter en un sitio más inicial (main o pantallaMenu)
 
 - Meter easter eggs
 
 - Intentar que, al MostrarFormularios se clasifiquen según el día. Es decir, que todos los
 formularios del mismo día se muestren en el mismo apartado y se diferencien de los de otros días
   
-- Poner el icono bonito a la app (poner con el fondo lila)
-  
 ### Bugs:
-
------------------------------------------------
-
-# MEJORAS DE INTERFAZ GRÁFICA:
-
-- Que cada formulario cambie según el ánimo correspondiente -> que la app entera vaya cambiando según la media
-- Hacer la paleta de color de la web respecto a la de la app -> hacerla 
-- Reestructurar el menú principal: tal vez:
-  - Botón grande/vistoso de formulario nuevo
-  - Configuración en appBar arriba y pequeñito
-  - Ver formularios más en pequeñito pero visible
-- Poner colores análogos para la interfaz porque genera tranquilidad en vez de contrastes
-
-- Plantear hacer un fondo así blanco y sólo tener colores de detalle
-
-## Procedimiento:
-Se van a hacer variables globales a las que se le asignarán previamente los colores para que sea
-más facil modificar la paleta. Cada variable representará un posible "tipo de elemento". Por ejemplo:
-'color de fondo', 'color de un formulario', 'color de la fuente principal'...
-
-Todo esto hay que usarlo en la parte de *theme de MaterialApp en main.dart*
-
-### Elementos:
-- Color de fondo principal
-- Color de fondo secundario
-- Color de barras
-- Color de fuente principal
-- Color de fuente secundario
-- Color de botones
-- Color de botones secundario  
-- Colores de cada estado de ánimo
-- Tal vez una variable dinámica para cambiar el color de los formularios según E.Animo
-
------------------------------------------------
-
-# IDEAS CATEGORÍAS FIJAS:
-- Autoestima
-- Deporte que has hecho
-
-
------------------------------------------------
-
-# IDEAS APLICACIÓN WEB:
-- Hacer una página de estadísticas que te compara con la media
-- Hacer que los usuarios puedan subir/descargar sus packs de categorías
-
------------------------------------------------
-
-# FUNCIONALIDAD DE LA API:
-- Inicio de sesión + tokens
-- Mandar datos de formularios -> control por fechas para no duplicar formularios
-- Hay que comprobar si el nombre de usuario existe en la BD --> pensar si también devuelve una ID
 
 -----------------------------------------------
 

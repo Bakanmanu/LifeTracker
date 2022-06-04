@@ -176,7 +176,7 @@ class GestorFormulario {
         Accion(0, "Fruta", false),
         Accion(1, "Verdura", false),
         Accion(2, "Carne", false),
-        Accion(3, "Pescao", false),
+        Accion(3, "Pescado", false),
         Accion(4, "Lácteos", false),
         Accion(5, "Pasta", false),
         Accion(6, "Arroz", false)
@@ -229,6 +229,7 @@ class GestorFormulario {
 ///rellenar para completar su diario
 class Formulario {
 
+  late int idFormulario; // todo revisar
   late int _estadoAnimo; // tiene que ser un valor entre 1 y 5
   late List<Categoria> _listaCategorias = []; //Puede estar vacía
   late String _campoTexto;
