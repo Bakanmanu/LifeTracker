@@ -1,6 +1,6 @@
 # CAMBIOS A REALIZAR (por orden de importancia):
 
-- Crear método para editar username y password
+- Crear método para editar username y password (OPC)
 
 - Ver cómo se podría hacer para que fueran iconos clicables
 en vez de ListView: Cambiar las categorías por iconos que cambien de color (el fondo por ejemplo) 
