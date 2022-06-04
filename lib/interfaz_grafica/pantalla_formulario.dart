@@ -218,7 +218,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
                   children: List.generate(
                     _categorias.length,
                         (indexCategorias){
-                      Categoria categoria = _categorias[indexCategorias]; // todo revisar si cambiar Categoria por final
+                      Categoria categoria = _categorias[indexCategorias];
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

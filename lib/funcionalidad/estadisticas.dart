@@ -12,11 +12,12 @@ class Estadisticas {
 
   int nFormularios          = 0;
   Map <String, String> mapaMediables = {
-  "Estado de ánimo" : "-",
-  "Horas de sueño" : "-",
-  "Calidad de sueño" : "-",
-  "Autoestima" : "-",
-  "Productividad" : "-",
+    "Estado de ánimo" : "-",
+    "Horas de sueño" : "-",
+    "Calidad de sueño" : "-",
+    "Autoestima" : "-",
+    "Productividad" : "-",
+    "Horas de deporte":"-",
   };
   Map <String, String> mapaMinMax = {
     "Mínimo Quehaceres" : "-",
@@ -39,6 +40,7 @@ class Estadisticas {
   double mediaCalidadSueno    = 0;
   double mediaAutoestima      = 0;
   double mediaProductividad   = 0;
+  double mediaHorasDeporte    = 0;
 
   /// Atributos referentes a valores mínimos/máximos
   String minQuehaceres = "";
@@ -51,7 +53,7 @@ class Estadisticas {
   String maxTiempo = "";
 
   // todo métodos:
-    /*
+  /*
       Calcular el número de formularios
       Calcular la media de ánimo
       Calcular la media de cada categoría mesurable
@@ -67,6 +69,7 @@ class Estadisticas {
     actualizarMediaCalidadSueno(listaF);
     actualizarMediaAutoestima(listaF);
     actualizarMediaProductividad(listaF);
+    actualizarMediaDeporte(listaF);
 
     actualizarMinMaxQuehaceres(listaF);
     actualizarMinMaxComida(listaF);
@@ -82,15 +85,24 @@ class Estadisticas {
     } else {mapaMediables["Estado de ánimo"] = "Sin datos";}
 
     if (mediaSueno != -1) {
-      mapaMediables["Horas de sueño"] = mediaSueno.toStringAsFixed(1) + " h aprox.";
+      mapaMediables["Horas de sueño"] = mediaSueno.toStringAsFixed(1) + "h aprox.";
     } else {mapaMediables["Horas de sueño"] = "Sin datos";}
 
     if(mediaCalidadSueno != -1){
-      mapaMediables["Calidad de sueño"] = mediaCalidadSueno.toStringAsFixed(1) + "/5";
+      mapaMediables["Calidad de sueño"] = mediaCalidadSueno.toStringAsFixed(1) + "/4";
     } else {mapaMediables["Calidad de sueño"] = "Sin datos";}
 
-    mapaMediables["Autoestima"]       = mediaAutoestima.toStringAsFixed(1);
-    mapaMediables["Productividad"]    = mediaProductividad.toStringAsFixed(1);
+    if(mediaAutoestima != -1) {
+      mapaMediables["Autoestima"] = mediaAutoestima.toStringAsFixed(1) + "/5";
+    } else {mapaMediables["Autoestima"] = "Sin datos";}
+
+    if(mediaProductividad != -1) {
+      mapaMediables["Productividad"] = mediaProductividad.toStringAsFixed(1) + "/5";
+    } else {mapaMediables["Productividad"] = "Sin datos";}
+
+    if(mediaHorasDeporte != -1) {
+      mapaMediables["Horas de deporte"] = mediaHorasDeporte.toStringAsFixed(1) + "h aprox";
+    } else {mapaMediables["Horas de deporte"] = "Sin datos";}
 
     mapaMinMax["Mínimo Quehaceres"]       = minQuehaceres.toString();
     mapaMinMax["Máximo Quehaceres"]       = maxQuehaceres.toString();
@@ -190,20 +202,87 @@ class Estadisticas {
       mediaCalidadSueno = -1;
     }
   }
-  void actualizarMediaAutoestima(List<Formulario> listForm){
-    double media = 0;
-    for (Formulario f in listForm) {
-      for (Categoria c in f.listaCategorias){
 
+  /// Método que calcula la media de la autoestima
+  ///
+  /// Si la categoría está vacía, no cuenta para la media.
+  /// Si hay dos valores en un mismo form, cuentan como dos valores distintos
+  void actualizarMediaAutoestima(List<Formulario> listForm){
+    int counter = 0; // Contador por cada acción marcada
+    int suma = 0;
+    if(nFormularios > 0){
+      for (Formulario f in listForm) {
+        if(!f.listaCategorias.elementAt(2).isRespuestasVacio){
+          for (Accion a in f.listaCategorias.elementAt(2).respuestas){
+            counter++;
+            suma += a.value;
+          }
+        }
+      }
+      if (counter > 0){
+        mediaAutoestima = suma/counter;
+      } else { // si hay formularios pero ninguno con esta categoria rellena
+        mediaAutoestima = -1;
       }
     }
+    else {
+      mediaAutoestima = -1;
+    }
   }
-  void actualizarMediaProductividad(List<Formulario> listForm){
-    double media = 0;
-    for (Formulario f in listForm) {
-      for (Categoria c in f.listaCategorias){
 
+  /// Método que calcula la media de la productividad
+  ///
+  /// Si la categoría está vacía, no cuenta para la media.
+  /// Si hay dos valores en un mismo form, cuentan como dos valores distintos
+  void actualizarMediaProductividad(List<Formulario> listForm){
+    int counter = 0; // Contador por cada acción marcada
+    int suma = 0;
+    if(nFormularios > 0){
+      for (Formulario f in listForm) {
+        if(!f.listaCategorias.elementAt(3).isRespuestasVacio){
+          for (Accion a in f.listaCategorias.elementAt(3).respuestas){
+            counter++;
+            suma += a.value;
+          }
+        }
       }
+      if (counter > 0){
+        mediaProductividad = suma/counter;
+      } else { // si hay formularios pero ninguno con esta categoria rellena
+        mediaProductividad = -1;
+      }
+    }
+    else {
+      mediaProductividad = -1;
+    }
+  }
+
+  /// Método que calcula la media de la calidad de sueño
+  ///
+  /// Si la categoría está vacía, no cuenta para la media.
+  /// Si hay dos valores en un mismo form, se suman y cuenta como uno
+  void actualizarMediaDeporte(List<Formulario> listForm){
+    int counter = 0; // Contador por cada formulario con esta categoría rellena
+    double suma = 0;
+
+    if(nFormularios > 0){
+      for (Formulario f in listForm) {
+        if(!f.listaCategorias.elementAt(4).isRespuestasVacio){
+          counter++;
+          for (Accion a in f.listaCategorias.elementAt(4).respuestas){
+            suma += a.value/2; // value representa el doble del tiempo indicado
+          }
+        }
+      }
+      if (counter > 0){
+        mediaHorasDeporte = suma/counter;
+        print(mediaHorasDeporte);
+      } else { // si hay formularios pero ninguno con esta categoria rellena
+        mediaHorasDeporte = -1;
+      }
+    }
+    else {
+      mediaHorasDeporte = -1;
     }
   }
 
