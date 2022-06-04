@@ -127,8 +127,10 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
             style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
           ),
 
-          Text(stat,
-            style: const TextStyle(color: Colors.black, fontSize: 16),
+          Flexible( // todo cambiar esto pa ponerlo más bonito
+            child: Text(stat,
+              style: const TextStyle(color: Colors.black, fontSize: 16),
+            ),
           )
 
         ],

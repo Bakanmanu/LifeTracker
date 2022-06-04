@@ -19,14 +19,14 @@ class Estadisticas {
     "Horas de deporte":"-",
   };
   Map <String, String> mapaMinMax = {
-    "Mínimo Quehaceres" : "-",
-    "Máximo Quehaceres" : "-",
-    "Mínimo Comida" : "-",
-    "Máximo Comida" : "-",
-    "Mínimo Entretenimiento" : "-",
-    "Máximo Entretenimiento" : "-",
-    "Mínimo Tiempo" : "-",
-    "Máximo Tiempo" : "-",
+    "Mínimo Quehaceres" : "",
+    "Máximo Quehaceres" : "",
+    "Mínimo Comida" : "",
+    "Máximo Comida" : "",
+    "Mínimo Entretenimiento" : "",
+    "Máximo Entretenimiento" : "",
+    "Mínimo Tiempo" : "",
+    "Máximo Tiempo" : "",
   };
 
   /// Atributos referentes a valores "mediables"
@@ -309,23 +309,21 @@ class Estadisticas {
         }
       }
       if (!noData){ // si sí hay formularios y hay datos en la categoría
-        List<String> minQH = []; // listas que guardan directamente la accion
-        List<String> maxQH = [];
+
         List<Accion> accView = listForm.first.listaCategorias[5].acciones; // para tener una referencia
         int minOcur = ocurrencias.reduce(min);
         int maxOcur = ocurrencias.reduce(max);
+        minQuehaceres = "";
+        maxQuehaceres = "";
 
         for (int i = 0; i<ocurrencias.length; i++){
           if (ocurrencias[i] == minOcur){
-            minQH.add(accView[i].nombre); // a
+            minQuehaceres += accView[i].nombre + " ";
           }
           if (ocurrencias[i] == maxOcur){
-            maxQH.add(accView[i].nombre);
+            maxQuehaceres += accView[i].nombre + " ";
           }
         }
-
-        minQuehaceres = "Con datos";
-        maxQuehaceres = "Con datos";
       }
     }
     else if (noData){ // si no hay formularios o no tienen datos de esta categoría
