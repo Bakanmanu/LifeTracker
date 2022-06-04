@@ -201,7 +201,7 @@ class GestorFormulario {
         Accion(7, "Frío", false),
         Accion(8, "Calor", false),
       ],),
-    ];;
+    ];
   }
 
   /// Método para añadir packs de categorías descargados

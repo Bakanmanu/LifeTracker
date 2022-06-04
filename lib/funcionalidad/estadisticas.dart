@@ -298,21 +298,32 @@ class Estadisticas {
 
     // Lista con el número de veces que está marcada la acción [i]
     List<int> ocurrencias = [0, 0, 0, 0, 0, 0, 0];
-    int minIndex, maxIndex;
 
     if(nFormularios > 0){
       for (Formulario f in listForm) {
-        if(!f.listaCategorias.elementAt(5).isRespuestasVacio){
+        if(!f.listaCategorias[5].isRespuestasVacio){
           noData = false;
-          for (Accion a in f.listaCategorias.elementAt(5).respuestas){
+          for (Accion a in f.listaCategorias[5].respuestas){
             ocurrencias[a.value]++; // Se incrementa la posición equivalente
           }
         }
       }
       if (!noData){ // si sí hay formularios y hay datos en la categoría
-        minIndex = ocurrencias.reduce(max);
-        maxIndex = ocurrencias.reduce(min);
-        print(minIndex + maxIndex);
+        List<String> minQH = []; // listas que guardan directamente la accion
+        List<String> maxQH = [];
+        List<Accion> accView = listForm.first.listaCategorias[5].acciones; // para tener una referencia
+        int minOcur = ocurrencias.reduce(min);
+        int maxOcur = ocurrencias.reduce(max);
+
+        for (int i = 0; i<ocurrencias.length; i++){
+          if (ocurrencias[i] == minOcur){
+            minQH.add(accView[i].nombre); // a
+          }
+          if (ocurrencias[i] == maxOcur){
+            maxQH.add(accView[i].nombre);
+          }
+        }
+
         minQuehaceres = "Con datos";
         maxQuehaceres = "Con datos";
       }
