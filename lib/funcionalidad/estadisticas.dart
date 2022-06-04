@@ -276,7 +276,6 @@ class Estadisticas {
       }
       if (counter > 0){
         mediaHorasDeporte = suma/counter;
-        print(mediaHorasDeporte);
       } else { // si hay formularios pero ninguno con esta categoria rellena
         mediaHorasDeporte = -1;
       }
@@ -287,6 +286,25 @@ class Estadisticas {
   }
 
   void actualizarMinMaxQuehaceres(List<Formulario> listForm){
+    bool noData = true;
+    if(nFormularios > 0){
+      for (Formulario f in listForm) {
+        if(!f.listaCategorias.elementAt(5).isRespuestasVacio){
+          noData = false;
+          for (Accion a in f.listaCategorias.elementAt(5).respuestas){
+          }
+        }
+      }
+      if (noData){ // si hay formularios pero ninguno con esta categoria rellena
+
+      }
+      else { // si sí hay formularios y hay datos en la categoría
+
+      }
+    }
+    else { // si no hay formularios
+
+    }
   }
 
   void actualizarMinMaxComida(List<Formulario> listForm){
