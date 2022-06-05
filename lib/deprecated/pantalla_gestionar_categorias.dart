@@ -16,7 +16,7 @@ class _PantallaGestionarCategoriaState extends State<PantallaGestionarCategoria>
     return Scaffold(
         appBar: AppBar(title: const Text("Categorías"),),
 
-        /// todo LAS COSAS QUE HAY QUE GESTIONAR EN ESTA PANTALLA SON, RESPECTO A LAS CATEGORÍAS:
+        ///LAS COSAS QUE HAY QUE GESTIONAR EN ESTA PANTALLA SON, RESPECTO A LAS CATEGORÍAS:
         /// CREAR
         /// EDITAR
         /// BORRAR

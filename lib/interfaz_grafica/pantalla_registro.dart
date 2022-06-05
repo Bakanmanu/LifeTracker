@@ -23,7 +23,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple, //todo poner color
+      backgroundColor: Colors.purple,
       body: Container(
         decoration: BoxDecoration(
             boxShadow: const [BoxShadow(
@@ -33,7 +33,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                 offset: Offset(5.0, 5.0)
             )
             ],
-            color: Colors.purpleAccent, //todo poner color
+            color: Colors.purpleAccent,
             borderRadius: BorderRadius.circular(20)
         ),
         margin: const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 40),
@@ -43,7 +43,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              /// MENSAJE todo poner más bonito
+              /// MENSAJE
               if (MediaQuery.of(context).viewInsets.bottom == 0) Column(
                 children: [
                    // si el teclado NO está activo
@@ -68,7 +68,6 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
               /// CAMPO USERNAME
               Container(
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 10),
-                // todo revisar responsive
                 child: TextFormField(
                   key: const Key("addTexto"),
                   decoration: const InputDecoration(
@@ -84,9 +83,8 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
               /// CAMPO PASSWORD
               Container(
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 10),
-                // todo revisar responsive
                 child: TextFormField(
-                  obscureText: passVisible,
+                  obscureText: !passVisible,
                   key: const Key("addTexto"),
                   decoration: InputDecoration(
 
@@ -97,7 +95,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                           passVisible = !passVisible;
                         });
                       },
-                      icon: passVisible? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
+                      icon: passVisible? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
                       color: Colors.black,
                     ),
 
@@ -115,7 +113,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                 margin: const EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 15),
                 width: 200,
                 decoration: BoxDecoration(
-                    color: Colors.deepPurple, //todo poner color
+                    color: Colors.deepPurple,
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: TextButton(
@@ -125,7 +123,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
                     //todo revisar cuando la API
                     int codigoReg = gestor.registrarse(user, pass); // intento de inicio de sesión
                     if (codigoReg == 1) { // REGISTRO CORRECTO
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()), (route) => false,); // todo revisar ruta
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()), (route) => false,);
                     }
                     else { // FALLO AL REGISTRO
                       _mostrarAlerta(codigoReg);

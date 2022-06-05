@@ -56,7 +56,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
         title: gestor.isModificar ? const Text('Modificar formulario') : const Text('Nuevo formulario'),
         actions: [
           /// Este botón se encarga de crear o actualizar los formularios (y estadísticas)
-          generarBotonEnvio(), // todo revisar si aquí está guay el botón
+          generarBotonEnvio(),
         ],
       ),
       body:
@@ -67,7 +67,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
             generarTablaEstadoAnimo(),
             // generarTablaEstadoAnimo2(),
             generarCategorias(),
-            generarCampoTexto(), // todo revisar si poner aquí o en generarCategorías
+            generarCampoTexto()
           ],
         ),
 
@@ -209,10 +209,11 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
       SafeArea(
         child:
         ListView(
+          physics: const BouncingScrollPhysics(),
           children: [
             Container(
               //margin: const EdgeInsets.all(15),
-              padding: const EdgeInsets.only(left: 25, right: 15, top: 10, bottom: 0), // todo revisar responsive
+              padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 0),
               child:
                 Column(
                   children: List.generate(
@@ -284,7 +285,7 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
   Widget generarCampoTexto() {
     return Container(
       //margin: const EdgeInsets.all(15),
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 25), // todo revisar responsive
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
       child: TextFormField(
         key: const Key("addTexto"),
         initialValue: _campoTexto, // Si _campoTexto == '', entonces no pondrá valor incial, si no, pondrá lo que esté guardado
@@ -313,13 +314,11 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
           gestor.crearFormulario(_estadoAnimo, _categorias, _campoTexto);
           await _mostrarAlertaFormCorrecto(); //Botón de alerta para notificar que el form se ha creado correctamente
 
-          // todo intentar revisar por qué aquí no funciona lo mismo que al modificar formulario. Testear a ver si va bien
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const PantallaMenu()), (r) => false);
           //Navigator.pop(context, MaterialPageRoute(builder: (_)=>const PantallaMenu()));
         }
 
         /// Cada vez que haya cambios en los formularios, actualizamos las estadísticas
-        // todo revisar si esto está bien puesto aquí, preferible desde el propio crear formulario
         GestorUsuario.instance.currentUser?.actualizarEstadisticas();
       },
       /// AQUÍ HAY UNA ELECCIÓN DE CREAR O MODIFICAR

@@ -11,22 +11,22 @@ class Estadisticas {
 
   int nFormularios = 0;
   Map <String, String> mapaMediables = {
-    "Estado de ánimo" : "-",
-    "Horas de sueño" : "-",
-    "Calidad de sueño" : "-",
-    "Autoestima" : "-",
-    "Productividad" : "-",
-    "Horas de deporte":"-",
+    "Estado de ánimo" : "Sin datos",
+    "Horas de sueño" : "Sin datos",
+    "Calidad de sueño" : "Sin datos",
+    "Autoestima" : "Sin datos",
+    "Productividad" : "Sin datos",
+    "Horas de deporte":"Sin datos",
   };
   Map <String, String> mapaMinMax = {
-    "Mínimo Quehaceres" : "",
-    "Máximo Quehaceres" : "",
-    "Mínimo Comida" : "",
-    "Máximo Comida" : "",
-    "Mínimo Entretenimiento" : "",
-    "Máximo Entretenimiento" : "",
-    "Mínimo Tiempo" : "",
-    "Máximo Tiempo" : "",
+    "Mínimo Quehaceres" : "Sin datos",
+    "Máximo Quehaceres" : "Sin datos",
+    "Mínimo Comida" : "Sin datos",
+    "Máximo Comida" : "Sin datos",
+    "Mínimo Entretenimiento" : "Sin datos",
+    "Máximo Entretenimiento" : "Sin datos",
+    "Mínimo Tiempo" : "Sin datos",
+    "Máximo Tiempo" : "Sin datos",
   };
 
   /// Atributos referentes a valores "mediables"
@@ -50,15 +50,6 @@ class Estadisticas {
   String maxEntretenimiento = "";
   String minTiempo = "";
   String maxTiempo = "";
-
-  // todo métodos:
-  /*
-      Calcular el número de formularios
-      Calcular la media de ánimo
-      Calcular la media de cada categoría mesurable
-      De las categorías múltiples: calcular lo que más y lo que menos
-
-     */
 
   void actualizarEstadisticas(List <Formulario> listaF){
     actualizarNumFormularios(listaF);
@@ -156,8 +147,6 @@ class Estadisticas {
   ///
   /// Esto es porque si se rellenan varias horas en un día, se considera una
   /// siesta o un sueño partido, pero siguen siendo horas de sueño el mismo día
-  ///
-  /// todo mirar si es mejor dividir entre los días que han pasado o entre formularios
   void actualizarMediaSueno(List<Formulario> listForm){
     int counter = 0; // Contador por cada formulario con esta categoría rellena
     int suma = 0;

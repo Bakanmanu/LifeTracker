@@ -7,7 +7,6 @@ import 'formato_fecha.dart';
 ///También, tiene la variable global que guarda todos los formularios que se han ido creando
 class GestorFormulario {
 
-  // todo ver si hay que guardar los formularios de la BD en listaFormularios
   List<Formulario> listaFormularios = []; //Variable global que guarda todos los formularios que se han ido creando
   late int indexFormEditar; //esta variable guarda el indice del formulario que se desea editar
   bool isModificar = false; // variable que nos va a servir para elegir la estrategia al rellenar un formulario: crear o modificar
@@ -27,7 +26,7 @@ class GestorFormulario {
 
     //Guardamos las acciones seleccionadas en la lista "respuestas" de cada categoría
     for(Categoria cat in listaCategorias){
-      cat.actualizarRespuestas(); //todo revisar dónde se actualizan las respuestas
+      cat.actualizarRespuestas();
     }
 
     //Creamos una nueva instancia de formulario
@@ -65,7 +64,7 @@ class GestorFormulario {
 
   ///Devuelve el formulario correspondiente al índice en la lista de formularios
   Formulario getFormByIndex(int index){
-    return listaFormularios[index]; // todo ver si esto hay que hacerlo en la lista del Usuario
+    return listaFormularios[index];
   }
 
   /// Método que ha de ser llamado para crear un formulario nuevo
@@ -97,8 +96,7 @@ class GestorFormulario {
 
         for(Accion acc in cat.respuestas){
           respuestas += acc.nombre; //TÍTULO DE RESPUESTA
-          if(acc == cat.respuestas.last){/*nada*/} //si es el último elemento no añadimos nada
-          else {respuestas += " / ";} //ponemos una barra para separar si no es el último
+          if(acc != cat.respuestas.last){respuestas += " / ";} //ponemos una barra para separar si no es el último
         }
         respuestas += '\n━━━━━━━━\n'; //ponemos barra separadora en caso de haber respuestas
       }
@@ -228,7 +226,7 @@ class GestorFormulario {
 ///rellenar para completar su diario
 class Formulario {
 
-  late int idFormulario; // todo revisar
+  late int idFormulario; // todo revisar: hay que asignar cuando se inicie sesión con el registro
   late int _estadoAnimo; // tiene que ser un valor entre 1 y 5
   late List<Categoria> _listaCategorias = []; //Puede estar vacía
   late String _campoTexto;

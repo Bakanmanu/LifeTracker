@@ -24,7 +24,7 @@ class LoginState extends State<Login>{
   Widget build(BuildContext context){
 
     return Scaffold(
-      backgroundColor: Colors.purple, //todo poner color
+      backgroundColor: Colors.purple,
       body: Container(
         decoration: BoxDecoration(
             boxShadow: const [BoxShadow(
@@ -33,7 +33,7 @@ class LoginState extends State<Login>{
                 spreadRadius: 5.0,
                 offset: Offset(5.0, 5.0)
             )],
-            color: Colors.purpleAccent, //todo poner color
+            color: Colors.purpleAccent,
             borderRadius: BorderRadius.circular(20)
         ),
         margin: const EdgeInsets.only(top: 50, left: 20, right: 20 ,bottom: 40),
@@ -50,7 +50,7 @@ class LoginState extends State<Login>{
 
               /// CAMPO USERNAME
               Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 15), // todo revisar responsive
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 15),
                 child: TextFormField(
                   key: const Key("addTexto"),
                   decoration: const InputDecoration(
@@ -65,8 +65,7 @@ class LoginState extends State<Login>{
 
               /// CAMPO PASSWORD
               Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 0), // todo revisar responsive
-                //margin: const EdgeInsets.only(bottom: 125), // todo revisar responsive
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 0),
                 child: TextFormField(
                   obscureText: !passVisible,
                   key: const Key("addTexto"),
@@ -98,7 +97,7 @@ class LoginState extends State<Login>{
                 margin: const EdgeInsets.only(top: 20, bottom: 20),
                 width: 200,
                 decoration: BoxDecoration(
-                    color: Colors.deepPurple, //todo poner color
+                    color: Colors.deepPurple,
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: TextButton(

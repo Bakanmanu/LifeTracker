@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: //ThemeData.fallback(),
       ThemeData(
-        primarySwatch: Colors.purple, //todo aqui hay que hacer el theme y especificar los colores por defecto
+        primarySwatch: Colors.purple,
         scaffoldBackgroundColor: background,
         //backgroundColor: background,
       ),

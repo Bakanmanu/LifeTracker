@@ -57,7 +57,7 @@ class _PantallaMenuOldState extends State<PantallaMenuOld> {
         child: IconTheme(
           data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // todo revisar si borrar
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, //revisar si borrar
             children: <Widget>[
               SizedBox(
                 width: MediaQuery.of(context).size.width/3,
@@ -87,7 +87,7 @@ class _PantallaMenuOldState extends State<PantallaMenuOld> {
 
 
       /// BODY (el resto del menú)
-      // todo probar a poner directamente todos los formularios y un botón flotante de nuevo formulario
+      // probar a poner directamente todos los formularios y un botón flotante de nuevo formulario
       body: GridView.builder(
           itemCount: menu.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -95,7 +95,7 @@ class _PantallaMenuOldState extends State<PantallaMenuOld> {
           itemBuilder: (context, index) {
             return Container(
               margin: const EdgeInsets.all(10),
-              //Decoration todo revisar
+              //Decoratio revisar
               child: GestureDetector(
                 key: const Key("BotonesMenu"),
                 child: Column(
@@ -141,8 +141,7 @@ class _PantallaMenuOldState extends State<PantallaMenuOld> {
 
   Future irNuevoFormulario() {
     return Navigator.push(context, MaterialPageRoute(builder: (_) {
-      //GestorFormulario.instance.setStratCrear(); // Ponemos la estrategia Crear //todo quitar de aqui
-      gestor.setStratCrear(); // todo revisar
+      gestor.setStratCrear();
       return const PantallaFormulario();
     }));
   }

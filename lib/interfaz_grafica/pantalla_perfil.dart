@@ -52,6 +52,7 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
             padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             child: Center(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   /// Nombre del usuario
                   mostrarInfoUsuario(),
@@ -122,22 +123,22 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
   /// Se le pasa por parámetro el nombre de la categoría, la propia estadística
   Container buildTextoEstadisticas(String categoria, String stat) {
     return Container(
-      alignment: Alignment.bottomLeft,
-      margin: const EdgeInsets.only(bottom: 15),
-      child: RichText(
-        text: TextSpan(
-          style: const TextStyle(color: Colors.black, fontSize: 16),
-          children: <TextSpan> [
-            TextSpan(
-              text: categoria + ": ",
-              style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            TextSpan(
-              text: stat,
-            )
-          ]
-        ),
-      )
+        alignment: Alignment.bottomLeft,
+        margin: const EdgeInsets.only(bottom: 15),
+        child: RichText(
+          text: TextSpan(
+              style: const TextStyle(color: Colors.black, fontSize: 16),
+              children: <TextSpan> [
+                TextSpan(
+                  text: categoria + ": ",
+                  style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: stat,
+                )
+              ]
+          ),
+        )
     );
   }
 
@@ -160,18 +161,18 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
           ),
           actions: <Widget>[
             TextButton(
+                child: const Text("Cancelar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                }),
+
+            TextButton(
                 child: const Text("Cerrar sesión"),
                 onPressed: () {
                   GestorUsuario.instance.cerrarSesion();
 
                   // esto hace que se borre toda la pila y no se pueda volver hacia atrás una vez pulsado este botón
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const Login()), (r) => false);
-                }),
-
-            TextButton(
-                child: const Text("Cancelar"),
-                onPressed: () {
-                  Navigator.of(context).pop();
                 }),
           ],
         );

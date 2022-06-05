@@ -19,7 +19,7 @@ class GestorCategorias {
 /// Posibles atributos:
 ///   -Lista de categorías creadas
 ///     este atributo se podría vincular con un booleano para indicar si está activa la categoría
-///     en plan: si el usuario quiere que le aparezca en los formularios todo revisar
+///     en plan: si el usuario quiere que le aparezca en los formularios
 ///     Habría que tener cuidado con las que ya estén guardadas de no quitarlas, sólo sería
 ///     que dejarían de aparecer en nuevo formulario, al editar los anteriores sí debería aparecer
 ///

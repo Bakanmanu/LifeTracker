@@ -46,9 +46,10 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
         ],
       )
 
-      : // operador ternario condicional, esto hace que si gestor.listaFormularios.isEmpty es false, sea esto lo que se ejecute
+          : // operador ternario condicional, esto hace que si gestor.listaFormularios.isEmpty es false, sea esto lo que se ejecute
 
       ListView.builder(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(8),
           itemCount: gestor.listaFormularios.length,       // Obtiene la cantidad de Formularios que contiene la lista  para así iterar como un bucle for
           itemBuilder: (BuildContext context, int index) { // Con esto irá instanciando contenedores e index será la variable que aumentará por cada "iteracion"
@@ -65,66 +66,65 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
 
             return Container(
               child: Card(
-                color: color,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
+                  color: color,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
 
-                    /// INFO ESTADO ANIMO + CATEGORÍAS
-                    ListTile(
-                      leading: getCaraEstadoAnimo(gestor.listaFormularios[index].estadoAnimo), // Elegimos la cara según
-                      isThreeLine: true,
-                      title: Text(gestor.getFechaFormat(gestor.listaFormularios[index]) + '\n'),
-                      subtitle: Text( // todo formatear un poco el texto para que se ponga bonito o al menos solo cuando no haya info
+                      /// INFO ESTADO ANIMO + CATEGORÍAS
+                      ListTile(
+                        leading: getCaraEstadoAnimo(gestor.listaFormularios[index].estadoAnimo), // Elegimos la cara según
+                        isThreeLine: true,
+                        title: Text(gestor.getFechaFormat(gestor.listaFormularios[index]) + '\n'),
+                        subtitle: Text(
                           gestor.getRespuestasAcciones(gestor.listaFormularios[index]),
+                        ),
                       ),
-                    ),
 
-                    /// TEXTO DEL CAMPO DE TEXTO
-                    // Aquí se podría hacer un container si se quisiera poner más bonito todo revisar
-                    Text(gestor.listaFormularios[index].campoTexto, ),
+                      /// TEXTO DEL CAMPO DE TEXTO
+                      Text(gestor.listaFormularios[index].campoTexto, style: const TextStyle(fontStyle: FontStyle.italic),),
 
-                    /// BOTONES DE EDITAR Y BORRAR
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
+                      /// BOTONES DE EDITAR Y BORRAR
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
 
-                        /// Botón Borrar
-                        TextButton(
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(enfadado), // todo revisar si poner este rojo ó colorStrong
+                          /// Botón Borrar
+                          TextButton(
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(enfadado),
+                            ),
+                            child: const Text('BORRAR'),
+                            onPressed: (){
+                              //Llamamos a la funcion que se asegura de borrar y,
+                              //si procede, la borra. Ade,
+                              _alertaBorrar(gestor.listaFormularios[index]);
+                            },
                           ),
-                          child: const Text('BORRAR'),
-                          onPressed: (){
-                            //Llamamos a la funcion que se asegura de borrar y,
-                            //si procede, la borra. Ade,
-                            _alertaBorrar(gestor.listaFormularios[index]);
-                          },
-                        ),
-                        const SizedBox(width: 8),
+                          const SizedBox(width: 8),
 
-                        /// Botón Editar
-                        TextButton(
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(colorStrong),
+                          /// Botón Editar
+                          TextButton(
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(colorStrong),
+                            ),
+                            child: const Text('MODIFICAR'),
+                            onPressed: () async {
+                              setState(() {});
+                              gestor.setIndex(index);
+                              await Navigator.push(context,
+                                  MaterialPageRoute(builder: (_){
+                                    gestor.setStratModificar(); // Ponemos la estrategia Modificar
+                                    return const PantallaFormulario();
+                                  }
+                                  ));
+                            },
                           ),
-                          child: const Text('MODIFICAR'),
-                          onPressed: () async {
-                            setState(() {});
-                            gestor.setIndex(index);
-                            await Navigator.push(context,
-                                MaterialPageRoute(builder: (_){
-                                  gestor.setStratModificar(); // Ponemos la estrategia Modificar
-                                  return const PantallaFormulario();
-                                }
-                            ));
-                          },
-                        ),
-                        const SizedBox(width: 8),
-                      ],
-                    ),
-                  ],
-                )
+                          const SizedBox(width: 8),
+                        ],
+                      ),
+                    ],
+                  )
               ),
             );
           }
@@ -133,19 +133,19 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
   }
 
   Widget getCaraEstadoAnimo(int estadoAnimo){
-      switch(estadoAnimo){
-        case 1:
-          return const SmileyWidget(expression: SmileyExpression.verySad);
-        case 2:
-          return const SmileyWidget(expression: SmileyExpression.sad);
-        case 3:
-          return const SmileyWidget(expression: SmileyExpression.neutral);
-        case 4:
-          return const SmileyWidget(expression: SmileyExpression.happy);
-        case 5:
-          return const SmileyWidget(expression: SmileyExpression.veryHappy);
-      }
-      return const SmileyWidget(expression: SmileyExpression.neutral, isEnabled: false,); //valor que se devuelve por si hay algún error
+    switch(estadoAnimo){
+      case 1:
+        return const SmileyWidget(expression: SmileyExpression.verySad);
+      case 2:
+        return const SmileyWidget(expression: SmileyExpression.sad);
+      case 3:
+        return const SmileyWidget(expression: SmileyExpression.neutral);
+      case 4:
+        return const SmileyWidget(expression: SmileyExpression.happy);
+      case 5:
+        return const SmileyWidget(expression: SmileyExpression.veryHappy);
+    }
+    return const SmileyWidget(expression: SmileyExpression.neutral, isEnabled: false,); //valor que se devuelve por si hay algún error
   }
 
   /// Esta función se llama cuando se va a borrar un formulario, para asegurarse
@@ -166,20 +166,20 @@ class _PantallaMostrarFormularioState extends State<PantallaMostrarFormulario>{
           ),
           actions: <Widget>[
             TextButton(
-                child: const Text("Sí, borrar"),
-                onPressed: () {
-                  gestor.borrarFormulario(form);
-                  // Mandamos a actualizar las estadísticas // todo REVISAR
-                  GestorUsuario.instance.currentUser!.actualizarEstadisticas();
-                  
-                  setState(() {}); //Actualizamos la pantalla para que no se quede el formulario estático
-                  Navigator.of(context).pop(); //Quitamos la alerta
-                }),
-
-            TextButton(
                 child: const Text("Cancelar"),
                 onPressed: () {
                   Navigator.of(context).pop();
+                }),
+
+            TextButton(
+                child: const Text("Sí, borrar"),
+                onPressed: () {
+                  gestor.borrarFormulario(form);
+                  // Mandamos a actualizar las estadísticas
+                  GestorUsuario.instance.currentUser!.actualizarEstadisticas();
+
+                  setState(() {}); //Actualizamos la pantalla para que no se quede el formulario estático
+                  Navigator.of(context).pop(); //Quitamos la alerta
                 }),
           ],
         );

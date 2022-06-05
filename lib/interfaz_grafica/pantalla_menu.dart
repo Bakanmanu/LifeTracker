@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_mostrar_formularios.dart';
@@ -61,14 +60,13 @@ class _PantallaMenuState extends State<PantallaMenu> {
             PantallaPerfilUsuario()
           ],
         ),
-
       ),
     );
   }
 
   Future irNuevoFormulario() {
     return Navigator.push(context, MaterialPageRoute(builder: (_) {
-      gestor.setStratCrear(); // todo revisar
+      gestor.setStratCrear();
       return const PantallaFormulario();
     }));
   }

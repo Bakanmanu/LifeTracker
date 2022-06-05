@@ -15,6 +15,8 @@ del CheckBox o del ListView)
 
 - Intentar que, al MostrarFormularios se clasifiquen según el día. Es decir, que todos los
 formularios del mismo día se muestren en el mismo apartado y se diferencien de los de otros días
+
+- Estudiar si en las estadísticas es mejor mostrar las horas de sueño/deporte al día o por formulario
   
 ### Bugs:
 
@@ -124,3 +126,5 @@ volver atrás a no ser que se cierre sesión. Esto para evitar incordios.
 - Se ha creado la clase de categorías y su correspondiente implementación en la pantalla de perfil
 
 - Se ha creado la clase de estadísticas, que recopila los datos y los resume para el usuario
+
+- Se han añadido Físicas de Scroll para que rebote en vez de mostrar un arco
