@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 import 'pantalla_menu_old.dart';
