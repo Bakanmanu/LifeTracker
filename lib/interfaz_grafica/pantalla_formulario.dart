@@ -1,12 +1,9 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:life_tracker/funcionalidad/usuario.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_menu.dart';
 import 'package:life_tracker/theme/colors.dart';
 import 'package:smiley_ui/smiley_ui.dart';
 import "../funcionalidad/categoria.dart";
-import '../funcionalidad/elementos_estado_animo.dart';
 import '../funcionalidad/formulario.dart';
 
 /// Este fichero sirve para crear la parte gráfica a la hora de crear
