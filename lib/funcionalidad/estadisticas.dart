@@ -9,7 +9,7 @@ import 'package:life_tracker/funcionalidad/formulario.dart';
 /// del propio usuario
 class Estadisticas {
 
-  int nFormularios          = 0;
+  int nFormularios = 0;
   Map <String, String> mapaMediables = {
     "Estado de ánimo" : "-",
     "Horas de sueño" : "-",
@@ -164,9 +164,9 @@ class Estadisticas {
 
     if(nFormularios > 0){
       for (Formulario f in listForm) {
-        if(!f.listaCategorias.elementAt(0).isRespuestasVacio){
+        if(!f.listaCategorias[0].isRespuestasVacio){
           counter++;
-          for (Accion a in f.listaCategorias.elementAt(0).respuestas){
+          for (Accion a in f.listaCategorias[0].respuestas){
             suma += a.value;
           }
         }
@@ -191,8 +191,8 @@ class Estadisticas {
     int suma = 0;
     if(nFormularios > 0){
       for (Formulario f in listForm) {
-        if(!f.listaCategorias.elementAt(1).isRespuestasVacio){
-          for (Accion a in f.listaCategorias.elementAt(1).respuestas){
+        if(!f.listaCategorias[1].isRespuestasVacio){
+          for (Accion a in f.listaCategorias[1].respuestas){
             if (a.value != 0){ // si vale 0 es Dormir acompañado: ese dato no lo contamos
               counter++;
               suma += a.value;
@@ -220,8 +220,8 @@ class Estadisticas {
     int suma = 0;
     if(nFormularios > 0){
       for (Formulario f in listForm) {
-        if(!f.listaCategorias.elementAt(2).isRespuestasVacio){
-          for (Accion a in f.listaCategorias.elementAt(2).respuestas){
+        if(!f.listaCategorias[2].isRespuestasVacio){
+          for (Accion a in f.listaCategorias[2].respuestas){
             counter++;
             suma += a.value;
           }
@@ -247,8 +247,8 @@ class Estadisticas {
     int suma = 0;
     if(nFormularios > 0){
       for (Formulario f in listForm) {
-        if(!f.listaCategorias.elementAt(3).isRespuestasVacio){
-          for (Accion a in f.listaCategorias.elementAt(3).respuestas){
+        if(!f.listaCategorias[3].isRespuestasVacio){
+          for (Accion a in f.listaCategorias[3].respuestas){
             counter++;
             suma += a.value;
           }
@@ -275,9 +275,9 @@ class Estadisticas {
 
     if(nFormularios > 0){
       for (Formulario f in listForm) {
-        if(!f.listaCategorias.elementAt(4).isRespuestasVacio){
+        if(!f.listaCategorias[4].isRespuestasVacio){
           counter++;
-          for (Accion a in f.listaCategorias.elementAt(4).respuestas){
+          for (Accion a in f.listaCategorias[4].respuestas){
             suma += a.value/2; // value representa el doble del tiempo indicado
           }
         }
@@ -296,10 +296,12 @@ class Estadisticas {
   void actualizarMinMaxQuehaceres(List<Formulario> listForm){
     bool noData = true; // bool por si no hay datos de la categoría
 
-    // Lista con el número de veces que está marcada la acción [i]
-    List<int> ocurrencias = [0, 0, 0, 0, 0, 0, 0];
-
     if(nFormularios > 0){
+      List<Accion> accView = listForm.first.listaCategorias[5].acciones; // para tener una referencia
+
+      // Lista con el número de veces que está marcada la acción [i]
+      List<int> ocurrencias = List.filled(accView.length, 0);
+
       for (Formulario f in listForm) {
         if(!f.listaCategorias[5].isRespuestasVacio){
           noData = false;
@@ -310,7 +312,6 @@ class Estadisticas {
       }
       if (!noData){ // si sí hay formularios y hay datos en la categoría
 
-        List<Accion> accView = listForm.first.listaCategorias[5].acciones; // para tener una referencia
         int minOcur = ocurrencias.reduce(min);
         int maxOcur = ocurrencias.reduce(max);
         minQuehaceres = "";
@@ -318,10 +319,10 @@ class Estadisticas {
 
         for (int i = 0; i<ocurrencias.length; i++){
           if (ocurrencias[i] == minOcur){
-            minQuehaceres += accView[i].nombre + " ";
+            minQuehaceres += accView[i].nombre.toLowerCase() + ", ";
           }
           if (ocurrencias[i] == maxOcur){
-            maxQuehaceres += accView[i].nombre + " ";
+            maxQuehaceres += accView[i].nombre.toLowerCase() + ", ";
           }
         }
       }
@@ -330,16 +331,125 @@ class Estadisticas {
       minQuehaceres = "Sin datos";
       maxQuehaceres = "Sin datos";
     }
-
-    print(ocurrencias);
   }
 
   void actualizarMinMaxComida(List<Formulario> listForm){
+    bool noData = true; // bool por si no hay datos de la categoría
+
+    if(nFormularios > 0){
+      List<Accion> accView = listForm.first.listaCategorias[6].acciones; // para tener una referencia
+
+      // Lista con el número de veces que está marcada la acción [i]
+      List<int> ocurrencias = List.filled(accView.length, 0);
+
+      for (Formulario f in listForm) {
+        if(!f.listaCategorias[6].isRespuestasVacio){
+          noData = false;
+          for (Accion a in f.listaCategorias[6].respuestas){
+            ocurrencias[a.value]++; // Se incrementa la posición equivalente
+          }
+        }
+      }
+      if (!noData){ // si sí hay formularios y hay datos en la categoría
+
+        int minOcur = ocurrencias.reduce(min);
+        int maxOcur = ocurrencias.reduce(max);
+        minComida = "";
+        maxComida = "";
+
+        for (int i = 0; i<ocurrencias.length; i++){
+          if (ocurrencias[i] == minOcur){
+            minComida += accView[i].nombre.toLowerCase() + ", ";
+          }
+          if (ocurrencias[i] == maxOcur){
+            maxComida += accView[i].nombre.toLowerCase() + ", ";
+          }
+        }
+      }
+    }
+    else if (noData){ // si no hay formularios o no tienen datos de esta categoría
+      minComida = "Sin datos";
+      maxComida = "Sin datos";
+    }
   }
 
   void actualizarMinMaxEntretenimiento(List<Formulario> listForm){
+    bool noData = true; // bool por si no hay datos de la categoría
+
+    if(nFormularios > 0){
+      List<Accion> accView = listForm.first.listaCategorias[7].acciones; // para tener una referencia
+
+      // Lista con el número de veces que está marcada la acción [i]
+      List<int> ocurrencias = List.filled(accView.length, 0);
+
+      for (Formulario f in listForm) {
+        if(!f.listaCategorias[7].isRespuestasVacio){
+          noData = false;
+          for (Accion a in f.listaCategorias[7].respuestas){
+            ocurrencias[a.value]++; // Se incrementa la posición equivalente
+          }
+        }
+      }
+      if (!noData){ // si sí hay formularios y hay datos en la categoría
+
+        int minOcur = ocurrencias.reduce(min);
+        int maxOcur = ocurrencias.reduce(max);
+        minEntretenimiento = "";
+        maxEntretenimiento = "";
+
+        for (int i = 0; i<ocurrencias.length; i++){
+          if (ocurrencias[i] == minOcur){
+            minEntretenimiento += accView[i].nombre.toLowerCase() + ", ";
+          }
+          if (ocurrencias[i] == maxOcur){
+            maxEntretenimiento += accView[i].nombre.toLowerCase() + ", ";
+          }
+        }
+      }
+    }
+    else if (noData){ // si no hay formularios o no tienen datos de esta categoría
+      minEntretenimiento = "Sin datos";
+      maxEntretenimiento = "Sin datos";
+    }
   }
 
   void actualizarMinMaxTiempo(List<Formulario> listForm){
+    bool noData = true; // bool por si no hay datos de la categoría
+
+    if(nFormularios > 0){
+      List<Accion> accView = listForm.first.listaCategorias[8].acciones; // para tener una referencia
+
+      // Lista con el número de veces que está marcada la acción [i]
+      List<int> ocurrencias = List.filled(accView.length, 0);
+
+      for (Formulario f in listForm) {
+        if(!f.listaCategorias[8].isRespuestasVacio){
+          noData = false;
+          for (Accion a in f.listaCategorias[8].respuestas){
+            ocurrencias[a.value]++; // Se incrementa la posición equivalente
+          }
+        }
+      }
+      if (!noData){ // si sí hay formularios y hay datos en la categoría
+
+        int minOcur = ocurrencias.reduce(min);
+        int maxOcur = ocurrencias.reduce(max);
+        minTiempo = "";
+        maxTiempo = "";
+
+        for (int i = 0; i<ocurrencias.length; i++){
+          if (ocurrencias[i] == minOcur){
+            minTiempo += accView[i].nombre.toLowerCase() + ", ";
+          }
+          if (ocurrencias[i] == maxOcur){
+            maxTiempo += accView[i].nombre.toLowerCase() + ", ";
+          }
+        }
+      }
+    }
+    else if (noData){ // si no hay formularios o no tienen datos de esta categoría
+      minTiempo = "Sin datos";
+      maxTiempo = "Sin datos";
+    }
   }
 }

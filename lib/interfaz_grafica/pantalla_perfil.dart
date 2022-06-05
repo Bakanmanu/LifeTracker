@@ -118,23 +118,26 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
     );
   }
 
+  /// Método que se encarga de renderizar el texto correspondiente a las estadísticas
+  /// Se le pasa por parámetro el nombre de la categoría, la propia estadística
   Container buildTextoEstadisticas(String categoria, String stat) {
     return Container(
+      alignment: Alignment.bottomLeft,
       margin: const EdgeInsets.only(bottom: 15),
-      child: Row(
-        children: [
-          Text(categoria + ": ",
-            style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-
-          Flexible( // todo cambiar esto pa ponerlo más bonito
-            child: Text(stat,
-              style: const TextStyle(color: Colors.black, fontSize: 16),
+      child: RichText(
+        text: TextSpan(
+          style: const TextStyle(color: Colors.black, fontSize: 16),
+          children: <TextSpan> [
+            TextSpan(
+              text: categoria + ": ",
+              style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
             ),
-          )
-
-        ],
-      ),
+            TextSpan(
+              text: stat,
+            )
+          ]
+        ),
+      )
     );
   }
 
