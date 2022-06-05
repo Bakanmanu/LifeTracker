@@ -124,4 +124,3 @@ volver atrás a no ser que se cierre sesión. Esto para evitar incordios.
 - Se ha creado la clase de categorías y su correspondiente implementación en la pantalla de perfil
 
 - Se ha creado la clase de estadísticas, que recopila los datos y los resume para el usuario
-
