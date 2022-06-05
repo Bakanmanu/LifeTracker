@@ -27,8 +27,9 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
           title: const Text("Mi perfil"),
           actions: [
 
-            /// Botón de Logout
+            /// BOTÓN LOGOUT
             Container(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               decoration: BoxDecoration(
                   color: enfadado,
                   borderRadius: BorderRadius.circular(10)
