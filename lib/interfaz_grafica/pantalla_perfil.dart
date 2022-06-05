@@ -125,13 +125,13 @@ class _PantallaPerfilUsuarioState extends State<PantallaPerfilUsuario>{
     return Container(
         alignment: Alignment.bottomLeft,
         margin: const EdgeInsets.only(bottom: 15),
-        child: RichText(
-          text: TextSpan(
-              style: const TextStyle(color: Colors.black, fontSize: 16),
+        child: Text.rich(
+          TextSpan(
+              style: const TextStyle(color: Colors.black,),
               children: <TextSpan> [
                 TextSpan(
                   text: categoria + ": ",
-                  style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 TextSpan(
                   text: stat,

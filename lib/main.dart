@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:life_tracker/theme/colors.dart';
 import 'interfaz_grafica/pantalla_login.dart';
-import 'package:dcdg/dcdg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       ThemeData(
         primarySwatch: Colors.purple,
         scaffoldBackgroundColor: background,
+        textTheme: GoogleFonts.pangolinTextTheme(), //openSans
         //backgroundColor: background,
       ),
       home: const Login(),
