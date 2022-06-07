@@ -1,3 +1,4 @@
+import 'package:life_tracker/funcionalidad/usuario_api.dart';
 import 'package:life_tracker/interfaz_grafica/pantalla_formulario.dart';
 
 import 'estadisticas.dart';
@@ -8,16 +9,14 @@ import 'formulario.dart';
 /// usuario que esté actualmente utilizando la aplicación
 class GestorUsuario {
   Map<String, Usuario> mapaUsuarios = { // usamos un mapa para que sea más rápido
-    "asdf": Usuario("asdf", "1234"),
+    "asdf": Usuario(0, "asdf", "1234"),
   }; // siempre inicializamos con un usuario por defecto
 
   Usuario? currentUser; // el usuario que esté actualmente verificado. Puede ser null
 
   ///SINGLETON PARA NO CREAR MÁS DE 1 INSTANCIA DEL GESTOR
   GestorUsuario._privateConstructor();
-
   static final GestorUsuario _instance = GestorUsuario._privateConstructor();
-
   static GestorUsuario get instance => _instance;
 
   GestorUsuario() {
@@ -32,9 +31,14 @@ class GestorUsuario {
   /// todo pensar si guardar los usuarios en la estructura y revisar si existe para agilizar el proceso
   /// todo hacer que se descarguen autmáticamente los datos si se ha logueado bien
   int iniciarSesion(String user, String pass) {
-    int codigo =
-        0; // 0: usuario no existe / 1: inicio correcto / 2: credenciales inválidas / 3: campos vacíos
 
+    // Hacer petición con user y pass a la API
+    // Hacer gestión de código
+    // Si el inicio es correcto (guardar ID), entonces llamar a la función que recupera
+    // todos los formularios del user según ID
+    // Poner el currentUser con el que se haya pasado
+
+    int codigo = 0; // 0: usuario no existe / 1: inicio correcto / 2: credenciales inválidas / 3: campos vacíos
     if (mapaUsuarios.containsKey(user)) {
       // el usuario existe -> true
       if (mapaUsuarios[user]?.pass == pass) {
@@ -51,42 +55,48 @@ class GestorUsuario {
         codigo = 0;
       } // no existe usuario
     }
-    return codigo;
-  }
+    // todo ver si hay que poner rellenarFormularios()
 
-  /// Método que sirve para desconectar al usuario actual de la sesión
-  /// y volver a la pantalla de inicio de sesión
-  void cerrarSesion() {
-    setCurrentUser(null);
+    return codigo;
   }
 
   /// Método que permite crear un nuevo usuario
   /// Primero comprueba si el nombre de usuario es válido y que no se ha
   /// introducido una contraseña vacía
   /// todo cambiar con API
-  int registrarse(String user, String pass) {
+  int registrarse(String userName, String pass) {
     int codigo = 0; // 0: usuario ya existe / 1: correcto / 2: campo contraseña no válido / 3: user vacío
 
-    if (!mapaUsuarios.containsKey(user) && user != '') {
-      // el usuario NO existe -> true
-      if (pass == '') {
-        codigo = 2; // contraseña no válida
-      } else {
+    if (pass == '') {
+      codigo = 2; // contraseña no válida por estar vacía
+    } else if (userName == '') {
+      codigo = 3; // el campo usuario está vacío
+    }
+    else { // si son campos válidos
+
+      // LLAMAMOS A LA API
+      Usuario? usuario = GestorUsuarioAPI.registrarseAPI(userName, pass);
+
+      if (usuario != null){ // Si se ha devuelto
+        // se ha creado el usuario
         codigo = 1;
-        mapaUsuarios[user] = Usuario(user, pass); // añadimos el nuevo usuario al mapa
-        iniciarSesion(user, pass);
+        mapaUsuarios[userName] = usuario!; // añadimos el nuevo usuario al mapa
+        iniciarSesion(userName, pass); // todo revisar
       }
-    } else {
-      if (user == '') {
-        codigo = 3; // el campo usuario está vacío
-      } else {
-        codigo = 0; // ya existe ese usuario
+      else {
+
       }
     }
+
     return codigo;
   }
 
   // todo hacer método para cambiar user name y password
+
+  /// Método que sirve para rellenar los formularios del usuario cuando ha iniciado sesión
+  void rellenarFormularios(){
+    // todo
+  }
 
   /// Método para borrar un usuario existente de la lista
   /// todo cambiar con API
@@ -96,13 +106,18 @@ class GestorUsuario {
     }
   }
 
+  /// Método que sirve para desconectar al usuario actual de la sesión
+  /// y volver a la pantalla de inicio de sesión
+  void cerrarSesion() {
+    setCurrentUser(null);
+  }
+
   /// Método para poner el usuario que ha iniciado sesión
   /// Puede recibir valores nulos ya que se puede cerrar sesión y
   /// no habrá un usuario activo
   void setCurrentUser(Usuario? user) {
     currentUser = user;
   }
-
 }
 
 /// Clase que define toda la funcionalidad respecto a un usuario. Por ejemplo,
@@ -111,16 +126,20 @@ class GestorUsuario {
 class Usuario {
   /// Atributos
 
-  late int idUser; // este valor lo tiene que asignar la BD cuando se crea la Primary Key todo revisar
+  late int idUser; // este valor lo tiene que asignar la BD
   late String user; // Pensar si hay que comprobar en la base de datos que exista ese nombre
   late String pass;
   late GestorFormulario gestorFormulario;
   late Estadisticas estadisticas;
 
-  Usuario(this.user, this.pass) {
+  Usuario(this.idUser, this.user, this.pass) {
     gestorFormulario = GestorFormulario();
     estadisticas = Estadisticas();
-  } // Constructor
+  } // Constructor 1
+
+  void setIdUser(int id){
+    idUser = id;
+  }
 
   /// Método para mantener las estadísticas actualizadas.
   /// Se llama cada vez que se crea o modifica un formulario en
