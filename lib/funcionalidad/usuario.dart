@@ -64,7 +64,33 @@ class GestorUsuario {
   /// Método que permite crear un nuevo usuario
   /// Primero comprueba si el nombre de usuario es válido y que no se ha
   /// introducido una contraseña vacía
-  int registrarse(String userName, String pass) {
+  int registrarse(String user, String pass) {
+    int codigo = 0; // 0: usuario ya existe / 1: correcto / 2: campo contraseña no válido / 3: user vacío
+
+    if (!mapaUsuarios.containsKey(user) && user != '') {
+      // el usuario NO existe -> true
+      if (pass == '') {
+        codigo = 2; // contraseña no válida
+      } else {
+        codigo = 1;
+        mapaUsuarios[user] = Usuario(0, user, pass); // añadimos el nuevo usuario al mapa
+        iniciarSesion(user, pass);
+      }
+    } else {
+      if (user == '') {
+        codigo = 3; // el campo usuario está vacío
+      } else {
+        codigo = 0; // ya existe ese usuario
+      }
+    }
+    return codigo;
+  }
+
+  /// Método que permite crear un nuevo usuario desde la API
+  /// Primero comprueba si el nombre de usuario es válido y que no se ha
+  /// introducido una contraseña vacía
+  /// TODAVÍA NO FUNCIONA
+  int registrarseConAPI(String userName, String pass) {
     int codigo = 4; // 0: usuario ya existe / 1: correcto / 2: campo contraseña no válido / 3: user vacío / 4: unknown
 
     if (pass == '') {
@@ -74,20 +100,23 @@ class GestorUsuario {
     }
 
     else { // si son campos válidos
-      codigo = 1;
-      mapaUsuarios[userName] = Usuario(0, userName, pass); // añadimos el nuevo usuario al mapa
-      setCurrentUser(mapaUsuarios[userName]); // ponemos el currentUser para que no haya que iniciar sesión
-      iniciarSesion(userName, pass); // todo revisar
+
+      // LLAMAMOS A LA API
+      var recibido = GestorUsuarioAPI.registrarseAPI(userName, pass);
+
+      if (recibido == null) {print("recibido null"); return 4;} // error desconocido porque no debería dar null
+
+      if (recibido.runtimeType == Usuario){ // Si se ha devuelto tipo Usuario (creación correcta)
+        codigo = 1;
+        mapaUsuarios[userName] = recibido; // añadimos el nuevo usuario al mapa
+        setCurrentUser(recibido); // ponemos el currentUser para que no haya que iniciar sesión
+
+        iniciarSesion(userName, pass); // todo revisar
+      }
+      else {
+        print('aaaa esto es un int y no un usuario');
+      }
     }
-      // // LLAMAMOS A LA API
-      // var recibido = GestorUsuarioAPI.registrarseAPI(userName, pass);
-      // if (recibido == null) {print("recibido null"); return 4;} // error desconocido porque no debería dar null
-      // if (recibido.runtimeType == Usuario){ // Si se ha devuelto tipo Usuario (creación correcta)
-      //   codigo = 1;
-      //   mapaUsuarios[userName] = recibido; // añadimos el nuevo usuario al mapa
-      //   setCurrentUser(recibido); // ponemos el currentUser para que no haya que iniciar sesión
-      //   iniciarSesion(userName, pass); // todo revisar
-      // }
     return codigo;
   }
 
