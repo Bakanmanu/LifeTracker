@@ -42,9 +42,6 @@ class _PantallaFormularioState extends State<PantallaFormulario> {
     }
   }
 
-  /// Getter
-  List<Categoria> get categorias => _categorias;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

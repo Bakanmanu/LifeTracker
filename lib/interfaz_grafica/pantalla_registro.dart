@@ -162,6 +162,9 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
       case 3:
         texto = "Por favor, rellene los campos";
         break;
+      case 4:
+        texto = "Error desconocido";
+        break;
     }
 
     return showDialog<void>(
